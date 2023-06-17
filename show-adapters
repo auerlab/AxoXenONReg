@@ -1,0 +1,40 @@
+#!/bin/sh
+
+##########################################################################
+#   Synopsis:
+#       Highlight adapters in raw sequence files
+#       
+#   History:
+#   Date        Name        Modification
+#   2023-06-17  Jason Bacon Begin
+##########################################################################
+
+usage()
+{
+    printf "Usage: $0 forward|reverse\n"
+    exit 1
+}
+
+
+##########################################################################
+#   Main
+##########################################################################
+
+if [ $# != 1 ]; then
+    usage
+fi
+
+case $1 in
+forward)
+    fastq-scum Raw/A16Na1/A16Na1_1.fq.gz
+    ;;
+
+reverse)
+    fastq-scum Raw/A16Na1/A16Na1_2.fq.gz
+    ;;
+
+*)
+    usage
+    ;;
+
+esac
