@@ -58,7 +58,7 @@ rm -rf 01-organize/Raw-renamed
 mkdir -p 01-organize/Raw-renamed
 cd 01-organize/Raw-renamed
 pwd
-for file in ../../../Raw/*/*.fq.gz; do
+for file in ../../../Raw/*/*.fq.xz; do
     echo $file
     # FIXME: Generate a non-cryptic name for each file
     ln -sf $file .
