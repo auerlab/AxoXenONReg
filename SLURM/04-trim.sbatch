@@ -94,7 +94,7 @@ stem=${base%%-R*.fastq.xz}
 # of the load to the compute node CPUs and reduce NFS traffic considerably.
 #
 # suffix=.xz
-suffix=.gz
+suffix=.zst
 output1=Results/04-trim/${stem}-R1.fastq$suffix
 output2=Results/04-trim/${stem}-R2.fastq$suffix
 
