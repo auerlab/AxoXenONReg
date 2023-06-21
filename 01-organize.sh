@@ -58,15 +58,15 @@ rm -rf 01-organize/Raw-renamed
 mkdir -p 01-organize/Raw-renamed
 cd 01-organize/Raw-renamed
 pwd
-for path in ../../../Raw/*/*.fq.gz; do
+for path in ../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
     # FIXME: Generate a non-cryptic name for each file
     sample=$(echo $file | cut -c 2-3)
-    sample=$(($sample - 15))
+    #sample=$(($sample - 15))
     if echo $file | fgrep -q Na; then
 	time=0
-	rep=$(echo $file | cut -c 7)
-	strand=$(echo $file | cut -c 9)
+	rep=$(echo $file | cut -c 6)
+	strand=$(echo $file | cut -c 8)
     elif echo $file | fgrep -q h; then
 	time=$(echo $file | cut -c 4-5)
 	rep=$(echo $file | cut -c 7)
@@ -77,5 +77,8 @@ for path in ../../../Raw/*/*.fq.gz; do
 	rep=$(echo $file | cut -c 6)
 	strand=$(echo $file | cut -c 8)
     fi
-    printf "$path = sample-$sample-cond-$time-rep-$rep-$strand.fq.xz\n"
+    time=$(printf "%03d" $time)
+    link=sample$sample-time$time-rep$rep-R$strand.fastq.xz
+    printf "$path = $link\n"
+    ln -sf $path $link
 done
