@@ -34,15 +34,18 @@ kallisto version
 samtools --version
 pwd
 
-transcriptome=Results/07-reference/AmexT_v47_cds.fa
+ref_dir=Results/07-reference
+transcriptome=AmexT_v47_cds.fa
+index=${transcriptome%.fa}.index
+
 printf "Using reference $transcriptome...\n"
 
 # Needed for kallisto --genomebam
-if [ ! -e $transcriptome.fai ]; then
-    printf "Building $transcriptome...\n"
-    samtools faidx $transcriptome
+if [ ! -e $ref_dir/$transcriptome.fai ]; then
+    printf "Building samtools index...\n"
+    samtools faidx $ref_dir/$transcriptome
 fi
 
 printf "Building kallisto index...\n"
 set -x
-kallisto index --index=Results/08-kallisto-index/all-but-xy.index $transcriptome
+kallisto index --index=Results/08-kallisto-index/$index $ref_dir/$transcriptome
