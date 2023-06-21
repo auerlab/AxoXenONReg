@@ -2,7 +2,7 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw data for comparison
+#       Run quality checks on trimmed data for comparison
 #       Based on work of Dr. Andrea Rau:
 #       https://github.com/andreamrau/OpticRegen_2019
 #
@@ -21,11 +21,11 @@
 ##########################################################################
 
 if which sbatch; then
-    sbatch SLURM/02-qc-raw.sbatch
+    sbatch SLURM/05-qc-trimmed.sbatch
 else
     hw_threads=$(./get_hw_threads.sh)
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/01-organize/Raw-renamed/*.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/02-qc-raw.sh
+	xargs -n 1 -P $jobs Xargs/05-qc-trimmed.sh
 fi
