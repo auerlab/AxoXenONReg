@@ -39,7 +39,7 @@
 # half a core each
  
 # Set job array to number of samples.
-#SBATCH --array=1-18%9
+#SBATCH --array=15-30%8
 #SBATCH --cpus-per-task=3
 # Memory requirements can only be determined by trial and error.
 # Run a sample job and monitor closely in "top" or rununder a tool that
@@ -49,7 +49,7 @@
 #SBATCH --error=Logs/04-trim/slurm-%A_%a.err
 
 # Set a default value for testing outside the SLURM environment
-: ${SLURM_ARRAY_TASK_ID:=1}
+: ${SLURM_ARRAY_TASK_ID:=16}
 
 # Document software versions used for publication
 uname -a
@@ -57,8 +57,8 @@ uname -a
 fastq-trim --version
 pwd
 
-input1=$(ls Results/01-organize/Raw-renamed/*sample${SLURM_ARRAY_TASK_ID}-*R1*)
-input2=$(ls Results/01-organize/Raw-renamed/*sample${SLURM_ARRAY_TASK_ID}-*R2*)
+input1=$(ls Results/01-organize/Raw-renamed/sample${SLURM_ARRAY_TASK_ID}-*R1*)
+input2=$(ls Results/01-organize/Raw-renamed/sample${SLURM_ARRAY_TASK_ID}-*R2*)
 base=$(basename $input1)
 stem=${base%%-R*.fastq.xz}
 
@@ -109,11 +109,7 @@ output2=Results/04-trim/${stem}-R2.fastq$suffix
 # for fastq-trim.
 export GZIP=-4
 
-if pwd | fgrep -q RNA-Seq; then
-    adapter=AGATCGGAAGAG
-else
-    adapter=CTGTCTCTTATACACATCT
-fi
+adapter=AGATCGGAAGAG
 
 # fastq-trim is 2.5x faster with 1 core than cutadapt with 2 cores
 # Our reads use the default Illumina universal adapter,
