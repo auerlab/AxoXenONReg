@@ -19,3 +19,29 @@ if [ ! -e AmexT_v47_dna.fa ]; then
     printf "Deflating...\n"
     gunzip AmexT_v47_dna.fa.gz
 fi
+
+##########################################################################
+#   GTF
+##########################################################################
+
+gtf=AmexT_v47-AmexG_v6.0-DD.gtf
+if [ ! -e $gtf ]; then
+    curl --continue-at - --remote-name \
+	https://www.axolotl-omics.org/dl/$gtf.gz
+    printf "Deflating...\n"
+    gunzip $gtf.gz
+fi
+
+##########################################################################
+#   Genome
+#   Do this last, because it could take hours
+##########################################################################
+
+genome=AmexG_v6.0-DD.fa
+if [ ! -e $genome ]; then
+    curl --continue-at - --remote-name \
+	https://www.axolotl-omics.org/dl/$genome.gz
+    printf "Deflating...\n"
+    gunzip $genome.gz
+fi
+
