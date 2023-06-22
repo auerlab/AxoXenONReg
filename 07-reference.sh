@@ -42,6 +42,9 @@ if [ ! -e $genome ]; then
     curl --continue-at - --remote-name \
 	https://www.axolotl-omics.org/dl/$genome.gz
     printf "Deflating...\n"
-    gunzip $genome.gz
+    gunzip $genome
 fi
+
+printf "Getting chromosome sizes...\n"
+blt chrom-lens < $genome > chromosome-sizes.tsv
 
