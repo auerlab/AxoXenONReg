@@ -84,13 +84,12 @@ zstdcat $zst1 > $pipe1 &
 zstdcat $zst2 > $pipe2 &
 
 # Manual says a GTF is needed.  Kallisto aborts using GFF3.
-gtf=AmexT_v47-AmexG_v6.0-DD.gtf
+# Needed for --genomebam
+# We'll get BAMs from hisat2 instead
+# gtf=AmexT_v47-AmexG_v6.0-DD.gtf
 
 set -x
 kallisto quant \
-    --genomebam \
-	--gtf=Results/07-reference/$gtf \
-	--chromosomes=Results/07-reference/chromosome-sizes.tsv \
     --threads=$SLURM_CPUS_PER_TASK \
     --index=Results/08-kallisto-index/AmexT_v47_cds.index \
     --output-dir=$out_dir $pipe1 $pipe2
