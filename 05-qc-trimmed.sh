@@ -23,7 +23,7 @@
 if which sbatch; then
     sbatch SLURM/05-qc-trimmed.sbatch
 else
-    hw_threads=$(./get_hw_threads.sh)
+    hw_threads=$(./get-hw-threads.sh)
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/01-organize/Raw-renamed/*.fastq.xz | \

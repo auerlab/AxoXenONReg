@@ -25,12 +25,12 @@ if [ ! -e \$my_file_xz ]; then
 fi
 
 printf "Checking \$my_file_gz...\n"
-gunzip -c \$my_file_gz | wc > \$my_file_gz-wc.txt
+gunzip -c \$my_file_gz | md5 > \$my_file_gz-ck.txt
 printf "Checking \$my_file_xz...\n"
-xzcat \$my_file_xz | wc > \$my_file_xz-wc.txt
+xzcat \$my_file_xz | md5 > \$my_file_xz-ck.txt
 
 # diff returns success when files are not different
-if diff \$my_file_gz-wc.txt \$my_file_xz-wc.txt; then
+if diff \$my_file_gz-ck.txt \$my_file_xz-ck.txt; then
     cat << EOM2
     
 Files are the same.  If should be safe to remove this copy of
@@ -62,18 +62,18 @@ fi
 my_file_gz=\$1
 my_file_xz=\${my_file_gz%.gz}.xz
 
-printf "Converting \$my_file_gz...\n"
 if [ ! -e \$my_file_xz ]; then
-    time gunzip -c \$my_file_gz | xz > \$my_file_xz
+    printf "Converting \$my_file_gz to \$my_file_xz...\n"
+    #time gunzip -c \$my_file_gz | xz > \$my_file_xz
 fi
 
 printf "Checking \$my_file_gz...\n"
-gunzip -c \$my_file_gz | wc > \$my_file_gz-wc.txt
+gunzip -c \$my_file_gz | md5 > \$my_file_gz-ck.txt
 printf "Checking \$my_file_xz...\n"
-xzcat \$my_file_xz | wc > \$my_file_xz-wc.txt
+xzcat \$my_file_xz | md5 > \$my_file_xz-ck.txt
 
 # diff returns success when files are not different
-if diff \$my_file_gz-wc.txt \$my_file_xz-wc.txt; then
+if diff \$my_file_gz-ck.txt \$my_file_xz-ck.txt; then
     cat << EOM2
     
 Files are the same.  If should be safe to remove this copy of
@@ -94,6 +94,5 @@ EOM
     jobs=$hw_threads    # gunzip takes almost nothing
     
     # Tried GNU parallel and ran into bugs.  Xargs just works.
-    set -x
     ls Raw/*/*.fq.gz | xargs -n 1 -P $jobs Xargs/00.2-gz2xz.sh
 fi
