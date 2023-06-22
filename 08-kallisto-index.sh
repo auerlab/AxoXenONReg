@@ -26,7 +26,7 @@ else
     # Debug
     # rm -f Results/08-kallisto-index/*
     
-    hw_threads=$(./get_hw_threads.sh)
+    hw_threads=$(./get-hw-threads.sh)
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
