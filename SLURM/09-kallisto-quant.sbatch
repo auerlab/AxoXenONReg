@@ -76,8 +76,8 @@ mkdir -p $out_dir
 
 # kallisto only support gzip compression as of 0.48.0, so use FIFOs
 # feed it raw text
-pipe1=pipe1-$SLURM_ARRAY_TASK_ID
-pipe2=pipe2-$SLURM_ARRAY_TASK_ID
+pipe1=/tmp/pipe1-$SLURM_ARRAY_TASK_ID
+pipe2=/tmp/pipe2-$SLURM_ARRAY_TASK_ID
 rm -f $pipe1 $pipe2
 mkfifo $pipe1 $pipe2
 zstdcat $zst1 > $pipe1 &
@@ -85,10 +85,12 @@ zstdcat $zst2 > $pipe2 &
 
 # Manual says a GTF is needed.  Kallisto aborts using GFF3.
 # No GTF/GFF for Axolotl, so no --genomebam
+#    --bootstrap-samples=500
+
 set -x
 kallisto quant \
-    --pseudobam \
-    --bootstrap-samples=500 \
     --threads=$SLURM_CPUS_PER_TASK \
     --index=Results/08-kallisto-index/AmexT_v47_cds.index \
     --output-dir=$out_dir $pipe1 $pipe2
+
+rm -f $pipe1 $pipe2
