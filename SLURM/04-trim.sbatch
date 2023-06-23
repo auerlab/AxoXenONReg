@@ -62,26 +62,6 @@ input2=$(ls Results/01-organize/Raw-renamed/sample${SLURM_ARRAY_TASK_ID}-*R2*)
 base=$(basename $input1)
 stem=${base%%-R*.fastq.xz}
 
-##############################################################################
-# TrimGalore is just a wrapper around cutadapt and it cannot cut a fixed
-# number of bases at the same time as trimming adapters ( -u and -U in
-# cutadapt ), so we run cutadapt directly.
-#
-# trim_galore --illumina --stringency 3 -q 20 --paired -o Results/04-trim \
-#    $input1 $input2 > Results/04-trim/${stem}-trash.out
-# trim_galore --illumina --stringency 3 -q 20 --paired --trim1 -o Results/04-trim-trim1 \
-#    $input1 $input2 > Results/04-trim-trim1/${stem}-trash.out
-#
-# Command from trim_galore log:
-#   cutadapt -j 1 -e 0.1 -q 20 -O 3 -a AGATCGGAAGAGC
-#   -j 1 -O 3 -e 0.1 are default for cutadapt
-
-##############################################################################
-# Remove ~15 bases at 5' end due to bias and last base at 3' end
-# 5' bias is probably due to non-random cleavage and not a
-# quality issue, so -u +15 -U +15 is probably not necessary
-# -u +15 -U +15 \
-
 # https://www.rootusers.com/gzip-vs-bzip2-vs-xz-performance-comparison/
 # xz offers the best compression by far, but is slow at mid (-5) to high (-9)
 # compression levels.  At -1, xz is faster than bzip2 while providing
@@ -94,7 +74,7 @@ stem=${base%%-R*.fastq.xz}
 # of the load to the compute node CPUs and reduce NFS traffic considerably.
 #
 # suffix=.xz
-suffix=.zst
+suffix=.gz
 output1=Results/04-trim/${stem}-R1.fastq$suffix
 output2=Results/04-trim/${stem}-R2.fastq$suffix
 
@@ -117,13 +97,3 @@ adapter=AGATCGGAAGAG
 set -x
 time fastq-trim --3p-adapter1 $adapter --3p-adapter2 $adapter \
     --min-qual 24 --polya-min-length 4 $input1 $output1 $input2 $output2
-
-# To use cutadapt instead, comment out the above and uncomment this:
-#cutadapt --compression-level=1
-#    --quality-cutoff=24 \
-#    -u -3 -U -3 \
-#    -a $adapter -A $adapter \
-#    --minimum-length=30 \
-#    --output=Results/04-trim/${stem}-R1.fastq$suffix \
-#    --paired-output=Results/04-trim/${stem}-R2.fastq$suffix \
-#    $input1 $input2

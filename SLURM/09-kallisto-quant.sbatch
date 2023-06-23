@@ -74,10 +74,10 @@ out_dir=Results/09-kallisto-quant/$stem
 echo $out_dir
 mkdir -p $out_dir
 
-# kallisto only support gzip compression as of 0.48.0, so use FIFOs
+# kallisto only supports gzip compression as of 0.48.0, so use FIFOs
 # feed it raw text
-pipe1=/tmp/pipe1-$SLURM_ARRAY_TASK_ID
-pipe2=/tmp/pipe2-$SLURM_ARRAY_TASK_ID
+pipe1=/tmp/pipe1-kallisto-$SLURM_ARRAY_TASK_ID
+pipe2=/tmp/pipe2-kallisto-$SLURM_ARRAY_TASK_ID
 rm -f $pipe1 $pipe2
 mkfifo $pipe1 $pipe2
 zstdcat $zst1 > $pipe1 &
