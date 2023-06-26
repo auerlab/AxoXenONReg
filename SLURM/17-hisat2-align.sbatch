@@ -22,9 +22,9 @@
 #SBATCH --array=16-16
 #SBATCH --cpus-per-task=4
 # Memory requirements can only be determined by trial and error.
-# Run a sample job and monitor closely in "top" or rununder a tool that
+# Run a sample job and monitor closely in "top" or run under a tool that
 # reports maximum memory use.
-#SBATCH --mem=10g
+#SBATCH --mem=10000
 #SBATCH --output=Logs/17-hisat2-align/slurm-%A_%a.out
 #SBATCH --error=Logs/17-hisat2-align/slurm-%A_%a.err
 
@@ -50,10 +50,11 @@ gz2=$(echo ../04-trim/sample${SLURM_ARRAY_TASK_ID}-*-R2.fastq.gz)
 gzb=$(basename $gz1)
 bam=${gzb%-R*}.bam
 
-printf "$gz1 $gz2 $gzb $bam\n"
-
 set -x
-hisat2 --threads $SLURM_CPUS_PER_TASK -x ../16-hisat2-index/$genome \
-    -1 $gz1 -2 $gz2 # | samtools sort > $bam
+hisat2 --threads $SLURM_CPUS_PER_TASK \
+    --upto 1000 \
+    --time \
+    --met-stderr \
+    -x ../16-hisat2-index/$genome \
+    -1 $gz1 -2 $gz2 | samtools sort > $bam
 samtools index $bam
-
