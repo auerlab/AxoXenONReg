@@ -6,18 +6,24 @@
 
 cd Results/07-reference
 
-if [ ! -e AmexT_v47_cds.fa ]; then
-    curl --continue-at - --location --output AmexT_v47_cds.fa.gz \
+cds=AmexT_v47_cds.fa
+if [ ! -e $cds ]; then
+    curl --continue-at - --location --output $cds.gz \
 	'http://www.axolotl-omics.org/api?method=Assembly.getSequences&assembly=47&type=cds'
     printf "Deflating...\n"
-    gunzip AmexT_v47_cds.fa.gz
+    gunzip $cds.gz
+else
+    printf "$cds already exists.\n"
 fi
 
-if [ ! -e AmexT_v47_dna.fa ]; then
-    curl --continue-at - --location --output AmexT_v47_dna.fa.gz \
+dna=AmexT_v47_dna.fa
+if [ ! -e $dna ]; then
+    curl --continue-at - --location --output $dna.gz \
 	'http://www.axolotl-omics.org/api?method=Assembly.getSequences&assembly=47&type=dna'
     printf "Deflating...\n"
-    gunzip AmexT_v47_dna.fa.gz
+    gunzip $dna.gz
+else
+    printf "$dna already exists.\n"
 fi
 
 ##########################################################################
@@ -30,6 +36,8 @@ if [ ! -e $gtf ]; then
 	https://www.axolotl-omics.org/dl/$gtf.gz
     printf "Deflating...\n"
     gunzip $gtf.gz
+else
+    printf "$gtf already exists.\n"
 fi
 
 ##########################################################################
@@ -43,8 +51,13 @@ if [ ! -e $genome ]; then
 	https://www.axolotl-omics.org/dl/$genome.gz
     printf "Deflating...\n"
     gunzip $genome
+else
+    printf "$genome already exists.\n"
 fi
 
-printf "Getting chromosome sizes...\n"
-blt chrom-lens < $genome > chromosome-sizes.tsv
-
+if [ ! -e chromosome-sizes.tsv ]; then
+    printf "Getting chromosome sizes...\n"
+    blt chrom-lens < $genome > chromosome-sizes.tsv
+else
+    printf "chromosome-sizes.tsv already exists.\n"
+fi
