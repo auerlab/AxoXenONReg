@@ -18,12 +18,10 @@
 #   2021-11-24  Jason Bacon Begin
 ##########################################################################
 
-#SBATCH --mem=1g
+#SBATCH --mem=120g
 #SBATCH --output=Logs/16-hisat2-index/slurm-%A.out
 #SBATCH --error=Logs/16-hisat2-index/slurm-%A.err
-
-# Set a default value for testing outside the SLURM environment
-: ${SLURM_ARRAY_TASK_ID:=16}
+#SBATCH --cpus-per-task=16
 
 # Document software versions used for publication
 uname -a
@@ -41,7 +39,9 @@ printf "Using reference $genome...\n"
 # FIXME: Do this in *-reference.sbatch
 if [ ! -e $genome.8.ht2 ]; then
     printf "Building $genome.*.ht2...\n"
-    hisat2-build $genome $genome
+    # Unlike hisat2, hisat2-build does not support --threads
+    # as a -p equivalent
+    hisat2-build -p $SLURM_CPUS_PER_TASK $genome $genome
 fi
 if [ ! -e $genome.fai ]; then
     printf "Building $genome.fai...\n"
