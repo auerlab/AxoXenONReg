@@ -4,6 +4,8 @@
 # "file" command revealed name within gzip data to use with --output
 # Firefox "save link as" comes up with .zip, which is wrong.  Should be .gz.
 
+gff=$(Reference/gff-filename.sh)
+
 cd Results/07-reference
 
 cds=AmexT_v47_cds.fa
@@ -38,6 +40,20 @@ if [ ! -e $gtf ]; then
     gunzip $gtf.gz
 else
     printf "$gtf already exists.\n"
+fi
+
+##########################################################################
+#   GFF
+##########################################################################
+
+if [ ! -e $gff ]; then
+    whole_gff=${gtf%.gtf}.gff3
+    printf "Converting $gtf to $whole_gff...\n"
+    gffread -o $whole_gff $gtf
+    printf "Removing loose contigs -> $gff...\n"
+    awk '$1 ~ "chr"' $whole_gff > $gff
+else
+    printf "$gff already exists.\n"
 fi
 
 ##########################################################################
