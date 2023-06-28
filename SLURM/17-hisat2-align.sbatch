@@ -19,12 +19,12 @@
 ##########################################################################
 
 # Set job array to number of samples.
-#SBATCH --array=16-16
+#SBATCH --array=16-30
 #SBATCH --cpus-per-task=16
 # Memory requirements can only be determined by trial and error.
 # Run a sample job and monitor closely in "top" or run under a tool that
 # reports maximum memory use.
-#SBATCH --mem=120g
+#SBATCH --mem=59g
 #SBATCH --output=Logs/17-hisat2-align/slurm-%A_%a.out
 #SBATCH --error=Logs/17-hisat2-align/slurm-%A_%a.err
 
@@ -55,5 +55,5 @@ hisat2 --threads $(($SLURM_CPUS_PER_TASK - 1)) \
     --time \
     --met-stderr \
     -x ../16-hisat2-index/$genome \
-    -1 $gz1 -2 $gz2 | samtools sort -o $bam
-samtools index $bam
+    -1 $gz1 -2 $gz2 | samtools sort -T /tmp -o $bam
+samtools index -c --threads $SLURM_CPUS_PER_TASK $bam
