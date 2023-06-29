@@ -12,7 +12,7 @@ uname -a
 fasda --version
 pwd
 
-hisat2_dir=Results/17-hisat2-align
+abundance_dir=Results/19-fasda-abundance-hisat2
 fasda_dir=Results/20-fasda-fc-hisat2
 
 # Ex. sample16-time000-rep1
@@ -21,7 +21,7 @@ for condition in time000 time026 time050 time055 time120; do
     set -x
     time fasda normalize \
 	--output $fasda_dir/$condition-all-norm.tsv \
-	$hisat2_dir/sample*-$condition-rep*-abundance.tsv
+	$abundance_dir/sample*-$condition-rep*-abundance.tsv
 	# sample16-time000-rep1-abundance.tsv
     set +x
 done

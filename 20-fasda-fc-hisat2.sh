@@ -13,7 +13,7 @@
 #
 #   History:
 #   Date        Name        Modification
-#   2023-06-02  Jason Bacon Begin
+#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 if which sbatch; then
