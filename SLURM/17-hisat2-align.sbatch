@@ -56,4 +56,7 @@ hisat2 --threads $(($SLURM_CPUS_PER_TASK - 1)) \
     --met-stderr \
     -x ../16-hisat2-index/$genome \
     -1 $gz1 -2 $gz2 | samtools sort -T /tmp -o $bam
+
+# Not sure how helpful multithreading is here, but since we allocated
+# the cores for hisat2, might as well use them
 samtools index -c -@ $SLURM_CPUS_PER_TASK $bam
