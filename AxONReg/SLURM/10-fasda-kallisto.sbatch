@@ -15,64 +15,22 @@ pwd
 kallisto_dir=Results/09-kallisto-quant
 fasda_dir=Results/10-fasda-kallisto
 
-# Ex. sample16-time000-rep1
-for condition in time000 time026 time050 time055 time120; do
-    printf "Normalizing $condition...\n"
-    set -x
+# Ex. sample16-time1-rep1
+for time in $(seq 1 5); do
+    printf "Normalizing time$time...\n"
+    ls $kallisto_dir/sample*-time$time-rep*/abundance.tsv
     time fasda normalize \
-	--output $fasda_dir/$condition-all-norm.tsv \
-	$kallisto_dir/sample*-$condition-rep*/abundance.tsv
-    set +x
+	--output $fasda_dir/time$time-all-norm.tsv \
+	$kallisto_dir/sample*-time$time-rep*/abundance.tsv
 done
 
-printf "Computing fold-change...\n"
-time fasda fold-change \
-    --output $fasda_dir/time000-time026-FC.txt \
-    $fasda_dir/time000-all-norm.tsv \
-    $fasda_dir/time026-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time000-time050-FC.txt \
-    $fasda_dir/time000-all-norm.tsv \
-    $fasda_dir/time050-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time000-time055-FC.txt \
-    $fasda_dir/time000-all-norm.tsv \
-    $fasda_dir/time055-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time000-time120-FC.txt \
-    $fasda_dir/time000-all-norm.tsv \
-    $fasda_dir/time120-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time026-time050-FC.txt \
-    $fasda_dir/time026-all-norm.tsv \
-    $fasda_dir/time050-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time026-time055-FC.txt \
-    $fasda_dir/time026-all-norm.tsv \
-    $fasda_dir/time055-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time026-time120-FC.txt \
-    $fasda_dir/time026-all-norm.tsv \
-    $fasda_dir/time120-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time050-time055-FC.txt \
-    $fasda_dir/time050-all-norm.tsv \
-    $fasda_dir/time055-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time050-time120-FC.txt \
-    $fasda_dir/time050-all-norm.tsv \
-    $fasda_dir/time120-all-norm.tsv
-
-time fasda fold-change \
-    --output $fasda_dir/time055-time120-FC.txt \
-    $fasda_dir/time055-all-norm.tsv \
-    $fasda_dir/time120-all-norm.tsv
-
+for early in $(seq 1 4); do
+    late_start=$(($early + 1))
+    for late in $(seq $late_start 5); do
+	printf "Computing fold-changes time$early vs time$late...\n"
+	time fasda fold-change \
+	    --output $fasda_dir/time$early-time$late-FC.txt \
+	    $fasda_dir/time1-all-norm.tsv \
+	    $fasda_dir/time2-all-norm.tsv
+    done
+done
