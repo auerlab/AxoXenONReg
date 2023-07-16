@@ -66,5 +66,5 @@ Reference/fetch-gff.sh
 # Reference/create-chrom-sizes.sh
 chrom_sizes="Results/07-reference/chromosome-sizes.tsv"
 printf "Generating $chrom_sizes...\n"
-blt chrom-lens < Results/07-reference/$(Reference/genome-filename.sh) > $chrom_sizes
+blt chrom-lens < Results/07-reference/$(../Common/genome-filename.sh) > $chrom_sizes
 cat $chrom_sizes

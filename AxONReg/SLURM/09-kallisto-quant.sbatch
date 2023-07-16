@@ -19,7 +19,7 @@
 ##########################################################################
 
 # Set job array to number of samples.
-#SBATCH --array=16-30
+#SBATCH --array=1-15
 #SBATCH --cpus-per-task=4
 # Memory requirements can only be determined by trial and error.
 # Run a sample job and monitor closely in "top" or rununder a tool that
@@ -42,7 +42,7 @@
 # GTF does not contain chromosome features.
 
 # Set a default value for testing outside the SLURM environment
-: ${SLURM_ARRAY_TASK_ID:=16}
+: ${SLURM_ARRAY_TASK_ID:=1}
 
 # Document software versions used for publication
 uname -a
@@ -63,8 +63,9 @@ pwd
 # issue an error message.  If your trimmed fastq files are in xz format,
 # this will convert to zstd format.
 # Convert xz to zst rather than raw to reduce NFS load from compute nodes
-zst1=$(echo Results/04-trim/sample${SLURM_ARRAY_TASK_ID}-*-R1.fastq.zst)
-zst2=$(echo Results/04-trim/sample${SLURM_ARRAY_TASK_ID}-*-R2.fastq.zst)
+sample=$(printf "%02d" $SLURM_ARRAY_TASK_ID)
+zst1=$(echo Results/04-trim/sample$sample-*-R1.fastq.zst)
+zst2=$(echo Results/04-trim/sample$sample-*-R2.fastq.zst)
 
 printf "$zst1\n$zst2\n"
 
@@ -91,7 +92,7 @@ zstdcat $zst2 > $pipe2 &
 set -x
 kallisto quant \
     --threads=$SLURM_CPUS_PER_TASK \
-    --index=Results/08-kallisto-index/AmexT_v47_cds.index \
+    --index=Results/08-kallisto-index/transcriptome-reference.index \
     --output-dir=$out_dir $pipe1 $pipe2
 
 rm -f $pipe1 $pipe2

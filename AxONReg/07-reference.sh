@@ -4,6 +4,8 @@
 # "file" command revealed name within gzip data to use with --output
 # Firefox "save link as" comes up with .zip, which is wrong.  Should be .gz.
 
+transcriptome=$(../Common/transcriptome-filename.sh)
+genome=$(../Common/genome-filename.sh)
 gff=$(Reference/gff-filename.sh)
 
 cd Results/07-reference
@@ -17,6 +19,7 @@ if [ ! -e $cds ]; then
 else
     printf "$cds already exists.\n"
 fi
+ln -sf $cds $transcriptome
 
 dna=AmexT_v47_dna.fa
 if [ ! -e $dna ]; then
@@ -27,6 +30,7 @@ if [ ! -e $dna ]; then
 else
     printf "$dna already exists.\n"
 fi
+ln -sf $dna $genome
 
 ##########################################################################
 #   GTF
