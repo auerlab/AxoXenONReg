@@ -1,0 +1,13 @@
+Filename:           Results/01-organize/Raw-renamed/sample01-day00-rep1-R1.fastq.gz
+Sequences:          57943764
+Bases:              8691564600
+Mean-length:        150.00
+Standard-deviation: 0.00
+Min-length:         150
+Max-length:         150
+A:                  2478136460 (28.51%)
+C:                  1873856390 (21.56%)
+G:                  1887781386 (21.72%)
+T:                  2451663620 (28.21%)
+N:                  126744 (0.00%)
+GC:                 3761637776 (43.28%)

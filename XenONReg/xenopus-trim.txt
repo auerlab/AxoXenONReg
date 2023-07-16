@@ -1,0 +1,405 @@
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample01-day00-rep1-R1.fastq.gz Results/04-trim/sample01-day00-rep1-R1.fastq.gz Results/01-organize/Raw-renamed/sample01-day00-rep1-R2.fastq.gz Results/04-trim/sample01-day00-rep1-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample01-day00-rep1-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample01-day00-rep1-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              115887528
+Reads with adapters:                  5215036 (4%)
+Reads with Poly-As:                    628374 (0%)
+Bases with Q < 24:                   77190710 (0%)
+Reads with low Q bases removed:       6686573 (5%)
+Reads < 30 bases after trimming:       130268 (0%)
+Mean adapter position:                    136
+Mean read length:                         150
+     2496.28 real      2023.96 user       107.29 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample10-day18-rep1-R1.fastq.gz Results/04-trim/sample10-day18-rep1-R1.fastq.gz Results/01-organize/Raw-renamed/sample10-day18-rep1-R2.fastq.gz Results/04-trim/sample10-day18-rep1-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample10-day18-rep1-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample10-day18-rep1-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              125684538
+Reads with adapters:                  6156555 (4%)
+Reads with Poly-As:                    676017 (0%)
+Bases with Q < 24:                   78226015 (0%)
+Reads with low Q bases removed:       6900516 (5%)
+Reads < 30 bases after trimming:       134090 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     2671.76 real      2435.98 user       110.88 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample11-day18-rep2-R1.fastq.gz Results/04-trim/sample11-day18-rep2-R1.fastq.gz Results/01-organize/Raw-renamed/sample11-day18-rep2-R2.fastq.gz Results/04-trim/sample11-day18-rep2-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample11-day18-rep2-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample11-day18-rep2-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              133640446
+Reads with adapters:                  6946708 (5%)
+Reads with Poly-As:                    731395 (0%)
+Bases with Q < 24:                   81771453 (0%)
+Reads with low Q bases removed:       7226695 (5%)
+Reads < 30 bases after trimming:       139180 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     2166.22 real      2544.89 user       101.07 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample12-day18-rep3-R1.fastq.gz Results/04-trim/sample12-day18-rep3-R1.fastq.gz Results/01-organize/Raw-renamed/sample12-day18-rep3-R2.fastq.gz Results/04-trim/sample12-day18-rep3-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample12-day18-rep3-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample12-day18-rep3-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              120222292
+Reads with adapters:                  6109583 (5%)
+Reads with Poly-As:                    633601 (0%)
+Bases with Q < 24:                   72601826 (0%)
+Reads with low Q bases removed:       6192661 (5%)
+Reads < 30 bases after trimming:       121993 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     2303.14 real      2375.43 user        97.97 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample13-day27-rep1-R1.fastq.gz Results/04-trim/sample13-day27-rep1-R1.fastq.gz Results/01-organize/Raw-renamed/sample13-day27-rep1-R2.fastq.gz Results/04-trim/sample13-day27-rep1-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample13-day27-rep1-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample13-day27-rep1-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              103260276
+Reads with adapters:                  5192202 (5%)
+Reads with Poly-As:                    550127 (0%)
+Bases with Q < 24:                   68122900 (0%)
+Reads with low Q bases removed:       6257174 (6%)
+Reads < 30 bases after trimming:       113347 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     2104.31 real      2064.19 user        86.21 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample14-day27-rep2-R1.fastq.gz Results/04-trim/sample14-day27-rep2-R1.fastq.gz Results/01-organize/Raw-renamed/sample14-day27-rep2-R2.fastq.gz Results/04-trim/sample14-day27-rep2-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample14-day27-rep2-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample14-day27-rep2-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              121231482
+Reads with adapters:                  6492378 (5%)
+Reads with Poly-As:                    645489 (0%)
+Bases with Q < 24:                   81248132 (0%)
+Reads with low Q bases removed:       7383025 (6%)
+Reads < 30 bases after trimming:       137758 (0%)
+Mean adapter position:                    133
+Mean read length:                         150
+     2035.51 real      2407.80 user        91.99 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample15-day27-rep3-R1.fastq.gz Results/04-trim/sample15-day27-rep3-R1.fastq.gz Results/01-organize/Raw-renamed/sample15-day27-rep3-R2.fastq.gz Results/04-trim/sample15-day27-rep3-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample15-day27-rep3-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample15-day27-rep3-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              112592240
+Reads with adapters:                  5003007 (4%)
+Reads with Poly-As:                    652547 (0%)
+Bases with Q < 24:                   75244373 (0%)
+Reads with low Q bases removed:       6820233 (6%)
+Reads < 30 bases after trimming:       132567 (0%)
+Mean adapter position:                    135
+Mean read length:                         150
+     1607.15 real      2271.27 user        92.47 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample02-day00-rep2-R1.fastq.gz Results/04-trim/sample02-day00-rep2-R1.fastq.gz Results/01-organize/Raw-renamed/sample02-day00-rep2-R2.fastq.gz Results/04-trim/sample02-day00-rep2-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample02-day00-rep2-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample02-day00-rep2-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              138721560
+Reads with adapters:                  5951436 (4%)
+Reads with Poly-As:                    776258 (0%)
+Bases with Q < 24:                   59082246 (0%)
+Reads with low Q bases removed:       7313594 (5%)
+Reads < 30 bases after trimming:        95889 (0%)
+Mean adapter position:                    136
+Mean read length:                         150
+     3083.96 real      2776.13 user       116.70 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample03-day00-rep3-R1.fastq.gz Results/04-trim/sample03-day00-rep3-R1.fastq.gz Results/01-organize/Raw-renamed/sample03-day00-rep3-R2.fastq.gz Results/04-trim/sample03-day00-rep3-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample03-day00-rep3-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample03-day00-rep3-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              120149532
+Reads with adapters:                  5896196 (4%)
+Reads with Poly-As:                    661218 (0%)
+Bases with Q < 24:                   85167874 (0%)
+Reads with low Q bases removed:       7247341 (6%)
+Reads < 30 bases after trimming:       144212 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     3067.27 real      2388.80 user       102.05 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample04-day07-rep1-R1.fastq.gz Results/04-trim/sample04-day07-rep1-R1.fastq.gz Results/01-organize/Raw-renamed/sample04-day07-rep1-R2.fastq.gz Results/04-trim/sample04-day07-rep1-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample04-day07-rep1-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample04-day07-rep1-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              165833406
+Reads with adapters:                  8542061 (5%)
+Reads with Poly-As:                    929186 (0%)
+Bases with Q < 24:                  107436534 (0%)
+Reads with low Q bases removed:       9874449 (5%)
+Reads < 30 bases after trimming:       165320 (0%)
+Mean adapter position:                    133
+Mean read length:                         150
+     3329.58 real      3291.54 user       138.07 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample05-day07-rep2-R1.fastq.gz Results/04-trim/sample05-day07-rep2-R1.fastq.gz Results/01-organize/Raw-renamed/sample05-day07-rep2-R2.fastq.gz Results/04-trim/sample05-day07-rep2-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample05-day07-rep2-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample05-day07-rep2-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              107565454
+Reads with adapters:                  6211576 (5%)
+Reads with Poly-As:                    619787 (0%)
+Bases with Q < 24:                   75718932 (0%)
+Reads with low Q bases removed:       6315071 (5%)
+Reads < 30 bases after trimming:       133853 (0%)
+Mean adapter position:                    132
+Mean read length:                         150
+     2370.06 real      1975.43 user        96.40 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample06-day07-rep3-R1.fastq.gz Results/04-trim/sample06-day07-rep3-R1.fastq.gz Results/01-organize/Raw-renamed/sample06-day07-rep3-R2.fastq.gz Results/04-trim/sample06-day07-rep3-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample06-day07-rep3-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample06-day07-rep3-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              146898608
+Reads with adapters:                  7437643 (5%)
+Reads with Poly-As:                    798247 (0%)
+Bases with Q < 24:                  101748757 (0%)
+Reads with low Q bases removed:       8474455 (5%)
+Reads < 30 bases after trimming:       188023 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     3725.68 real      2505.01 user       129.95 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample07-day12-rep1-R1.fastq.gz Results/04-trim/sample07-day12-rep1-R1.fastq.gz Results/01-organize/Raw-renamed/sample07-day12-rep1-R2.fastq.gz Results/04-trim/sample07-day12-rep1-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample07-day12-rep1-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample07-day12-rep1-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              168761154
+Reads with adapters:                  9272331 (5%)
+Reads with Poly-As:                    880524 (0%)
+Bases with Q < 24:                  106680794 (0%)
+Reads with low Q bases removed:       9804359 (5%)
+Reads < 30 bases after trimming:       183660 (0%)
+Mean adapter position:                    132
+Mean read length:                         150
+     3148.40 real      3322.89 user       132.04 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample08-day12-rep2-R1.fastq.gz Results/04-trim/sample08-day12-rep2-R1.fastq.gz Results/01-organize/Raw-renamed/sample08-day12-rep2-R2.fastq.gz Results/04-trim/sample08-day12-rep2-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample08-day12-rep2-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample08-day12-rep2-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              146077816
+Reads with adapters:                  7638251 (5%)
+Reads with Poly-As:                    797049 (0%)
+Bases with Q < 24:                   96885923 (0%)
+Reads with low Q bases removed:      10019731 (6%)
+Reads < 30 bases after trimming:       190567 (0%)
+Mean adapter position:                    134
+Mean read length:                         150
+     2538.90 real      3039.19 user       106.00 sys
+fastq-trim 0.1.2.7
++ time fastq-trim --3p-adapter1 AGATCGGAAGAG --3p-adapter2 AGATCGGAAGAG --min-qual 24 --polya-min-length 4 Results/01-organize/Raw-renamed/sample09-day12-rep3-R1.fastq.gz Results/04-trim/sample09-day12-rep3-R1.fastq.gz Results/01-organize/Raw-renamed/sample09-day12-rep3-R2.fastq.gz Results/04-trim/sample09-day12-rep3-R2.fastq.gz
+
+*** FASTQ TRIM ***
+
+  Minimum match:     3
+  Minimum quality:   24
+  Minimum length:    30
+  Phred base:        33
+  Adapter matching:  Smart
+  Maximum mismatch:  10%
+  Filename:          Results/01-organize/Raw-renamed/sample09-day12-rep3-R1.fastq.gz
+  Filename:          Results/01-organize/Raw-renamed/sample09-day12-rep3-R2.fastq.gz
+  Mode:              Paired
+  Adapters:          AGATCGGAAGAG AGATCGGAAGAG
+
+
+
+Reads:                              126379264
+Reads with adapters:                  6902166 (5%)
+Reads with Poly-As:                    663362 (0%)
+Bases with Q < 24:                  101092357 (0%)
+Reads with low Q bases removed:       7392704 (5%)
+Reads < 30 bases after trimming:       205579 (0%)
+Mean adapter position:                    132
+Mean read length:                         150
+     2867.69 real      2398.76 user       112.34 sys
