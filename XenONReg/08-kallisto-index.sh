@@ -1,0 +1,1 @@
+../AxONReg/08-kallisto-index.sh

@@ -29,17 +29,14 @@
 
 ##########################################################################
 # Fastq-trim:
-# Limit concurrent jobs to 9 to avoid becoming I/O-bound.
+# Limit concurrent jobs to avoid becoming I/O-bound.
 # Fastq-trim is so fast it ends up using only about 40% CPU while waiting
 # for NFS on albacore (only gigabit Ethernet).  Clusters with higher
-# speed networks and file servers can handle more jobs.
-# We'll finish the job array just as fast running only 9 at a time and
-# getting 80% CPU utilization.
-# 2 xzcat, 2 gzip, and 1 fastq-trim, but xzcat and gzip use less than
-# half a core each
+# speed networks and file servers might handle more jobs gracefully.
+# Processes per job include 2 xzcat, 2 gzip, and 1 fastq-trim, but xzcat
+# and gzip use less than half a core each
  
-# Set job array to number of samples.
-#SBATCH --array=15-30%8
+#SBATCH --array=1-15%5
 #SBATCH --cpus-per-task=3
 # Memory requirements can only be determined by trial and error.
 # Run a sample job and monitor closely in "top" or rununder a tool that
@@ -49,16 +46,16 @@
 #SBATCH --error=Logs/04-trim/slurm-%A_%a.err
 
 # Set a default value for testing outside the SLURM environment
-: ${SLURM_ARRAY_TASK_ID:=16}
+: ${SLURM_ARRAY_TASK_ID:=1}
 
 # Document software versions used for publication
 uname -a
-# cutadapt --version
 fastq-trim --version
 pwd
 
-input1=$(ls Results/01-organize/Raw-renamed/sample${SLURM_ARRAY_TASK_ID}-*R1*)
-input2=$(ls Results/01-organize/Raw-renamed/sample${SLURM_ARRAY_TASK_ID}-*R2*)
+sample=$(printf "%02d" $SLURM_ARRAY_TASK_ID)
+input1=$(ls Results/01-organize/Raw-renamed/sample$sample-*R1*)
+input2=$(ls Results/01-organize/Raw-renamed/sample$sample-*R2*)
 base=$(basename $input1)
 stem=${base%%-R*.fastq.xz}
 
@@ -66,15 +63,16 @@ stem=${base%%-R*.fastq.xz}
 # xz offers the best compression by far, but is slow at mid (-5) to high (-9)
 # compression levels.  At -1, xz is faster than bzip2 while providing
 # comparable compression.  If you want even faster compression and are
-# willing to sacrifice compression ratio, use .gz or no compression for
-# outputs instead.  A ZFS filesystem with lz4 compression should provide
+# willing to sacrifice compression ratio, use .zst or no compression for
+# outputs instead.  A ZFS filesystem with lz4 or zstd compression will provide
 # enough compression for intermediate files without gzip, bzip2, or xz.
 # However, this may cause a network bottleneck as all processes write
-# uncompressed FASTQ over NFS.  Using at least gzip -1 will transfer some
-# of the load to the compute node CPUs and reduce NFS traffic considerably.
-#
-# suffix=.xz
-suffix=.gz
+# uncompressed data over NFS to be compressed by the file server.
+# Using compression on the compute nodes distributes the compression
+# workload and reduces the volume of data transfered over NFS.
+
+#suffix=.gz
+suffix=.zst
 output1=Results/04-trim/${stem}-R1.fastq$suffix
 output2=Results/04-trim/${stem}-R2.fastq$suffix
 
@@ -87,13 +85,13 @@ output2=Results/04-trim/${stem}-R2.fastq$suffix
 # gigabit network.  Lower values are probably better with a high-speed network.
 # Use the highest value that does not result in a lower CPU utilization
 # for fastq-trim.
-export GZIP=-4
+# export GZIP=-4
 
 adapter=AGATCGGAAGAG
 
 # fastq-trim is 2.5x faster with 1 core than cutadapt with 2 cores
-# Our reads use the default Illumina universal adapter,
-# but we'll state it explicitly anyway
-set -x
+# https://github.com/auerlab/fastq-trim
+
+set -x      # Show full command in log file
 time fastq-trim --3p-adapter1 $adapter --3p-adapter2 $adapter \
     --min-qual 24 --polya-min-length 4 $input1 $output1 $input2 $output2
