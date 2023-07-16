@@ -62,7 +62,8 @@ for path in ../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
     # FIXME: Generate a non-cryptic name for each file
     sample=$(echo $file | cut -c 2-3)
-    #sample=$(($sample - 15))
+    # Normalize to match xenopus, so we can use the same scripts
+    sample=`printf "%02d" $(($sample - 15))`
     if echo $file | fgrep -q Na; then
 	time=0
 	rep=$(echo $file | cut -c 6)
@@ -77,7 +78,31 @@ for path in ../../../Raw/*/*.fq.xz; do
 	rep=$(echo $file | cut -c 6)
 	strand=$(echo $file | cut -c 8)
     fi
-    time=$(printf "%03d" $time)
+    
+    # Reduce time points to ranks to simplify analysis and allow
+    # sharing scripts between axolotl and xenopus.  It can easily
+    # be converted back at any time.
+    # 0 26 50 55 120
+    case $time in
+    0)
+	time=1
+	;;
+    26)
+	time=2
+	;;
+    50)
+	time=3
+	;;
+    55)
+	time=4
+	;;
+    120)
+	time=5
+	;;
+    *)
+	printf "Invalid time point.\n"
+	exit 1
+    esac
     link=sample$sample-time$time-rep$rep-R$strand.fastq.xz
     printf "$path = $link\n"
     ln -sf $path $link

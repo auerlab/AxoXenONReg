@@ -57,7 +57,7 @@ rm -rf 01-organize/Raw-renamed
 mkdir -p 01-organize/Raw-renamed
 cd 01-organize/Raw-renamed
 pwd
-for path in ../../../Raw/*/*.fq.gz; do
+for path in ../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
     # FIXME: Generate a non-cryptic name for each file
     if [ $(echo $file | cut -c 3-4) = Na ]; then
@@ -88,10 +88,34 @@ for path in ../../../Raw/*/*.fq.gz; do
 	    strand=$(echo $file | cut -c 9)
 	fi
     fi
-    day=$(printf "%02d" $day)
+    
+    # Reduce time points to ranks to simplify analysis and allow
+    # sharing scripts between axolotl and xenopus.  It can easily
+    # be converted back at any time.
+    # 0 26 50 55 120
+    case $day in
+    0)
+	time=1
+	;;
+    7)
+	time=2
+	;;
+    12)
+	time=3
+	;;
+    18)
+	time=4
+	;;
+    27)
+	time=5
+	;;
+    *)
+	printf "Invalid time point.\n"
+	exit 1
+    esac
     sample=$(printf "%02d" $sample)
     rep=$(echo $rep | tr "ABC" "123")
-    link=sample$sample-day$day-rep$rep-R$strand.fastq.gz
+    link=sample$sample-time$time-rep$rep-R$strand.fastq.xz
     ln -sf $path $link
     printf "$path = $link\n"
 done
