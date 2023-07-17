@@ -18,7 +18,8 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-#SBATCH --mem=60g
+# Highest memory use observed was 78 G resident, 120 virtual for axolotl
+#SBATCH --mem=120g
 #SBATCH --output=Logs/11-hisat2-index/slurm-%A.out
 #SBATCH --error=Logs/11-hisat2-index/slurm-%A.err
 #SBATCH --cpus-per-task=16
