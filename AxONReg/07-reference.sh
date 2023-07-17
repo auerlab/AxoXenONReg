@@ -6,9 +6,14 @@
 
 transcriptome=$(../Common/transcriptome-filename.sh)
 genome=$(../Common/genome-filename.sh)
+gtf=$(Reference/gtf-filename.sh)
 gff=$(Reference/gff-filename.sh)
 
 cd Results/07-reference
+
+##########################################################################
+#   Transcriptomes (CDS and cDNA)
+##########################################################################
 
 cds=AmexT_v47_cds.fa
 if [ ! -e $cds ]; then
@@ -30,13 +35,11 @@ if [ ! -e $dna ]; then
 else
     printf "$dna already exists.\n"
 fi
-ln -sf $dna $genome
 
 ##########################################################################
 #   GTF
 ##########################################################################
 
-gtf=AmexT_v47-AmexG_v6.0-DD.gtf
 if [ ! -e $gtf ]; then
     curl --continue-at - --remote-name \
 	https://www.axolotl-omics.org/dl/$gtf.gz
@@ -65,19 +68,21 @@ fi
 #   Do this last, because it could take hours
 ##########################################################################
 
-genome=AmexG_v6.0-DD.fa
-if [ ! -e $genome ]; then
+fasta=AmexG_v6.0-DD.fa
+if [ ! -e $fasta ]; then
     curl --continue-at - --remote-name \
-	https://www.axolotl-omics.org/dl/$genome.gz
+	https://www.axolotl-omics.org/dl/$fasta.gz
     printf "Deflating...\n"
-    gunzip $genome
+    gunzip $fasta.gz
 else
-    printf "$genome already exists.\n"
+    printf "$fasta already exists.\n"
 fi
 
 if [ ! -e chromosome-sizes.tsv ]; then
     printf "Getting chromosome sizes...\n"
-    blt chrom-lens < $genome > chromosome-sizes.tsv
+    blt chrom-lens < $fasta > chromosome-sizes.tsv
 else
     printf "chromosome-sizes.tsv already exists.\n"
 fi
+ln -sf $fasta $genome
+

@@ -1,0 +1,1 @@
+../AxONReg/11-hisat2-index.sh

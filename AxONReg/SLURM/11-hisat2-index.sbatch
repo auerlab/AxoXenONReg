@@ -18,9 +18,9 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-#SBATCH --mem=120g
-#SBATCH --output=Logs/16-hisat2-index/slurm-%A.out
-#SBATCH --error=Logs/16-hisat2-index/slurm-%A.err
+#SBATCH --mem=60g
+#SBATCH --output=Logs/11-hisat2-index/slurm-%A.out
+#SBATCH --error=Logs/11-hisat2-index/slurm-%A.err
 #SBATCH --cpus-per-task=16
 
 # Document software versions used for publication
@@ -29,11 +29,11 @@ hisat2 --version
 samtools --version
 pwd
 
-# Run hisat2-build on a copy in 16-hisat2-index so it will put the .ht2
+# Run hisat2-build on a copy in 11-hisat2-index so it will put the .ht2
 # files there
-genome=$(Reference/genome-filename.sh)
-ln -f Results/07-reference/$genome Results/16-hisat2-index
-genome=Results/16-hisat2-index/$genome
+genome=$(../Common/genome-filename.sh)
+ln -f Results/07-reference/$genome Results/11-hisat2-index
+genome=Results/11-hisat2-index/$genome
 printf "Using reference $genome...\n"
 
 # FIXME: Do this in *-reference.sbatch
@@ -47,4 +47,4 @@ if [ ! -e $genome.fai ]; then
     printf "Building $genome.fai...\n"
     samtools faidx $genome
 fi
-ls Results/16-hisat2-index
+ls Results/11-hisat2-index
