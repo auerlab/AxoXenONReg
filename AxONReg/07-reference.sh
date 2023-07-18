@@ -74,6 +74,8 @@ if [ ! -e $fasta ]; then
 	https://www.axolotl-omics.org/dl/$fasta.gz
     printf "Deflating...\n"
     gunzip $fasta.gz
+    printf "Removing loose contigs...\n"
+    grep -A 1 '^>chr' $fasta > ${fasta%.fa}-chr-only.fa
 else
     printf "$fasta already exists.\n"
 fi

@@ -21,14 +21,14 @@
 ##########################################################################
 
 if which sbatch; then
-    sbatch SLURM/17-hisat2-align.sbatch
+    sbatch SLURM/12-hisat2-align.sbatch
 else
     # Debug
-    # rm -f Results/17-hisat2-align/*
+    # rm -f Results/12-hisat2-align/*
     
     hw_threads=$(./get-hw-threads.sh)
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/17-hisat2-align.sh
+	xargs -n 1 -P $jobs Xargs/12-hisat2-align.sh
 fi
