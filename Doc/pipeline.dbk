@@ -45,6 +45,13 @@
         scripting are necessary.  No Perl, Python, or R programming is
         required.
         </para>
+        
+        <para>
+        This repository contains both SLURM scheduler scripts for running
+        on a cluster and scripts for running on a standalone Unix machine
+        using <command>xargs</command> to run jobs in parallel.  The
+        <command>xargs</command> scripts are tested primarily on a Mac Mini m1.
+        </para>
     </section>
     
     <section>
