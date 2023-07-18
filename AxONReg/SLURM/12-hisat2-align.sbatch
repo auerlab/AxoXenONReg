@@ -24,6 +24,7 @@
 # Memory requirements can only be determined by trial and error.
 # Run a sample job and monitor closely in "top" or run under a tool that
 # reports maximum memory use.
+# xenopus only needs about 3g, but we're using all the cores on a node anyway
 #SBATCH --mem=50g
 #SBATCH --output=Logs/12-hisat2-align/slurm-%A_%a.out
 #SBATCH --error=Logs/12-hisat2-align/slurm-%A_%a.err
