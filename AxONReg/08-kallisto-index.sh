@@ -23,12 +23,5 @@
 if which sbatch; then
     sbatch SLURM/08-kallisto-index.sbatch
 else
-    # Debug
-    # rm -f Results/08-kallisto-index/*
-    
-    hw_threads=$(./get-hw-threads.sh)
-    jobs=$(($hw_threads / 2))
-    # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/08-kallisto-index.sh
+    Xargs/08-kallisto-index.sh
 fi

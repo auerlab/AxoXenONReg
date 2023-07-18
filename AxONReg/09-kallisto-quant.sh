@@ -26,9 +26,11 @@ else
     # Debug
     # rm -f Results/09-kallisto-quant/*
     
+    # Consider both CPU cores and memory when selecting thread count
+    threads_per_job=4
     hw_threads=$(./get-hw-threads.sh)
-    jobs=$(($hw_threads / 2))
+    jobs=$(($hw_threads / $threads_per_job))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/09-kallisto-quant.sh
+    ls Results/04-trim/*-R1.fastq.zst | \
+	xargs -n 1 -P $jobs Xargs/09-kallisto-quant.sh $threads_per_job
 fi
