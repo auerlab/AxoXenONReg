@@ -51,15 +51,21 @@ zst1=$(echo ../04-trim/sample$sample-*-R1.fastq.zst)
 zst2=$(echo ../04-trim/sample$sample-*-R2.fastq.zst)
 
 # Hisat2 performs seeks on the input, so we can't use a pipe
-fastq1=${zst1%.zst}
-fastq2=${zst2%.zst}
-printf "Uncompressing FASTQs...\n"
-# Be sure to use --keep here since we remove the uncompressed files after
-test -e $fastq1 || unzstd --keep $zst1
-test -e $fastq2 || unzstd --keep $zst2
+gzip1=${zst1%.zst}.gz
+gzip2=${zst2%.zst}.gz
+printf "Recompressing FASTQs in gzip format for hisat2...\n"
+# Use cheap compression level here, since these are removed
+# right after the alignment
+if [ ! -e $gzip1 ]; then
+    zstdcat $zst1 | gzip -3 > $gzip1 &
+fi
+if [ ! -e $gzip2 ]; then
+    zstdcat $zst2 | gzip -3 > $gzip2
+fi
+wait
 
-zstb=$(basename $zst1)
-bam=${zstb%-R*}.bam
+zstbase=$(basename $zst1)
+bam=${zstbase%-R*}.bam
 threads=$(($SLURM_CPUS_PER_TASK - 1))
 
 set -x
@@ -67,10 +73,10 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $fastq1 -2 $fastq2 | samtools sort -T /tmp -o $bam
+    -1 $gzip1 -2 $gzip2 | samtools sort -T /tmp -o $bam
 
 # No further need for the uncompressed FASTQs
-rm -f $fastq1 $fastq2
+rm -f $gzip1 $gzip2
 
 # Not sure how helpful multithreading is here, but since we allocated
 # the cores for hisat2, might as well use them
