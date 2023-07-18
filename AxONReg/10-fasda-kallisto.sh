@@ -19,12 +19,5 @@
 if which sbatch; then
     sbatch SLURM/10-fasda-kallisto.sbatch
 else
-    # Debug
-    # rm -f Results/10-fasda-kallisto/*
-    
-    hw_threads=$(./get_hw_threads.sh)
-    jobs=$(($hw_threads / 2))
-    # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/04-kallisto-quant/*/abundance.tsv \
-	| xargs -n 1 -P $jobs Xargs/10-fasda-kallisto.sh
+    Xargs/10-fasda-kallisto.sh
 fi
