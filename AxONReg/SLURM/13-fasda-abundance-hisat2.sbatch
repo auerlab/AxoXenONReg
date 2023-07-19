@@ -32,14 +32,26 @@ reference_dir=Results/07-reference
 ##########################################################################
 
 sample=$(printf "%02d" $SLURM_ARRAY_TASK_ID)
-file=`ls $hisat2_dir/sample$sample-*.bam`
+bam_file=`ls $hisat2_dir/sample$sample-*.bam`
+abundance_file=$abundance_dir/$(basename ${bam_file%.bam}-abundance.tsv)
+
+fasda abundance \
+    --feature-type transcript \
+    --output-dir $abundance_dir \
+    --exact \
+    150 \
+    $reference_dir/$gff_filename \
+    $bam_file
+
+# Rename and then generate a stringtie abundance file with the same name
+head $abundance_file
+mv $abundance_file ${abundance_file%.tsv}-exact.tsv
 
 fasda abundance \
     --feature-type transcript \
     --output-dir $abundance_dir \
     150 \
     $reference_dir/$gff_filename \
-    $file
+    $bam_file
 
-ab=${file%.bam}-abundance.tsv
-head $abundance_dir/$(basename $ab)
+head $abundance_file
