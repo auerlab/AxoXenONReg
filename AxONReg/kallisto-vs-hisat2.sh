@@ -43,7 +43,6 @@ for transcript in $(awk '$1 != "target_id" { print $1 }' $hisat2); do
 	#printf "$h / ($k + .0000001)\n" | bc -l
     fi
 done | more
-exit
 
 # Normalized
 kallisto=Results/10-fasda-kallisto/time1-all-norm.tsv
@@ -71,7 +70,7 @@ done | more
 # Fold-changes
 kallisto=Results/10-fasda-kallisto/time1-time2-FC.txt
 hisat2=Results/14-fasda-fc-hisat2/time1-time2-FC.txt
-for transcript in $(awk '{ print $1 }' $hisat2 | head -100); do
+for transcript in $(awk '{ print $1 }' $hisat2 | head -1000); do
     if fgrep -q $transcript $kallisto; then
 	echo $transcript
 	grep $transcript $kallisto
