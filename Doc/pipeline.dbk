@@ -67,6 +67,12 @@
         they can be installed using the
         <command>pkgsrc</command> rna-seq package
         (<ulink url="http://pkgsrc.org/">http://pkgsrc.org/</ulink>).
+        Pkgsrc does not require administrator privileges, so it can
+        be used on computers managed by your organization without
+        submitting help requests.
+        </para>
+        
+        <para>
         Pkgsrc can be set up in about 10 minutes using
         <command>auto-pkgsrc-setup</command>
         (<ulink url="http://netbsd.org/~bacon/">http://netbsd.org/~bacon/</ulink>).
