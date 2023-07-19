@@ -45,10 +45,10 @@ $0: No pkgsrc installation found.
 If you have a pkgsrc tree installed, install sysutils/auto-admin so
 that $0 can use auto-pkgsrc-prefix to find it.
 
-Otherwise, install a pkgsrc tree using auto-pkgsrc-setup:
+Otherwise, install a pkgsrc tree using auto-pkgsrc-setup.  See the
+documentation and script at:
 
-    curl -O http://netbsd.org/~bacon/auto-pkgsrc-setup
-    sh auto-pkgsrc-setup
+    http://netbsd.org/~bacon/
 
 EOM
 	    exit 1
