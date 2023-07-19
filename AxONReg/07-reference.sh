@@ -24,7 +24,6 @@ if [ ! -e $cds ]; then
 else
     printf "$cds already exists.\n"
 fi
-ln -sf $cds $transcriptome
 
 dna=AmexT_v47_dna.fa
 if [ ! -e $dna ]; then
@@ -35,6 +34,9 @@ if [ ! -e $dna ]; then
 else
     printf "$dna already exists.\n"
 fi
+
+# Use DNA so that transcript lengths match the GTF/GFF3
+ln -sf $dna $transcriptome
 
 ##########################################################################
 #   GTF
