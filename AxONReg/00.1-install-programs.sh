@@ -34,7 +34,7 @@ compute nodes or in a shared location that compute nodes can access.
 EOM
 	exit 1
     else
-	if which auto-pkgsrc-prefix; then
+	if which auto-pkgsrc-dir; then
 	    cd $(auto-pkgsrc-dir)/biology/rna-seq
 	    bmake deinstall clean clean-depends install
 	else
@@ -45,7 +45,10 @@ $0: No pkgsrc installation found.
 If you have a pkgsrc tree installed, install sysutils/auto-admin so
 that $0 can use auto-pkgsrc-prefix to find it.
 
-Otherwise, please consider updating $0 to support $(uname).
+Otherwise, install a pkgsrc tree using auto-pkgsrc-setup:
+
+    curl -O http://netbsd.org/~bacon/auto-pkgsrc-setup
+    sh auto-pkgsrc-setup
 
 EOM
 	    exit 1

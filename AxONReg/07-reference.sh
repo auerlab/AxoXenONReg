@@ -80,7 +80,8 @@ fi
 
 if [ ! -e ${fasta%.fa}-chr-only.fa ]; then
     printf "Generating ${fasta%.fa}-chr-only.fa...\n"
-    grep -A 1 '^>chr' $fasta > ${fasta%.fa}-chr-only.fa
+    # FIXME: More than 1 line in each sequence
+    awk '{ if ( $1 ~ "^>C" ) { exit } else { print }}' $fasta > ${fasta%.fa}-chr-only.fa
 fi
 
 if [ ! -e chromosome-sizes.tsv ]; then
@@ -90,4 +91,4 @@ else
     printf "chromosome-sizes.tsv already exists.\n"
 fi
 ln -sf $fasta $genome
-ln -sf $fasta ${genome%.fa}-chr-only.fa
+ln -sf ${fasta%.fa}-chr-only.fa ${genome%.fa}-chr-only.fa
