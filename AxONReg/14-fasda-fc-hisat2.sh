@@ -2,12 +2,8 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw and trimmed data for comparison
-#       Based on work of Dr. Andrea Rau:
-#       https://github.com/andreamrau/OpticRegen_2019
 #
 #   Dependencies:
-#       Requires directory structure.  Run after *-organize.sh.
 #
 #       All necessary tools are assumed to be in PATH.  If this is not
 #       the case, add whatever code is needed here to gain access.
@@ -21,14 +17,14 @@
 ##########################################################################
 
 if which sbatch; then
-    sbatch SLURM/19-fasda-abundance-hisat2.sbatch
+    sbatch SLURM/14-fasda-fc-hisat2.sbatch
 else
     # Debug
-    # rm -f Results/17-hisat2-align/*
+    # rm -f Results/14-fasda-fc-hisat2/*
     
-    hw_threads=$(./get-hw-threads.sh)
+    hw_threads=$(./get_hw_threads.sh)
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/19-fasta-abundance-hisat2.sh
+    ls Results/04-kallisto-quant/*/abundance.tsv \
+	| xargs -n 1 -P $jobs Xargs/14-fasda-fc-hisat2.sh
 fi

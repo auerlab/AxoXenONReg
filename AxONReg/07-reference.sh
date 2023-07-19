@@ -74,10 +74,13 @@ if [ ! -e $fasta ]; then
 	https://www.axolotl-omics.org/dl/$fasta.gz
     printf "Deflating...\n"
     gunzip $fasta.gz
-    printf "Removing loose contigs...\n"
-    grep -A 1 '^>chr' $fasta > ${fasta%.fa}-chr-only.fa
 else
     printf "$fasta already exists.\n"
+fi
+
+if [ ! -e ${fasta%.fa}-chr-only.fa ]; then
+    printf "Generating ${fasta%.fa}-chr-only.fa...\n"
+    grep -A 1 '^>chr' $fasta > ${fasta%.fa}-chr-only.fa
 fi
 
 if [ ! -e chromosome-sizes.tsv ]; then
@@ -87,4 +90,4 @@ else
     printf "chromosome-sizes.tsv already exists.\n"
 fi
 ln -sf $fasta $genome
-
+ln -sf $fasta ${genome%.fa}-chr-only.fa

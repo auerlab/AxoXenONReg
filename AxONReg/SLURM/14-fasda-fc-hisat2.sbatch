@@ -4,24 +4,24 @@
 #   Dependencies:
 #       Requires kallisto abundances.  Run after *-kallisto-quant.sbatch.
 
-#SBATCH --output=Logs/10-fasda-kallisto/slurm-%A_%a.out
-#SBATCH --error=Logs/10-fasda-kallisto/slurm-%A_%a.err
+#SBATCH --output=Logs/14-fasda-fc-hisat2/slurm-%A_%a.out
+#SBATCH --error=Logs/14-fasda-fc-hisat2/slurm-%A_%a.err
 
 # Document software versions used for publication
 uname -a
 fasda --version
 pwd
 
-kallisto_dir=Results/09-kallisto-quant
-fasda_dir=Results/10-fasda-kallisto
+kallisto_dir=Results/13-fasda-abundance-hisat2
+fasda_dir=Results/14-fasda-fc-hisat2
 
 # Ex. sample16-time1-rep1
 for time in $(seq 1 5); do
     printf "\n===\nNormalizing time$time...\n"
-    ls $kallisto_dir/sample*-time$time-rep*/abundance.tsv
+    ls $kallisto_dir/sample*-time$time-rep*-abundance.tsv
     time fasda normalize \
 	--output $fasda_dir/time$time-all-norm.tsv \
-	$kallisto_dir/sample*-time$time-rep*/abundance.tsv
+	$kallisto_dir/sample*-time$time-rep*-abundance.tsv
 done
 
 for early in $(seq 1 4); do
