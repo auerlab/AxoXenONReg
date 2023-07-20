@@ -17,4 +17,5 @@ fi
 cd Results/06-multiqc-trimmed
 rm -rf *
 $srun multiqc --version > ../../Logs/06-multiqc-trimmed/multiqc-version.txt 2>&1
-$srun env LC_ALL=en_US.UTF-8 multiqc ../05-qc-trimmed 2>&1 | tee ../../Logs/06-multiqc-trimmed/multiqc.out
+$srun env LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
+    multiqc ../05-qc-trimmed 2>&1 | tee ../../Logs/06-multiqc-trimmed/multiqc.out

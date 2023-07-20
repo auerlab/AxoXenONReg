@@ -20,11 +20,7 @@ else
     fastq-trim --version >> $log_stem.out
     pwd >> $log_stem.out
 
-    if pwd | fgrep -q RNA-Seq; then
-	adapter=AGATCGGAAGAG
-    else
-	adapter=CTGTCTCTTATACACATCT
-    fi
+    adapter=AGATCGGAAGAG
     
     # fastq-trim is 2.5x faster with 1 core than cutadapt with 2 cores
     # Our reads use the default Illumina universal adapter,

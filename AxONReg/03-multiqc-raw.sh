@@ -17,4 +17,5 @@ fi
 cd Results/03-multiqc-raw
 rm -rf *
 $srun multiqc --version > ../../Logs/03-multiqc-raw/multiqc-version.txt 2>&1
-$srun env LC_ALL=en_US.UTF-8 multiqc ../02-qc-raw 2>&1 | tee ../../Logs/03-multiqc-raw/multiqc.out
+$srun env LC_ALL=en_US.UTF-8 LANG=en_US.utf-8 \
+    multiqc ../02-qc-raw 2>&1 | tee ../../Logs/03-multiqc-raw/multiqc.out
