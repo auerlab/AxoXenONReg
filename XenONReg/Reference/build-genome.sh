@@ -33,7 +33,8 @@ if [ ! -e $genome ]; then
     printf "Concatenating chromosome FASTAs...\n"
     for chrom in $(seq 1 10); do
 	printf "$chrom "
-	zcat Xenopus_tropicalis.UCB_Xtro_10.0.dna.primary_assembly.$chrom.fa.gz >> $genome
+	# zcat looks for old compress (.Z) files on macOS
+	gunzip -c Xenopus_tropicalis.UCB_Xtro_10.0.dna.primary_assembly.$chrom.fa.gz >> $genome
     done
     printf "\n"
 else
