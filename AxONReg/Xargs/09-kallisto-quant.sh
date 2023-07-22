@@ -68,8 +68,8 @@ zstdcat $zst2 > $pipe2 &
 # gtf=AmexT_v47-AmexG_v6.0-DD.gtf
 
 set -x
-kallisto quant \
-    --threads=4 \
+time kallisto quant \
+    --threads=$threads \
     --index=Results/08-kallisto-index/transcriptome-reference.index \
     --output-dir=$out_dir $pipe1 $pipe2
 

@@ -85,7 +85,7 @@ EOM
     #ape Xargs/00.2-gz2xz.sh
     #exit
     chmod 755 Xargs/00.2-gz2xz.sh
-    hw_threads=$(./get-hw-threads.sh)
+    hw_threads=$(../Common/get-hw-threads.sh)
     jobs=$hw_threads    # gunzip takes almost nothing
     
     # Tried GNU parallel and ran into bugs.  Xargs just works.
