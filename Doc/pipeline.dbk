@@ -17,41 +17,116 @@
     </para>
     
     <section>
-        <title>Clusters in Bioinformatics</title>
-        
-        <para>
-        Use of a cluster is not necessary for most differential expression
-        analyses.  A powerful workstation with several cores and
-        enough RAM can complete a a typical analysis in a reasonable
-        amount of time.  In fact, researchers are likely to spend more
-        time learning HPC and waiting for help from support staff than
-        it would take to do the analysis on their own on a decent
-        workstation.
-        </para>
-        
-        <para>
-        There are some activities that are impractical without a cluster,
-        such as de novo genome assembly, but most bioinformatics can be
-        done on modern laptops and workstations.
-        </para>
+        <title>Required Skills</title>
         
         <para>
         A major goal of my research is to make DE analysis accessible to
-        a broader population of research biologists, and part of that is
-        demonstrating how to perform an analysis on a simple workstation.
-        To achieve this, I have made it possible to install all of the
-        software necessary for a DE analysis with ease, and run it with
-        minimal Unix skills.  Only basic Unix command-line and shell
-        scripting are necessary.  No Perl, Python, or R programming is
-        required.
+        a broader population of research biologists.
+        Only basic Unix command-line and shell
+        scripting skills are necessary.  No Perl, Python, or R programming is
+        required to use this pipeline or adapt it to other studies.
         </para>
+    </section>
+    
+    <section>
+        <title>Computing Resources</title>
         
-        <para>
-        This repository contains both SLURM scheduler scripts for running
-        on a cluster and scripts for running on a standalone Unix machine
-        using <command>xargs</command> to run jobs in parallel.  The
-        <command>xargs</command> scripts are tested primarily on a Mac Mini m1.
-        </para>
+        <section>
+            <title>Do I Need a Cluster?</title>
+            
+            <para>
+            Use of a cluster is not necessary for most differential expression
+            analyses.  A powerful workstation with several cores and
+            enough RAM can complete a a typical analysis in a reasonable
+            amount of time.  In fact, researchers are likely to spend more
+            time learning HPC and waiting for help from support staff than
+            it would take to do the analysis on their own on a decent
+            workstation.
+            There are some activities that are impractical without a cluster,
+            such as de novo genome assembly, but most bioinformatics can be
+            done on modern laptops and workstations.
+            </para>
+            
+            <para>
+            This repository contains both SLURM scheduler scripts for running
+            on a cluster and scripts for running on a standalone Unix machine
+            using <command>xargs</command> to run jobs in parallel.  The
+            <command>xargs</command> scripts are tested primarily on a Mac Mini m1.
+            </para>
+            
+            <para>
+            Apple silicon (Apple's ARM-based system with unified memory
+            are remarkably fast and power-efficient.  A Mac Studio with 64 GiB
+            of RAM will suffice for most analyses.  128 GiB will make it
+            even less likely that you'll have to occasionally go elsewhere.
+            Note that the RAM cannot be upgraded on Apple silicon systems,
+            so don't skimp in order to save a few hundred dollars.  Most
+            bioinformatics software only utilizes CPUs, to don't worry too
+            much about the GPU and Neural Engine specs.  You will also
+            likely need an external disk to accommodate all your data.
+            External disks are risky, since they can be unplugged
+            while in-use, but there is no better option for compact Mac
+            systems.
+            </para>
+            
+            <para>
+            A PC running a POSIX OS such as BSD or Linux will be cheaper
+            and more upgradable, and can house more internal disk storage.
+            My personal choice is FreeBSD with at least 2 disks configured
+            as a ZFS RAID.  The FreeBSD installer makes it trivial to
+            configure ZFS RAIDs and boot from them directly.  The
+            desktop-installer
+            (<ulink url="https://acadix.biz/desktop-installer.php">https://acadix.biz/desktop-installer.php</ulink>)
+            package makes it easy to set up a graphical
+            desktop environment of your choice.
+            Also, on FreeBSD, all the software needed for this pipeline can be
+            installed by running <command>pkg install rna-seq</command>.
+            See "Software Installation" below for more information.
+            </para>
+        </section>
+        
+        <section>
+            <title>Virtual Machines including Cloud Services</title>
+            
+            <para>
+            Virtual machines may be more convenient for some users,
+            depending on available I.T. support, funding model, etc.
+            </para>
+            
+            <para>
+            Note that virtualized network interfaces and storage,
+            including those used by Amazon EC2, Google Cloud Platform,
+            Microsoft Azure, and other cloud-based computing platforms,
+            will not perform nearly as well as "bare metal".  Only the
+            CPU and memory should be expected to match the performance
+            of real hardware, because these are the only components
+            that typically don't use any software emulation on top of
+            the actual hardware.  However, this performance hit
+            may be an acceptable price to pay to be free from the need
+            to maintain your own hardware.  Look for a platform that
+            is fast enough to complete your analysis, not necessarily
+            the fastest possible.
+            </para>
+        </section>
+        
+        <section>
+            <title>Remote Access to Macs</title>
+
+            <para>
+            For remote access to a Mac via SSH, enable "Remote Login" under
+            "Sharing" in System Preferences.
+            </para>
+            
+            <para>
+            To prevent disruptive disconnections (even when jobs are running!),
+            Add the following to <filename>/etc/ssh/sshd_config</filename>:
+            </para>
+            
+            <screen>
+ClientAliveInterval 30
+ClientAliveCountMax 0
+            </screen>
+        </section>
     </section>
     
     <section>
