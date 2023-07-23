@@ -23,9 +23,6 @@
 if which sbatch; then
     sbatch SLURM/04-trim.sbatch
 else
-    # Debug
-    # rm -f Results/04-trim/*
-    
     hw_threads=$(../Common/get-hw-threads.sh)
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.

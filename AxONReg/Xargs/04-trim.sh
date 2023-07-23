@@ -13,7 +13,7 @@ if [ -e $trimmed1 ]; then
 else
     printf "Processing $raw1 + $raw2 with fastq-trim...\n"
     
-    log_stem=Logs/02-qc-raw/$stem_raw
+    log_stem=Logs/04-trim/$stem
 
     # Document software versions used for publication
     uname -a > $log_stem.out
