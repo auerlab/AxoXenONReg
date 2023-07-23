@@ -10,13 +10,13 @@
 
 cd Results/06-multiqc-trimmed
 rm -rf *
-cmd="env LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
-    multiqc ../05-qc-trimmed 2>&1 | tee ../../Logs/06-multiqc-trimmed/multiqc.out"
+cmd="env LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 multiqc ../05-qc-trimmed"
 
 # Run interactively under SLURM if srun is found, otherwise run directly
 if which srun > /dev/null; then
-    srun $cmd
+    srun $cmd 2>&1 | tee ../../Logs/06-multiqc-trimmed/multiqc.out
+
 else
-    $cmd
+    $cmd 2>&1 | tee ../../Logs/06-multiqc-trimmed/multiqc.out
 fi
 
