@@ -7,7 +7,8 @@
 #       https://github.com/andreamrau/OpticRegen_2019
 #
 #   Dependencies:
-#       Requires directory structure.  Run after *-organize.sh.
+#       Requires directory structure and trimmed reads.
+#       Run after *-organize.sh and 04-trim.sh.
 #
 #       All necessary tools are assumed to be in PATH.  If this is not
 #       the case, add whatever code is needed here to gain access.

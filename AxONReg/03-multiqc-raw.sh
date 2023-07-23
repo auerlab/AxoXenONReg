@@ -1,6 +1,5 @@
 #!/bin/sh -e
 
-#
 #   Dependencies:
 #       Requires raw FastQC results.  Run after *-qc-raw.sbatch.
 
