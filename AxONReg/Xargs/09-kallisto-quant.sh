@@ -23,11 +23,6 @@ if [ $# != 2 ]; then
     exit 1
 fi
 
-# Document software versions used for publication
-uname -a
-kallisto version
-pwd
-
 threads=$1
 
 # kallisto 0.46.1 can't handle xz and will simply seg fault rather than
@@ -37,19 +32,20 @@ threads=$1
 zst1=$2
 zst2=${zst1%R1.fastq.zst}R1.fastq.zst
 
-printf "$zst1\n$zst2\n"
-ls $zst1 $zst2
-
 base1=$(basename $zst1)
 base2=$(basename $zst2)
-
-printf "Basenames: $base1 $base2\n"
 
 # Kallisto requires an output subdirectory for each sample
 stem=$(basename ${zst1%-R1*})
 out_dir=Results/09-kallisto-quant/$stem
-printf "out_dir = $out_dir\n"
 mkdir -p $out_dir
+
+log_stem=Logs/09-kallisto-quant/$stem
+
+# Document software versions used for publication
+uname -a > $log_stem.out
+kallisto version >> $log_stem.out
+pwd >> $log_stem.out
 
 # kallisto only supports gzip compression as of 0.48.0, so use FIFOs
 # feed it raw text
@@ -62,15 +58,11 @@ mkfifo $pipe1 $pipe2
 zstdcat $zst1 > $pipe1 &
 zstdcat $zst2 > $pipe2 &
 
-# Manual says a GTF is needed.  Kallisto aborts using GFF3.
-# Needed for --genomebam
-# We'll get BAMs from hisat2 instead
-# gtf=AmexT_v47-AmexG_v6.0-DD.gtf
-
 set -x
 time kallisto quant \
     --threads=$threads \
     --index=Results/08-kallisto-index/transcriptome-reference.index \
     --output-dir=$out_dir $pipe1 $pipe2
-
+    >> $log_stem.out 2>> $log_stem.err
+    
 rm -f $pipe1 $pipe2
