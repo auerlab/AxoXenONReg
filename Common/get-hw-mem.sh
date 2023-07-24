@@ -9,6 +9,10 @@ FreeBSD)
     sysctl -n hw.realmem
     ;;
 
+Darwin)
+    sysctl -n hw.memsize
+    ;;
+    
 *)
     printf "Unsupported OS: $(uname).\n"
     printf "Please consider adding a case for $(uname).\n"
