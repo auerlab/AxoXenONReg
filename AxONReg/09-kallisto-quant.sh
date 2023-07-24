@@ -27,10 +27,9 @@ else
     # rm -f Results/09-kallisto-quant/*
     
     # Consider both CPU cores and memory when selecting thread count
-    # kallisto doesn't scale that well beyond 4 threads, but my Mac
-    # mini doesn't have enough RAM for 2 jobs at a time, so I give
-    # all the cores to one job.
-    threads_per_job=8
+    # Use all cores for one job here to minimize contention and maximize
+    # throughput
+    threads_per_job=$(../Common/get-hw-threads.sh)
     hw_threads=$(../Common/get-hw-threads.sh)
     jobs=$(($hw_threads / $threads_per_job))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
