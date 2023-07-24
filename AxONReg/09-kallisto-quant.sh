@@ -25,14 +25,25 @@ if which sbatch; then
 else
     # Debug
     # rm -f Results/09-kallisto-quant/*
-    
-    # Consider both CPU cores and memory when selecting thread count
-    # Use all cores for one job here to minimize contention and maximize
-    # throughput
-    threads_per_job=$(../Common/get-hw-threads.sh)
+
+    # Kallisto multithreading scales fairly well, so more jobs with
+    # fewer cores each won't lead to much better performance
+    # Using minimum number of jobs with at least 4 GB each to ensure
+    # plenty of RAM per job
     hw_threads=$(../Common/get-hw-threads.sh)
-    jobs=$(($hw_threads / $threads_per_job))
+    hw_mem=$(../Common/get-hw-mem.sh)
+    
+    # Find optimal # cores per job with at least 4 GB per job
+    jobs=$hw_threads
+    mem_per_job=$(($hw_mem / $jobs ))
+    while [ $mem_per_job -lt 4000000000 ]; do
+	jobs=$(( $jobs / 2 ))
+	mem_per_job=$(($hw_mem / $jobs ))
+    done
+    threads_per_job=$(( $hw_threads / $jobs ))
+    
     # Tried GNU parallel and ran into bugs.  Xargs just works.
+    printf "Running $jobs jobs with $threads_per_job threads each...\n"
     ls Results/04-trim/*-R1.fastq.zst | \
 	xargs -n 1 -P $jobs Xargs/09-kallisto-quant.sh $threads_per_job
 fi
