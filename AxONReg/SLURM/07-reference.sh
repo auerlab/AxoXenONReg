@@ -4,6 +4,13 @@
 # "file" command revealed name within gzip data to use with --output
 # Firefox "save link as" comes up with .zip, which is wrong.  Should be .gz.
 
+# Memory requirements can only be determined by trial and error.
+# Run a sample job and monitor closely in "top" or rununder a tool that
+# reports maximum memory use.
+#SBATCH --mem=1g
+#SBATCH --output=Logs/08-kallisto-index/slurm-%A.out
+#SBATCH --error=Logs/08-kallisto-index/slurm-%A.err
+
 transcriptome=$(../Common/transcriptome-filename.sh)
 genome=$(../Common/genome-filename.sh)
 gtf=$(Reference/gtf-filename.sh)
