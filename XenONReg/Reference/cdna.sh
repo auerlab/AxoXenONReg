@@ -17,4 +17,4 @@ curl -O --continue-at - $site/$cdna.gz
 if [ ! -e $cdna ]; then
     gunzip --keep $cdna.gz
 fi
-ln -s $cdna transcriptome-reference.fa
+ln -sf $cdna transcriptome-reference.fa

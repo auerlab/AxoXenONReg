@@ -67,15 +67,19 @@ Reference/fetch-gff.sh
 
 cd Results/07-reference
 
-# FIXME: Test transcriptome alignment first
-exit
+site=https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1
+genome=XENLA_10.1_genome.fa
 
 # Genome
-curl -O --continue-at - \
-    https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1/XENLA_10.1_genome.fa.gz
+curl -O --continue-at - $site/$genome.gz
+if [ ! -e $genome ]; then
+    printf "Uncompressing...\n"
+    gunzip --keep $genome.gz
+fi
+ln -sf $genome genome-reference.fa
 
 # Reference/create-chrom-sizes.sh
-chrom_sizes="Results/07-reference/chromosome-sizes.tsv"
+chrom_sizes="chromosome-sizes.tsv"
 printf "Generating $chrom_sizes...\n"
-blt chrom-lens < Results/07-reference/$(../Common/genome-filename.sh) > $chrom_sizes
+blt chrom-lens < genome-reference.fa > $chrom_sizes
 cat $chrom_sizes
