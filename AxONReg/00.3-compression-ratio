@@ -2,6 +2,7 @@
 
 gz_total=0
 xz_total=0
+ls Raw/*/*.fq.gz    # Terminate script if gz files have been removed
 for file in Raw/*/*.fq.gz; do
     gz_size=$(du -sm $file | cut -f 1)
     xz_size=$(du -sm ${file%.gz}.xz | cut -f 1)
