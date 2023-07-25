@@ -35,7 +35,7 @@ samtools --version
 pwd
 
 ref_dir=Results/07-reference
-transcriptome=$(../Common/transcriptome-filename.sh)
+transcriptome=transcriptome-reference.fa
 index=${transcriptome%.fa}.index
 
 printf "Using reference $transcriptome...\n"

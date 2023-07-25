@@ -1,48 +1,14 @@
 #!/bin/sh -e
 
-##########################################################################
-#   GFF is used by downstream analysis, such as peak classification
-##########################################################################
-
-fetch=$(../Common/find-fetch.sh)
-build=$(Reference/genome-build.sh)
-release=$(Reference/genome-release.sh)
-gff=$(Reference/gff-filename.sh)
-
-##########################################################################
-# Ensembl combined GFFs are sorted lexically by chromosome, while BAMs are
-# sorted numerically.  Build our own GFF by concatenating individual
-# chromosome GFFs in numeric order.  Resorting a GFF is complicated due
-# to the hierarchical sort order (all gene components directly under the
-# gene, etc).
-##########################################################################
-
 cd Results/07-reference
 rm -f $gff
-site=http://ftp.ensembl.org/pub/release-$release/gff3/xenopus_tropicalis
+site=https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1
+gff=XENLA_10.1_Xenbase.gff3
 
-# Keep header from first GFF
-gff_chr_1=Xenopus_tropicalis.UCB_Xtro_$build.$release.primary_assembly.1.gff3.gz
-if [ ! -e $gff_chr_1 ]; then
-    printf "Fetching $gff_chr_1...\n"
-    $fetch $site/$gff_chr_1
-else
-    printf "Already have $gff_chr_1.\n"
+printf "Fetching $gff...\n"
+curl -O --continue-at - $site/$gff.gz
+if [ ! -e $gff ]; then
+    printf "Uncompressing...\n"
+    gunzip --keep $gff.gz
 fi
-
-# macOS zcat looks for .Z extension, while Linux does not have gzcat
-printf "Adding $gff_chr_1 to $gff...\n"
-gunzip -c $gff_chr_1 > $gff
-
-# Concatenate the rest without the header
-for chrom in $(seq 2 10); do
-    gff_chr_N=Xenopus_tropicalis.UCB_Xtro_$build.$release.primary_assembly.$chrom.gff3.gz
-    if [ ! -e $gff_chr_N ]; then
-	printf "Fetching $gff_chr_N...\n"
-	$fetch $site/$gff_chr_N
-    else
-	printf "Already have $gff_chr_N.\n"
-    fi
-    printf "Adding $gff_chr_N to $gff...\n"
-    gunzip -c $gff_chr_N | egrep -v '^##[a-z]|^#!' >> $gff
-done
+ln -sf $gff reference.gff3

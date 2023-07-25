@@ -58,10 +58,21 @@ pwd
 # Reference/cdna.sh
 #
 # Construct transciptome minus XY using GTF and genome
-Reference/gtf2fasta.sh
+# Reference/gtf2fasta.sh
+Reference/cdna.sh
 
 # GFF needed for fasda abundance
+# Fetch before cd
 Reference/fetch-gff.sh
+
+cd Results/07-reference
+
+# FIXME: Test transcriptome alignment first
+exit
+
+# Genome
+curl -O --continue-at - \
+    https://download.xenbase.org/xenbase/Genomics/JGI/Xenla10.1/XENLA_10.1_genome.fa.gz
 
 # Reference/create-chrom-sizes.sh
 chrom_sizes="Results/07-reference/chromosome-sizes.tsv"
