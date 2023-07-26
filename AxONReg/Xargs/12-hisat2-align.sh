@@ -46,7 +46,7 @@ index=genome-reference.fa
 cd Results/12-hisat2-align
 
 zst1="../../$input_file"
-zst2=$(echo $zst2 | sed -e 's|R1|R2|g')
+zst2=$(echo $zst1 | sed -e 's|R1|R2|g')
 ls $zst1 $zst2
 
 base=$(basename $input_file)
@@ -55,15 +55,18 @@ bam=${base%-R*}.bam
 # Hisat2 performs seeks on the input, so we can't use a pipe
 gzip1=${zst1%.zst}.gz
 gzip2=${zst2%.zst}.gz
-printf "Recompressing FASTQs in gzip format for hisat2...\n"
 # Use cheap compression level here, since these are removed
 # right after the alignment
+echo $gzip1 $gzip2
 if [ ! -e $gzip1 ]; then
+    printf "Recompressing $zst1...\n"
     zstdcat $zst1 | gzip -1 > $gzip1 &
 fi
 if [ ! -e $gzip2 ]; then
+    printf "Recompressing $zst2...\n"
     zstdcat $zst2 | gzip -1 > $gzip2
 fi
+# Wait for zst1 recompress to complete
 wait
 
 set -x
