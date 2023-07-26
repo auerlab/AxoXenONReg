@@ -32,9 +32,11 @@
 ##############################################################################
 # Align with hisat2, which can handle splice junctions in RNA reads
 
+hw_threads=$(../Common/get-hw-threads.sh)
+
 # Set a default value for testing outside the SLURM environment
 : ${SLURM_ARRAY_TASK_ID:=1}
-: ${SLURM_CPUS_PER_TASK:=2}
+: ${SLURM_CPUS_PER_TASK:=$hw_threads}
 
 # Document software versions used for publication
 uname -a
@@ -42,7 +44,7 @@ hisat2 --version
 pwd
 
 # Hisat2 index has the same name as the genome reference
-index=$(../Common/genome-filename.sh)
+index=genome-reference.fa
 
 # samtools sort dumps temp files in CWD
 cd Results/12-hisat2-align
@@ -58,10 +60,10 @@ printf "Recompressing FASTQs in gzip format for hisat2...\n"
 # Use cheap compression level here, since these are removed
 # right after the alignment
 if [ ! -e $gzip1 ]; then
-    zstdcat $zst1 | gzip -3 > $gzip1 &
+    zstdcat $zst1 | gzip -1 > $gzip1 &
 fi
 if [ ! -e $gzip2 ]; then
-    zstdcat $zst2 | gzip -3 > $gzip2
+    zstdcat $zst2 | gzip -1 > $gzip2
 fi
 wait
 

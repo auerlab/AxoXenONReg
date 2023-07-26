@@ -6,7 +6,7 @@ stem=${base%%-R1.fastq.xz}
 trimmed1=Results/04-trim/$stem-R1.fastq.zst
 
 raw2=${raw1%%-R1.fastq.xz}-R2.fastq.xz
-trimmed2=Results/04-trim/$stem-R2.fast1.zst
+trimmed2=Results/04-trim/$stem-R2.fastq.zst
 
 if [ -e $trimmed1 ]; then
     printf "$raw1 + $raw2 already processed.\n"
