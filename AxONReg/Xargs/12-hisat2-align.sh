@@ -23,6 +23,8 @@ if [ $# != 2 ]; then
     exit 1
 fi
 
+printf "===\n"
+
 threads=$1
 input_file=$2
 
@@ -44,6 +46,8 @@ index=genome-reference.fa
 
 # samtools sort dumps temp files in CWD
 cd Results/12-hisat2-align
+output_log="../../$output_log"
+error_log="../../$error_log"
 
 zst1="../../$input_file"
 zst2=$(echo $zst1 | sed -e 's|R1|R2|g')
@@ -57,7 +61,6 @@ gzip1=${zst1%.zst}.gz
 gzip2=${zst2%.zst}.gz
 # Use cheap compression level here, since these are removed
 # right after the alignment
-echo $gzip1 $gzip2
 if [ ! -e $gzip1 ]; then
     printf "Recompressing $zst1...\n"
     zstdcat $zst1 | gzip -1 > $gzip1 &
@@ -74,9 +77,10 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 | samtools sort -T /tmp -o $bam
-    > $output_log
-    2> $error_log
+    -1 $gzip1 -2 $gzip2 > $output_log 2> $error_log
+
+samtools sort -T /tmp -o $bam.sorted $bam >> $output_log 2>> $error_log
+mv -f $bam.sorted $bam
 
 # No further need for the uncompressed FASTQs
 rm -f $gzip1 $gzip2
@@ -84,5 +88,5 @@ rm -f $gzip1 $gzip2
 # Not sure how helpful multithreading is here, but since we allocated
 # the cores for hisat2, might as well use them
 samtools index -c -@ $SLURM_CPUS_PER_TASK $bam \
-    > $output_log \
-    2> $error_log
+    > $output_log 2> $error_log
+
