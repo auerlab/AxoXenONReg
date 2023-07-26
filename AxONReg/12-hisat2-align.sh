@@ -27,8 +27,12 @@ else
     # rm -f Results/12-hisat2-align/*
     
     hw_threads=$(../Common/get-hw-threads.sh)
-    jobs=$(($hw_threads / 2))
+    hw_mem=$(../Common/get-hw-mem.sh)
+    
+    # FIXME: Use half of available memory per job?
+    jobs=$(($hw_threads / 4))
+    
     # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/12-hisat2-align.sh
+    ls Results/04-trim/*-R1.fastq.zst | \
+	xargs -n 1 -P $jobs Xargs/12-hisat2-align.sh 4
 fi
