@@ -77,16 +77,15 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 > $output_log 2> $error_log
+    -1 $gzip1 -2 $gzip2 -S $bam > $output_log 2> $error_log
 
-samtools sort -T /tmp -o $bam.sorted $bam >> $output_log 2>> $error_log
+samtools sort -T . -o $bam.sorted $bam >> $output_log 2>> $error_log
 mv -f $bam.sorted $bam
 
-# No further need for the uncompressed FASTQs
-rm -f $gzip1 $gzip2
+# No further need for the non-zstd
+# rm -f $gzip1 $gzip2
 
 # Not sure how helpful multithreading is here, but since we allocated
 # the cores for hisat2, might as well use them
-samtools index -c -@ $SLURM_CPUS_PER_TASK $bam \
-    > $output_log 2> $error_log
+samtools index -c -@ $threads $bam >> $output_log 2>> $error_log
 
