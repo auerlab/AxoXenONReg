@@ -77,7 +77,7 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 | samtools sort -o $bam 2> $error_log
+    -1 $gzip1 -2 $gzip2 2> $error_log | samtools sort -o $bam 2> $error_log
 
 # No further need for the non-zstd
 # rm -f $gzip1 $gzip2
