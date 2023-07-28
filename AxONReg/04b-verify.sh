@@ -33,6 +33,8 @@ EOM
 printf "Compare stats between raw and trimmed? [y]/n "
 read compare
 if [ 0"$compare" != 0n ]; then
+    stats_file=Logs/04-trim/fastx-stats.txt
+    printf "Saving a copy of this screen output to $stats_file...\n"
     for raw in Results/01-organize/Raw-renamed/*; do
 	printf "Scanning $raw...\n"
 	blt fastx-stats $raw
@@ -41,5 +43,5 @@ if [ 0"$compare" != 0n ]; then
 	printf "Scanning $trimmed...\n"
 	blt fastx-stats Results/04-trim/$trimmed
 	printf "===\n"
-    done | more
+    done 2>&1 | tee $stats_file
 fi
