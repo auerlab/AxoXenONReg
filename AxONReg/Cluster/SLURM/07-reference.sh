@@ -11,8 +11,6 @@
 #SBATCH --output=Logs/08-kallisto-index/slurm-%A.out
 #SBATCH --error=Logs/08-kallisto-index/slurm-%A.err
 
-transcriptome=$(../../Common/transcriptome-filename.sh)
-genome=$(../../Common/genome-filename.sh)
 gtf=$(Reference/gtf-filename.sh)
 gff=$(Reference/gff-filename.sh)
 
@@ -43,7 +41,7 @@ else
 fi
 
 # Use DNA so that transcript lengths match the GTF/GFF3
-ln -sf $dna $transcriptome
+ln -sf $dna transcriptome-reference.fa
 
 ##########################################################################
 #   GTF
@@ -87,17 +85,10 @@ else
     printf "$fasta already exists.\n"
 fi
 
-if [ ! -e ${fasta%.fa}-chr-only.fa ]; then
-    printf "Generating ${fasta%.fa}-chr-only.fa...\n"
-    # FIXME: More than 1 line in each sequence
-    awk '{ if ( $1 ~ "^>C" ) { exit } else { print }}' $fasta > ${fasta%.fa}-chr-only.fa
-fi
-
 if [ ! -e chromosome-sizes.tsv ]; then
     printf "Getting chromosome sizes...\n"
     blt chrom-lens < $fasta > chromosome-sizes.tsv
 else
     printf "chromosome-sizes.tsv already exists.\n"
 fi
-ln -sf $fasta $genome
-ln -sf ${fasta%.fa}-chr-only.fa ${genome%.fa}-chr-only.fa
+ln -sf $fasta genome-reference.fa
