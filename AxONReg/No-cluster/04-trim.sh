@@ -24,4 +24,4 @@ hw_threads=$(../../Common/get-hw-threads.sh)
 jobs=$(($hw_threads / 2))
 # Tried GNU parallel and ran into bugs.  Xargs just works.
 ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-    xargs -n 1 -P $jobs Xargs/04-trim.sh
+    xargs -n 1 -P $jobs Sh/04-trim.sh

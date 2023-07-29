@@ -26,5 +26,5 @@ else
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/04-kallisto-quant/*/abundance.tsv \
-	| xargs -n 1 -P $jobs Xargs/14-fasda-fc-hisat2.sh
+	| xargs -n 1 -P $jobs Sh/14-fasda-fc-hisat2.sh
 fi

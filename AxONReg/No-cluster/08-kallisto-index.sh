@@ -25,9 +25,4 @@
 # the SLURM script and running directly (except the #SBATCH comments
 # to set SLURM parameters).
 
-if which sbatch; then
-    sbatch SLURM/08-kallisto-index.sbatch
-else
-    SLURM/08-kallisto-index.sbatch \
-	2>&1 | tee Logs/08-kallisto-index/08-kallisto-index.out
-fi
+Sh/08-kallisto-index.sh 2>&1 | tee Logs/08-kallisto-index/index.out

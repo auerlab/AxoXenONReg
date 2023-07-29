@@ -45,5 +45,5 @@ else
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     printf "Running $jobs jobs with $threads_per_job threads each...\n"
     ls Results/04-trim/*-R1.fastq.zst | \
-	xargs -n 1 -P $jobs Xargs/09-kallisto-quant.sh $threads_per_job
+	xargs -n 1 -P $jobs Sh/09-kallisto-quant.sh $threads_per_job
 fi
