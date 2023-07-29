@@ -1,0 +1,1 @@
+../No-cluster/06b-verify.sh
