@@ -1,0 +1,1 @@
+../../AxONReg/Cluster/08-kallisto-index.sh

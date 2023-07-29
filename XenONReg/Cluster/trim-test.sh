@@ -1,0 +1,1 @@
+../../AxONReg/Cluster/trim-test.sh
