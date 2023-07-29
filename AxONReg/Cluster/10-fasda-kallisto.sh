@@ -16,8 +16,4 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-if which sbatch; then
-    sbatch SLURM/10-fasda-kallisto.sbatch
-else
-    Xargs/10-fasda-kallisto.sh
-fi
+sbatch SLURM/10-fasda-kallisto.sbatch
