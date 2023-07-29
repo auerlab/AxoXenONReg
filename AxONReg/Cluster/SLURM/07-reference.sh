@@ -11,8 +11,8 @@
 #SBATCH --output=Logs/08-kallisto-index/slurm-%A.out
 #SBATCH --error=Logs/08-kallisto-index/slurm-%A.err
 
-transcriptome=$(../Common/transcriptome-filename.sh)
-genome=$(../Common/genome-filename.sh)
+transcriptome=$(../../Common/transcriptome-filename.sh)
+genome=$(../../Common/genome-filename.sh)
 gtf=$(Reference/gtf-filename.sh)
 gff=$(Reference/gff-filename.sh)
 

@@ -52,13 +52,12 @@ done
 #   Explain sequence file naming here
 ##############################################################################
 
-# CE1A_S1_L002-R1.fastq.xz
 cd Results
 rm -rf 01-organize/Raw-renamed
 mkdir -p 01-organize/Raw-renamed
 cd 01-organize/Raw-renamed
 pwd
-for path in ../../../Raw/*/*.fq.xz; do
+for path in ../../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
     # FIXME: Generate a non-cryptic name for each file
     sample=$(echo $file | cut -c 2-3)

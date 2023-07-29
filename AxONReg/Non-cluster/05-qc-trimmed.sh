@@ -21,12 +21,8 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-if which sbatch; then
-    sbatch SLURM/05-qc-trimmed.sbatch
-else
-    hw_threads=$(../Common/get-hw-threads.sh)
-    jobs=$(($hw_threads / 2))
-    # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/04-trim/*.fastq.zst | \
-	xargs -n 1 -P $jobs Xargs/05-qc-trimmed.sh
-fi
+hw_threads=$(../../Common/get-hw-threads.sh)
+jobs=$(($hw_threads / 2))
+# Tried GNU parallel and ran into bugs.  Xargs just works.
+ls Results/04-trim/*.fastq.zst | \
+    xargs -n 1 -P $jobs Xargs/05-qc-trimmed.sh
