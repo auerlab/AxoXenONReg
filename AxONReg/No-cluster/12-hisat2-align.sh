@@ -41,5 +41,5 @@ else
     
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/04-trim/*-R1.fastq.zst | \
-	xargs -n 1 -P $jobs Xargs/12-hisat2-align.sh $threads
+	xargs -n 1 -P $jobs Sh/12-hisat2-align.sh $threads
 fi

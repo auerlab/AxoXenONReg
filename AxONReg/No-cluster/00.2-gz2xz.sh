@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-cat << EOM > Xargs/00.2-gz2xz.sh
+cat << EOM > Sh/00.2-gz2xz.sh
 #!/bin/sh -e
 
 if [ \$# != 1 ]; then
@@ -32,9 +32,9 @@ fi
 
 EOM
 
-chmod 755 Xargs/00.2-gz2xz.sh
+chmod 755 Sh/00.2-gz2xz.sh
 hw_threads=$(../Common/get-hw-threads.sh)
 jobs=$hw_threads    # gunzip takes almost nothing
 
 # Tried GNU parallel and ran into bugs.  Xargs just works.
-ls Raw/*/*.fq.gz | xargs -n 1 -P $jobs Xargs/00.2-gz2xz.sh
+ls Raw/*/*.fq.gz | xargs -n 1 -P $jobs Sh/00.2-gz2xz.sh

@@ -30,5 +30,5 @@ else
     jobs=$(($hw_threads / 2))
     # Tried GNU parallel and ran into bugs.  Xargs just works.
     ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs Xargs/13-fasda-abundance-hisat2.sh
+	xargs -n 1 -P $jobs Sh/13-fasda-abundance-hisat2.sh
 fi
