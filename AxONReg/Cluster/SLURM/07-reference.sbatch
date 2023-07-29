@@ -8,8 +8,8 @@
 # Run a sample job and monitor closely in "top" or rununder a tool that
 # reports maximum memory use.
 #SBATCH --mem=1g
-#SBATCH --output=Logs/08-kallisto-index/slurm-%A.out
-#SBATCH --error=Logs/08-kallisto-index/slurm-%A.err
+#SBATCH --output=Logs/07-reference/slurm-%A.out
+#SBATCH --error=Logs/07-reference/slurm-%A.err
 
 gtf=$(Reference/gtf-filename.sh)
 gff=$(Reference/gff-filename.sh)

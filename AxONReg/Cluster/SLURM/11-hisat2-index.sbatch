@@ -19,10 +19,15 @@
 ##########################################################################
 
 # Highest memory use observed was 78 G resident, 120 virtual for axolotl
-#SBATCH --mem=120g
 #SBATCH --output=Logs/11-hisat2-index/slurm-%A.out
 #SBATCH --error=Logs/11-hisat2-index/slurm-%A.err
 #SBATCH --cpus-per-task=16
+
+if [ -z "$SLURM_MEM_PER_NODE" ]; then
+    printf "Usage: $0 --mem=X\n"
+    printf "Use ../11-hisat2-index.sh rather than sbatch.\n"
+    exit 1
+fi
 
 # If not running under SLURM, use all available cores
 hw_threads=$(../Common/get-hw-threads.sh)
