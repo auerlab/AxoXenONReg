@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+# FIXME: Run under sbatch or srun
+
 gz_total=0
 xz_total=0
 ls Raw/*/*.fq.gz    # Terminate script if gz files have been removed

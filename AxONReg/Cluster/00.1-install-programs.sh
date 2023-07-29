@@ -5,14 +5,9 @@
 #   Must be run by a systems manager.
 ##########################################################################
 
-if which cluster-run; then
-    cluster_run=cluster-run
-    srun="srun --ntasks=1 --mem=1g"
-    node_spec=compute
-else
-    cluster_run='sh -c'
-    srun=''
-fi
+cluster_run=cluster-run
+srun="srun --ntasks=1 --mem=1g"
+node_spec=compute
 
 case $(uname) in
 FreeBSD)
@@ -32,29 +27,7 @@ You can use pkgsrc and install the biology/rna-seq package on all
 compute nodes or in a shared location that compute nodes can access.
 
 EOM
-	exit 1
-    else
-	if which auto-pkgsrc-dir; then
-	    cd $(auto-pkgsrc-dir)/biology/rna-seq
-	    bmake deinstall clean clean-depends install
-	else
-	    cat << EOM
-
-$0: No pkgsrc installation found.
-
-If you have a pkgsrc tree installed, install sysutils/auto-admin so
-that $0 can use auto-pkgsrc-prefix to find it.
-
-Otherwise, install a pkgsrc tree using auto-pkgsrc-setup.  See the
-documentation and script at:
-
-    http://netbsd.org/~bacon/
-
-EOM
-	    exit 1
-	fi
-    fi
+    exit 1
     ;;
 
 esac
-
