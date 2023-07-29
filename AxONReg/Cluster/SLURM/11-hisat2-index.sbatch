@@ -30,7 +30,7 @@ if [ -z "$SLURM_MEM_PER_NODE" ]; then
 fi
 
 # If not running under SLURM, use all available cores
-hw_threads=$(../Common/get-hw-threads.sh)
+hw_threads=$(../../Common/get-hw-threads.sh)
 : ${SLURM_CPUS_PER_TASK:=$hw_threads}
 
 # Document software versions used for publication
