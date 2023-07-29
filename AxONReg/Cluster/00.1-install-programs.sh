@@ -27,6 +27,7 @@ You can use pkgsrc and install the biology/rna-seq package on all
 compute nodes or in a shared location that compute nodes can access.
 
 EOM
+    fi
     exit 1
     ;;
 

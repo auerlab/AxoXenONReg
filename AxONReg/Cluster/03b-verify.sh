@@ -1,1 +1,1 @@
-../Non-cluster/03b-verify.sh
+../No-cluster/03b-verify.sh

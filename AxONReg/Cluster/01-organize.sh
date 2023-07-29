@@ -1,1 +1,1 @@
-../Non-cluster/01-organize.sh
+../No-cluster/01-organize.sh
