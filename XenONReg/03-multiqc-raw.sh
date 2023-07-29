@@ -1,1 +1,0 @@
-../AxONReg/03-multiqc-raw.sh

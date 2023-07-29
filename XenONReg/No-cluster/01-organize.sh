@@ -57,7 +57,7 @@ rm -rf 01-organize/Raw-renamed
 mkdir -p 01-organize/Raw-renamed
 cd 01-organize/Raw-renamed
 pwd
-for path in ../../../Raw/*/*.fq.xz; do
+for path in ../../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
     # FIXME: Generate a non-cryptic name for each file
     if [ $(echo $file | cut -c 3-4) = Na ]; then

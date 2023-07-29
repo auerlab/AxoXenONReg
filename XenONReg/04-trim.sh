@@ -1,1 +1,0 @@
-../AxONReg/04-trim.sh

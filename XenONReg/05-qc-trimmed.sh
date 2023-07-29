@@ -1,1 +1,0 @@
-../AxONReg/05-qc-trimmed.sh

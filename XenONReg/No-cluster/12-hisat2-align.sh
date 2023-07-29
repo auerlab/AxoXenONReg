@@ -1,0 +1,1 @@
+../../AxONReg/No-cluster/12-hisat2-align.sh

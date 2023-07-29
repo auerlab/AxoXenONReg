@@ -1,1 +1,0 @@
-../AxONReg/12-hisat2-align.sh

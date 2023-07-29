@@ -1,1 +1,0 @@
-../AxONReg/06-multiqc-trimmed.sh
