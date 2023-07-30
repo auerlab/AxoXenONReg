@@ -14,6 +14,22 @@ pause()
     read junk
 }
 
-more Logs/09-kallisto-quant/*.out
-more Logs/09-kallisto-quant/*.err
-head Results/09-kallisto-quant/*/abundance.tsv | more
+cmd='more Logs/09-kallisto-quant/*.out'
+printf "Running $cmd...\n"
+pause
+$cmd
+
+cmd='more Logs/09-kallisto-quant/*.err'
+printf "Running $cmd...\n"
+pause
+$cmd
+
+cmd='more Results/09-kallisto-quant/*/run_info.json'
+printf "Running $cmd...\n"
+pause
+$cmd
+
+cmd='head Results/09-kallisto-quant/*/abundance.tsv'
+printf "Running $cmd...\n"
+pause
+$cmd | more

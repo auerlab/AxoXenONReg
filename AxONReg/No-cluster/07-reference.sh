@@ -4,9 +4,6 @@
 #       Requires trimmed reads.
 
 # This script is single threaded, so there is no difference between
-# running under srun or on a workstation.
-cmd="Sh/07-reference.sh"
+# running on a cluster or a workstation.
 
-# Run interactively under SLURM if srun is found, otherwise run directly
-$cmd 2>&1 | tee Logs/07-reference/07-reference.out
-
+Sh/07-reference.sh 2>&1 | tee Logs/07-reference/07-reference.out
