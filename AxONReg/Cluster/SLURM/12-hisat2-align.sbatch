@@ -59,12 +59,16 @@ sample=$(printf "%02d" $SLURM_ARRAY_TASK_ID)
 zst1=$(echo ../04-trim/sample$sample-*-R1.fastq.zst)
 zst2=$(echo ../04-trim/sample$sample-*-R2.fastq.zst)
 
+# Set this to a local partition with plenty of space or a high-speed
+# networked filesystem
+tmp_dir=/usr/tmp
+
 # Hisat2 performs seeks on the input, so we can't use a pipe
 # Place gzip copies on local drives for better parallism
 base1=$(basename $zst1)
 base2=$(basename $zst2)
-gzip1=/tmp/${base1%.zst}.gz
-gzip2=/tmp/${base2%.zst}.gz
+gzip1=$tmp_dir/${base1%.zst}.gz
+gzip2=$tmp_dir/${base2%.zst}.gz
 echo $gzip1 $gzip2
 
 printf "Recompressing FASTQs in gzip format for hisat2...\n"
@@ -87,7 +91,7 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 | samtools sort -T /tmp -o $bam
+    -1 $gzip1 -2 $gzip2 | samtools sort -T $tmp_dir -o $bam
 
 # No further need for the uncompressed FASTQs
 rm -f $gzip1 $gzip2
