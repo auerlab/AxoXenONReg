@@ -14,7 +14,7 @@ fasda_dir=Results/10-fasda-kallisto
 
 # Ex. sample16-time1-rep1
 for time in $(seq 1 5); do
-    printf "Normalizing time$time...\n"
+    printf "\n*** Normalizing time$time...\n\n"
     ls $kallisto_dir/sample*-time$time-rep*/abundance.tsv
     time fasda normalize \
 	--output $fasda_dir/time$time-all-norm.tsv \
@@ -24,7 +24,7 @@ done
 for early in $(seq 1 4); do
     late_start=$(($early + 1))
     for late in $(seq $late_start 5); do
-	printf "Computing fold-changes time$early vs time$late...\n"
+	printf "\n*** Computing fold-changes time$early vs time$late...\n"
 	time fasda fold-change \
 	    --output $fasda_dir/time$early-time$late-FC.txt \
 	    $fasda_dir/time1-all-norm.tsv \
