@@ -1,0 +1,1 @@
+../../../AxONReg/No-cluster/Sh/13-fasda-abundance-hisat2.sh

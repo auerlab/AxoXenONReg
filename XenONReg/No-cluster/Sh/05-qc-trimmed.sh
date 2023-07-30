@@ -1,0 +1,1 @@
+../../../AxONReg/No-cluster/Sh/05-qc-trimmed.sh

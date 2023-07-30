@@ -7,12 +7,9 @@
 # Memory requirements can only be determined by trial and error.
 # Run a sample job and monitor closely in "top" or rununder a tool that
 # reports maximum memory use.
-#SBATCH --mem=1g
-#SBATCH --output=Logs/07-reference/slurm-%A.out
-#SBATCH --error=Logs/07-reference/slurm-%A.err
 
-gtf=$(Reference/gtf-filename.sh)
-gff=$(Reference/gff-filename.sh)
+gtf=AmexT_v47-AmexG_v6.0-DD.gtf
+gff=AmexT_v47-AmexG_v6.0-DD.gff3
 
 cd Results/07-reference
 

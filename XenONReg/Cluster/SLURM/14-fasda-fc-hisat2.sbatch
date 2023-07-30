@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/14-fasda-fc-hisat2.sbatch

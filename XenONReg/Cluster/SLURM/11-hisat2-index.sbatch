@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/11-hisat2-index.sbatch

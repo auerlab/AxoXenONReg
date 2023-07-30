@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/08-kallisto-index.sbatch

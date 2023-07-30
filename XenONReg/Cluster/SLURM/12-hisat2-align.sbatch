@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/12-hisat2-align.sbatch

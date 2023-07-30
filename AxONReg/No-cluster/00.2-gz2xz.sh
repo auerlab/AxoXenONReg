@@ -14,6 +14,8 @@ my_xz=\${my_gz%.gz}.xz
 if [ ! -e \$my_xz ]; then
     printf "Converting \$my_gz to \$my_xz...\n"
     time gunzip -c \$my_gz | xz > \$my_xz
+else
+    printf "\$my_xz already exists.\n"
 fi
 
 printf "Checking \$my_gz...\n"

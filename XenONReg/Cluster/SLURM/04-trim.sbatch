@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/04-trim.sbatch

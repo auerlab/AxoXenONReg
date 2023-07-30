@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/15-merge-hisat2-bams.sbatch

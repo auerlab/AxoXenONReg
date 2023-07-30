@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/05-qc-trimmed.sbatch

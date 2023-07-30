@@ -1,0 +1,1 @@
+../../../AxONReg/Cluster/SLURM/13-fasda-abundance-hisat2.sbatch
