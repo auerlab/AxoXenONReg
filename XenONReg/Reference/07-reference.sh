@@ -26,6 +26,7 @@ curl -O --continue-at - $site/$genome.gz
 if [ ! -e $genome ]; then
     gunzip --keep $genome.gz
 fi
+ln -f $genome genome-reference.fa
 
 # Transcriptome
 if [ ! -e transcriptome-reference.fa ]; then

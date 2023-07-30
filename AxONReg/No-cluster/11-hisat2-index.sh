@@ -20,17 +20,5 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-if which sbatch; then
-    sbatch SLURM/11-hisat2-index.sbatch
-else
-    # Debug
-    # rm -f Results/11-hisat2-index/*
-    
-    hw_threads=$(../Common/get-hw-threads.sh)
-    jobs=$(($hw_threads / 2))
-    # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/01-organize/Raw-renamed/*-R1.fastq.xz | \
-	xargs -n 1 -P $jobs SLURM/11-hisat2-index.sbatch \
-	> Logs/11-hisat2-index/hisat2-index.out \
-	2> Logs/11-hisat2-index/hisat2-index.err
-fi
+Sh/11-hisat2-index.sh \
+    2>&1 | tee Logs/11-hisat2-index/hisat2-index.out
