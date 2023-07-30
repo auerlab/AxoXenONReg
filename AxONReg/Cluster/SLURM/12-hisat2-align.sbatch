@@ -25,14 +25,20 @@
 # Run a sample job and monitor closely in "top" or run under a tool that
 # reports maximum memory use.
 # xenopus only needs about 3g, but we're using all the cores on a node anyway
-#SBATCH --mem=50g
+# #SBATCH --mem=50g
 #SBATCH --output=Logs/12-hisat2-align/slurm-%A_%a.out
 #SBATCH --error=Logs/12-hisat2-align/slurm-%A_%a.err
+
+if [ -z "$SLURM_MEM_PER_NODE" ]; then
+    printf "Usage: $0 --mem=X\n"
+    printf "Use ../11-hisat2-index.sh rather than sbatch.\n"
+    exit 1
+fi
 
 ##############################################################################
 # Align with hisat2, which can handle splice junctions in RNA reads
 
-hw_threads=$(../Common/get-hw-threads.sh)
+hw_threads=$(../../Common/get-hw-threads.sh)
 
 # Set a default value for testing outside the SLURM environment
 : ${SLURM_ARRAY_TASK_ID:=1}
@@ -54,8 +60,13 @@ zst1=$(echo ../04-trim/sample$sample-*-R1.fastq.zst)
 zst2=$(echo ../04-trim/sample$sample-*-R2.fastq.zst)
 
 # Hisat2 performs seeks on the input, so we can't use a pipe
-gzip1=${zst1%.zst}.gz
-gzip2=${zst2%.zst}.gz
+# Place gzip copies on local drives for better parallism
+base1=$(basename $zst1)
+base2=$(basename $zst2)
+gzip1=/tmp/${base1%.zst}.gz
+gzip2=/tmp/${base2%.zst}.gz
+echo $gzip1 $gzip2
+
 printf "Recompressing FASTQs in gzip format for hisat2...\n"
 # Use cheap compression level here, since these are removed
 # right after the alignment

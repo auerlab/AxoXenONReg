@@ -3,4 +3,7 @@
 #   Dependencies:
 #       Requires trimmed reads.
 
-sbatch SLURM/07-reference.sbatch
+sbatch \
+    --output=Logs/07-reference/slurm-%A.out \
+    --error=Logs/07-reference/slurm-%A.err \
+    SLURM/07-reference.sh

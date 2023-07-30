@@ -20,26 +20,31 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-if which sbatch; then
-    sbatch SLURM/12-hisat2-align.sbatch
-else
-    # Debug
-    # rm -f Results/12-hisat2-align/*
-    
-    hw_threads=$(../Common/get-hw-threads.sh)
-    hw_mem=$(../Common/get-hw-mem.sh)
-    hw_gib=$(( $hw_mem / 1024 / 1024 / 1024 ))
-    
-    # For xenopus, hisat2 jobs take about 4.3 GB
-    # For axolotl, quite a bit more
-    if pwd | fgrep XenONReg; then
-	jobs=$(( $hw_gib / 5 ))
-    else
-	jobs=$(( $hw_gib / 20 ))
-    fi
-    threads=$(( $hw_threads / $jobs ))
-    
-    # Tried GNU parallel and ran into bugs.  Xargs just works.
-    ls Results/04-trim/*-R1.fastq.zst | \
-	xargs -n 1 -P $jobs Xargs/12-hisat2-align.sh $threads
+usage()
+{
+    printf "Usage: $0 axo|xen\n"
+    exit 1
+}
+
+if [ $# != 1 ]; then
+    usage
 fi
+organism=$1
+
+case $organism in
+axo)
+    mem=50g
+    ;;
+
+xen)
+    # FIXME: Guess, verify
+    mem=4g
+    ;;
+
+*)
+    usage
+    ;;
+
+esac
+
+sbatch --mem=$mem SLURM/12-hisat2-align.sbatch
