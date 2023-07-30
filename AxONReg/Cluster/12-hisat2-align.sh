@@ -33,7 +33,7 @@ organism=$1
 
 case $organism in
 axo)
-    mem=50g
+    mem=55g
     ;;
 
 xen)
