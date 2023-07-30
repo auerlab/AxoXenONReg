@@ -1,1 +1,1 @@
-../../Cluster/SLURM/07-reference.sh
+../../Cluster/SLURM/07-reference.sbatch

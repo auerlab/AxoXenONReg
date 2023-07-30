@@ -13,15 +13,15 @@ pause()
     read junk
 }
 
-cmd="cat Logs/04-trim/*.out"
+cmd="more Logs/04-trim/*.out"
 printf "Running '$cmd'...\n"
 pause
-$cmd | more
+$cmd
 
-cmd="cat Logs/04-trim/*.err"
+cmd="more Logs/04-trim/*.err"
 printf "\n\nRunning '$cmd'...\n"
 pause
-$cmd | more
+$cmd
 
 cat << EOM
 
