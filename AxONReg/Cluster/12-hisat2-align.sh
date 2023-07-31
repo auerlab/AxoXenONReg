@@ -33,12 +33,13 @@ organism=$1
 
 case $organism in
 axo)
+    # hisat2 2.2.1
     mem=55g
     ;;
 
 xen)
-    # FIXME: Guess, verify
-    mem=4g
+    # hisat2 2.2.1
+    mem=6g
     ;;
 
 *)
