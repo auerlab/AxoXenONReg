@@ -8,6 +8,7 @@
 #SBATCH --error=Logs/14-fasda-fc-hisat2/slurm-%A_%a.err
 
 # Document software versions used for publication
+hostname
 uname -a
 fasda --version
 pwd

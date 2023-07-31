@@ -45,6 +45,7 @@ hw_threads=$(../../Common/get-hw-threads.sh)
 : ${SLURM_CPUS_PER_TASK:=$hw_threads}
 
 # Document software versions used for publication
+hostname
 uname -a
 hisat2 --version
 pwd
@@ -69,7 +70,6 @@ base1=$(basename $zst1)
 base2=$(basename $zst2)
 gzip1=$tmp_dir/${base1%.zst}.gz
 gzip2=$tmp_dir/${base2%.zst}.gz
-echo $gzip1 $gzip2
 
 printf "Recompressing FASTQs in gzip format for hisat2...\n"
 # Use cheap compression level here, since these are removed
@@ -86,16 +86,22 @@ zstbase=$(basename $zst1)
 bam=${zstbase%-R*}.bam
 threads=$(($SLURM_CPUS_PER_TASK - 1))
 
-set -x
-hisat2 --threads $threads \
-    --time \
-    --met-stderr \
-    -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 | samtools sort -T $tmp_dir -o $bam
-
-# No further need for the uncompressed FASTQs
-rm -f $gzip1 $gzip2
+if [ ! -e $bam ]; then
+    set -x
+    hisat2 --threads $threads \
+	--time \
+	--met-stderr \
+	-x ../11-hisat2-index/$index \
+	-1 $gzip1 -2 $gzip2 | samtools sort -T $tmp_dir -o $bam
+    
+    # No further need for the gzipped fastas
+    rm -f $gzip1 $gzip2
+else
+    printf "$bam already exists.  Remove it and run again to regenerate it.\n"
+fi
 
 # Not sure how helpful multithreading is here, but since we allocated
 # the cores for hisat2, might as well use them
-samtools index -c -@ $SLURM_CPUS_PER_TASK $bam
+if [ ! -e $bam.csi ]; then
+    samtools index -c -@ $SLURM_CPUS_PER_TASK $bam
+fi

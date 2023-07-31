@@ -20,32 +20,20 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-usage()
-{
-    printf "Usage: $0 axo|xen\n"
-    exit 1
-}
-
-if [ $# != 1 ]; then
-    usage
-fi
-organism=$1
-
-case $organism in
-axo)
+if pwd | grep AxoXenOnReg/AxONReg/Cluster; then
     # hisat2 2.2.1
     mem=55g
-    ;;
-
-xen)
+elif pwd | grep AxoXenOnReg/XenONReg/Cluster; then
     # hisat2 2.2.1
     mem=6g
-    ;;
+else
+    cat << EOM
 
-*)
-    usage
-    ;;
+This script must be run from AxoXenOnReg/AxONReg/Cluster or from
+AxoXenOnReg/XenONReg/Cluster.
 
-esac
+EOM
+    exit 1
+fi
 
 sbatch --mem=$mem SLURM/12-hisat2-align.sbatch

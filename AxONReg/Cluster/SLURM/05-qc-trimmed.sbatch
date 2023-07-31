@@ -36,6 +36,7 @@
 : ${SLURM_ARRAY_TASK_ID:=1}
 
 # Document software versions used for publication
+hostname
 uname -a
 fastqc --version
 pwd

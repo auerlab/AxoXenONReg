@@ -30,6 +30,7 @@
 : ${SLURM_ARRAY_TASK_ID:=000}
 
 # Document software versions used for publication
+hostname
 uname -a
 samtools --version
 pwd

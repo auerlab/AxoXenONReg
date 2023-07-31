@@ -34,6 +34,7 @@ hw_threads=$(../../Common/get-hw-threads.sh)
 : ${SLURM_CPUS_PER_TASK:=$hw_threads}
 
 # Document software versions used for publication
+hostname
 uname -a
 hisat2 --version
 samtools --version
