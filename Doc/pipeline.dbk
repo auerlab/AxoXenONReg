@@ -51,7 +51,8 @@
             This repository contains both SLURM scheduler scripts for running
             on a cluster and scripts for running on a standalone Unix machine
             using <command>xargs</command> to run jobs in parallel.  The
-            <command>xargs</command> scripts are tested primarily on a Mac Mini m1.
+            <command>xargs</command> scripts are tested primarily on a Mac
+            Mini m1.
             </para>
             
             <para>
@@ -68,6 +69,16 @@
             while in-use, but there is no better option for compact Mac
             systems.
             </para>
+            
+            <note>
+            You will want to disable the screensaver under System Settings,
+            Lock Screen.  Some macOS screensavers use enormous amounts of
+            memory and CPU, competing with scientific analysis software.
+            If your system runs out of memory due to competition from
+            the screensaver, an analysis that should take hours could
+            end up taking days as the system "thrashes", frantically
+            moving data in and out of swap space on the disk.
+            </note>
             
             <para>
             A PC running a POSIX OS such as BSD or Linux will be cheaper
