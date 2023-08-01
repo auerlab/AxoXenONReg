@@ -22,7 +22,7 @@
 
 if pwd | grep AxoXenOnReg/AxONReg/Cluster; then
     # STAR 2.7.10b
-    mem=100g
+    mem=120g
 elif pwd | grep AxoXenOnReg/XenONReg/Cluster; then
     # STAR 2.7.10b
     # mem=6g

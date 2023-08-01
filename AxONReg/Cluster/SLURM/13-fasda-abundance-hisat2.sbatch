@@ -25,7 +25,7 @@ hisat2_dir=Results/12-hisat2-align
 abundance_dir=Results/13-fasda-abundance-hisat2
 
 # Need to fetch gff3 for computing abundances
-gff_filename=$(Reference/gff-filename.sh)
+gff_filename=reference.gff3
 reference_dir=Results/07-reference
 
 ##########################################################################
@@ -35,18 +35,6 @@ reference_dir=Results/07-reference
 sample=$(printf "%02d" $SLURM_ARRAY_TASK_ID)
 bam_file=`ls $hisat2_dir/sample$sample-*.bam`
 abundance_file=$abundance_dir/$(basename ${bam_file%.bam}-abundance.tsv)
-
-fasda abundance \
-    --feature-type transcript \
-    --output-dir $abundance_dir \
-    --exact \
-    150 \
-    $reference_dir/$gff_filename \
-    $bam_file
-
-# Rename and then generate a stringtie abundance file with the same name
-head $abundance_file
-mv $abundance_file ${abundance_file%.tsv}-exact.tsv
 
 fasda abundance \
     --feature-type transcript \

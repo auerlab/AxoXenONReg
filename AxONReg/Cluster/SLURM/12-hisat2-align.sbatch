@@ -30,8 +30,8 @@
 #SBATCH --error=Logs/12-hisat2-align/slurm-%A_%a.err
 
 if [ -z "$SLURM_MEM_PER_NODE" ]; then
-    printf "Usage: $0 --mem=X\n"
-    printf "Use ../11-hisat2-index.sh rather than sbatch.\n"
+    printf "Usage: sbatch --mem=X $0\n"
+    printf "Use ../12-hisat2-align.sh rather than sbatch.\n"
     exit 1
 fi
 
@@ -70,23 +70,21 @@ base1=$(basename $zst1)
 base2=$(basename $zst2)
 gzip1=$tmp_dir/${base1%.zst}.gz
 gzip2=$tmp_dir/${base2%.zst}.gz
-
-printf "Recompressing FASTQs in gzip format for hisat2...\n"
-# Use cheap compression level here, since these are removed
-# right after the alignment
-if [ ! -e $gzip1 ]; then
-    zstdcat $zst1 | gzip -1 > $gzip1 &
-fi
-if [ ! -e $gzip2 ]; then
-    zstdcat $zst2 | gzip -1 > $gzip2
-fi
-wait
-
-zstbase=$(basename $zst1)
-bam=${zstbase%-R*}.bam
-threads=$(($SLURM_CPUS_PER_TASK - 1))
+bam=${base1%-R*}.bam
 
 if [ ! -e $bam ]; then
+    printf "Recompressing FASTQs in gzip format for hisat2...\n"
+    # Use cheap compression level here, since these are removed
+    # right after the alignment
+    if [ ! -e $gzip1 ]; then
+	zstdcat $zst1 | gzip -1 > $gzip1 &
+    fi
+    if [ ! -e $gzip2 ]; then
+	zstdcat $zst2 | gzip -1 > $gzip2
+    fi
+    wait
+    
+    threads=$(($SLURM_CPUS_PER_TASK - 1))
     set -x
     hisat2 --threads $threads \
 	--time \

@@ -54,7 +54,7 @@ if [ ! -e $genome.8.ht2 ]; then
     set -x
     
     STAR --runThreadN $SLURM_CPUS_PER_TASK \
-	--limitGenomeGenerateRAM 100000000000 \
+	--limitGenomeGenerateRAM 120000000000 \
 	--runMode genomeGenerate \
 	--genomeDir . \
 	--genomeFastaFiles ../../Results/07-reference/genome-reference.fa \
