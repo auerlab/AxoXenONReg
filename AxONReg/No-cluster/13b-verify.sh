@@ -1,5 +1,6 @@
 #!/bin/sh -e
 
+
 ##########################################################################
 #   Function description:
 #       Pause until user presses return
@@ -13,18 +14,17 @@ pause()
     read junk
 }
 
-cat Logs/12-hisat2-align/*.err | fgrep 'aligned concordantly exactly'
-pause
-
-cat Logs/12-hisat2-align/*.err | fgrep 'overall alignment'
-pause
-
-cmd='ls -l Results/12-hisat2-align'
-printf "Running $cmd...\n"
-pause
-
-$cmd | more
-cmd='more Logs/12-hisat2-align/*.err'
+cmd='more Logs/13-fasda-abundance-hisat2/*.out'
 printf "Running $cmd...\n"
 pause
 $cmd
+
+cmd='more Logs/13-fasda-abundance-hisat2/*.err'
+printf "Running $cmd...\n"
+pause
+$cmd
+
+cmd='head Results/13-fasda-abundance-hisat2/*-abundance.tsv'
+printf "Running $cmd...\n"
+pause
+$cmd | more
