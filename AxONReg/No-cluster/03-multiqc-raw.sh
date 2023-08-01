@@ -5,13 +5,7 @@
 #       Consolidate FastQC reports into one for easy viewing
 #
 #   Dependencies:
-#       Requires raw FastQC results.  Run after *-qc-raw.sbatch.
-#
-#       All necessary tools are assumed to be in PATH.  If this is not
-#       the case, add whatever code is needed here to gain access.
-#       (Adding such code to your .bashrc or other startup script is
-#       generally a bad idea since it's too complicated to support
-#       every program with one environment.)
+#       Requires raw FastQC results.  Run after *-qc-raw.sh.
 #
 #   History:
 #   Date        Name        Modification
@@ -27,6 +21,7 @@ LC_ALL=en_US.UTF-8
 LANG=en_US.utf-8
 export LC_ALL LANG
 
+date=$(date +%Y-%m-%d-%H:%M)
 set -x
 multiqc --outdir Results/03-multiqc-raw Results/02-qc-raw \
-    2>&1 | tee Logs/03-multiqc-raw/multiqc.out
+    2>&1 | tee Logs/03-multiqc-raw/$date.out

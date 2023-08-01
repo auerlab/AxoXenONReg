@@ -1,16 +1,27 @@
 #!/bin/sh -e
 
+##########################################################################
+#   Script description:
+#       Consolidate FastQC reports into one for easy viewing
 #
 #   Dependencies:
-#       Requires raw FastQC results.  Run after *-qc-raw.sbatch.
+#       Requires trimmed FastQC results.  Run after *-trim.sh.
+#
+#   History:
+#   Date        Name        Modification
+#   2023-06     Jason Bacon Begin
+##########################################################################
 
-cd Results/06-multiqc-trimmed
-rm -rf *
-
+##########################################################################
 # multiqc: LC_ALL and LANG must be set to a UTF-8 character set
 # in your environment in order for the click module to function.
-# export LC_ALL=en_US.UTF-8
-cmd="env LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 multiqc ../05-qc-trimmed"
+# export LC_ALL=en_US.UTF8
 
-# Run interactively under SLURM if srun is found, otherwise run directly
-$cmd 2>&1 | tee ../../Logs/06-multiqc-trimmed/multiqc.out
+LC_ALL=en_US.UTF-8
+LANG=en_US.utf-8
+export LC_ALL LANG
+
+date=$(date +%Y-%m-%d-%H:%M)
+set -x
+multiqc --outdir Results/06-multiqc-trimmed Results/05-qc-trimmed \
+    2>&1 | tee Logs/06-multiqc-trimmed/$date.out

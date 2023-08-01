@@ -44,9 +44,9 @@ log_stem=Logs/09-kallisto-quant/$stem
 
 # Document software versions used for publication
 hostname
-uname -a > $log_stem.out
-kallisto version >> $log_stem.out
-pwd >> $log_stem.out
+uname -a
+kallisto version
+pwd
 
 # kallisto only supports gzip compression as of 0.48.0, so use FIFOs
 # feed it raw text
@@ -64,6 +64,5 @@ time kallisto quant \
     --threads=$threads \
     --index=Results/08-kallisto-index/transcriptome-reference.index \
     --output-dir=$out_dir $pipe1 $pipe2
-    >> $log_stem.out 2>> $log_stem.err
     
 rm -f $pipe1 $pipe2

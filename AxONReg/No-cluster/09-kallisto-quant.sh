@@ -7,21 +7,13 @@
 #       https://github.com/andreamrau/OpticRegen_2019
 #
 #   Dependencies:
-#       Requires directory structure.  Run after *-organize.sh.
-#
-#       All necessary tools are assumed to be in PATH.  If this is not
-#       the case, add whatever code is needed here to gain access.
-#       (Adding such code to your .bashrc or other startup script is
-#       generally a bad idea since it's too complicated to support
-#       every program with one environment.)
+#       Requires trimmed reads and kallisto index.  Run after
+#       *-trim.sh and *-kallisto-index.sh.
 #
 #   History:
 #   Date        Name        Modification
 #   2023-06     Jason Bacon Begin
 ##########################################################################
-
-# Debug
-# rm -f Results/09-kallisto-quant/*
 
 # Kallisto multithreading scales fairly well, so more jobs with
 # fewer cores each won't lead to much better performance
@@ -42,4 +34,5 @@ threads_per_job=$(( $hw_threads / $jobs ))
 # Tried GNU parallel and ran into bugs.  Xargs just works.
 printf "Running $jobs jobs with $threads_per_job threads each...\n"
 ls Results/04-trim/*-R1.fastq.zst | \
-    xargs -n 1 -P $jobs Sh/09-kallisto-quant.sh $threads_per_job
+    xargs -n 1 -P $jobs ../../Common/redirect.sh \
+    Sh/09-kallisto-quant.sh $threads_per_job
