@@ -25,4 +25,4 @@ hw_threads=$(../../Common/get-hw-threads.sh)
 jobs=$(($hw_threads / 2))
 # Tried GNU parallel and ran into bugs.  Xargs just works.
 ls Results/04-trim/*.fastq.zst | \
-    xargs -n 1 -P $jobs Sh/05-qc-trimmed.sh
+    xargs -n 1 -P $jobs ../../Common/redirect.sh Sh/05-qc-trimmed.sh

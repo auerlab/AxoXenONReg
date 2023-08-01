@@ -18,5 +18,5 @@ output_log=$log_dir/$base-$date.out
 error_log=$log_dir/$base-$date.err
 
 cmd="$script $@ > $output_log 2> $error_log"
-printf "$cmd\n"
+printf "===> $cmd\n"
 eval $cmd
