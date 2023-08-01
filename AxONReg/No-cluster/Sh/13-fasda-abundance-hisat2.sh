@@ -10,6 +10,7 @@ if [ $# != 1 ]; then
 fi
 
 # Document software versions used for publication
+hostname
 uname -a
 fasda --version
 samtools --version

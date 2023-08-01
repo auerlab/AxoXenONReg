@@ -22,6 +22,7 @@
 hw_threads=$(../../Common/get-hw-threads.sh)
 
 # Document software versions used for publication
+hostname
 uname -a
 hisat2 --version
 samtools --version

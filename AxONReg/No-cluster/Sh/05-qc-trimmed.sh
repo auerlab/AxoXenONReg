@@ -14,6 +14,7 @@ else
     
     log_stem=Logs/05-qc-trimmed/$stem_fastq
     # Document software versions used for publication
+    hostname
     uname -a > $log_stem.out
     fastqc --version >> $log_stem.out
     pwd >> $log_stem.out

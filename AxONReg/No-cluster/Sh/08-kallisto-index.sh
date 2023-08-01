@@ -19,6 +19,7 @@
 ##########################################################################
 
 # Document software versions used for publication
+hostname
 uname -a
 kallisto version
 samtools --version

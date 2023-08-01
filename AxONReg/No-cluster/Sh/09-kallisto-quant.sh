@@ -43,6 +43,7 @@ mkdir -p $out_dir
 log_stem=Logs/09-kallisto-quant/$stem
 
 # Document software versions used for publication
+hostname
 uname -a > $log_stem.out
 kallisto version >> $log_stem.out
 pwd >> $log_stem.out

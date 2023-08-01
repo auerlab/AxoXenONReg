@@ -12,12 +12,11 @@ if [ -e $results ]; then
 else
     printf "Processing $fastq with fastqc...\n"
     
-    log_stem=Logs/02-qc-raw/$stem_fastq
     # Document software versions used for publication
-    uname -a > $log_stem.out
-    fastqc --version >> $log_stem.out
-    pwd >> $log_stem.out
+    hostname
+    uname -a
+    fastqc --version
+    pwd
 
-    xzcat $fastq | fastqc -o Results/02-qc-raw stdin:$stem_fastq \
-	>> $log_stem.out 2>> $log_stem.err
+    xzcat $fastq | fastqc -o Results/02-qc-raw stdin:$stem_fastq
 fi

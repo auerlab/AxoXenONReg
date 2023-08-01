@@ -11,14 +11,11 @@ trimmed2=Results/04-trim/$stem-R2.fastq.zst
 if [ -e $trimmed1 ]; then
     printf "$raw1 + $raw2 already processed.\n"
 else
-    printf "Processing $raw1 + $raw2 with fastq-trim...\n"
-    
-    log_stem=Logs/04-trim/$stem
-
     # Document software versions used for publication
-    uname -a > $log_stem.out
-    fastq-trim --version >> $log_stem.out
-    pwd >> $log_stem.out
+    hostname
+    uname -a
+    fastq-trim --version
+    pwd
 
     adapter=AGATCGGAAGAG
     
@@ -28,6 +25,5 @@ else
     # export GZIP=-1
     set -x
     time fastq-trim --3p-adapter1 $adapter --3p-adapter2 $adapter \
-	--min-qual 24 --polya-min-length 4 $raw1 $trimmed1 $raw2 $trimmed2 \
-	>> $log_stem.out 2>> $log_stem.err
+	--min-qual 24 --polya-min-length 4 $raw1 $trimmed1 $raw2 $trimmed2
 fi

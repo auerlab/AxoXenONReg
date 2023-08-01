@@ -30,16 +30,19 @@ input_file=$2
 
 base=$(basename $input_file | cut -d - -f 1-3)
 
-output_log=Logs/12-hisat2-align/xargs-$base.out
-error_log=Logs/12-hisat2-align/xargs-$base.err
+date=$(date +%Y-%m-%d-%H:%M)
+
+output_log=Logs/12-hisat2-align/xargs-$base-$date.out
+error_log=Logs/12-hisat2-align/xargs-$base-$date.err
 
 ##############################################################################
 # Align with hisat2, which can handle splice junctions in RNA reads
 
 # Document software versions used for publication
-uname -a > $output_log
-hisat2 --version > $output_log
-pwd > $output_log
+hostname >> $output_log
+uname -a >> $output_log
+hisat2 --version >> $output_log
+pwd >> $output_log
 
 # Hisat2 index has the same name as the genome reference
 index=genome-reference.fa
@@ -77,7 +80,7 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 2> $error_log | samtools sort -o $bam 2> $error_log
+    -1 $gzip1 -2 $gzip2 2>> $error_log | samtools sort -o $bam 2>> $error_log
 
 # No further need for the non-zstd
 # rm -f $gzip1 $gzip2

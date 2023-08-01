@@ -5,6 +5,7 @@
 #       Requires kallisto abundances.  Run after *-kallisto-quant.sbatch.
 
 # Document software versions used for publication
+hostname
 uname -a
 fasda --version
 pwd
