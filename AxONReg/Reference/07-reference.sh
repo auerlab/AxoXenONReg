@@ -52,6 +52,7 @@ if [ ! -e $gtf ]; then
 else
     printf "$gtf already exists.\n"
 fi
+ln -sf $gtf reference.gtf
 
 ##########################################################################
 #   GFF
@@ -66,6 +67,7 @@ if [ ! -e $gff ]; then
 else
     printf "$gff already exists.\n"
 fi
+ln -sf $gff reference.gff3
 
 ##########################################################################
 #   Genome
