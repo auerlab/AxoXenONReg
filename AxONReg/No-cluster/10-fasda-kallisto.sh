@@ -16,8 +16,5 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-if which sbatch; then
-    sbatch SLURM/10-fasda-kallisto.sbatch
-else
-    Sh/10-fasda-kallisto.sh
-fi
+date=$(date +%Y-%m-%d-%H:%M)
+Sh/10-fasda-kallisto.sh 2>&1 | tee Logs/10-fasda-kallisto/$date.out

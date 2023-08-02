@@ -1,0 +1,1 @@
+../../Common/check-submitted.sh
