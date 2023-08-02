@@ -19,4 +19,5 @@ hw_threads=$(../../Common/get-hw-threads.sh)
 jobs=$(($hw_threads / 2))
 # Tried GNU parallel and ran into bugs.  Xargs just works.
 ls Results/12-hisat2-align/*.bam | \
-    xargs -n 1 -P $jobs Sh/13-fasda-abundance-hisat2.sh
+    xargs -n 1 -P $jobs ../../Common/redirect.sh \
+    Sh/13-fasda-abundance-hisat2.sh

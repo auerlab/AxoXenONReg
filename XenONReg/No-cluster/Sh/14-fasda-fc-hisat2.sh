@@ -1,0 +1,1 @@
+../../../AxONReg/No-cluster/Sh/14-fasda-fc-hisat2.sh
