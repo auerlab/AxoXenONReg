@@ -137,6 +137,13 @@
 ClientAliveInterval 30
 ClientAliveCountMax 0
             </screen>
+            
+            <para>
+            You may prefer to enable remote access via "Screen Sharing".
+            Enable VNC under the Screen Sharing options to enable access
+            from non-Macs.  Unlike SSH, programs run under Screen Sharing
+            will not be terminated if you are disconnected for any reason.
+            </para>
         </section>
     </section>
     
