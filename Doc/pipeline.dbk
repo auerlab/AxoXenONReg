@@ -144,6 +144,13 @@ ClientAliveCountMax 0
         <title>Software Installation</title>
         
         <para>
+        All commands needed for this analysis are assumed to be in your
+        PATH.  If programs are installed in non-standard directories, you
+        will need to update your PATH (e.g. by loading an environment module
+        if they are used at your site).
+        </para>
+        
+        <para>
         All programs necessary for this pipeline can be installed on
         FreeBSD using <command>pkg install rna-seq</command>.
         </para>
@@ -156,6 +163,16 @@ ClientAliveCountMax 0
         Pkgsrc does not require administrator privileges, so it can
         be used on computers managed by your organization without
         submitting help requests.
+        </para>
+        
+        <para>
+        The FreeBSD port and pkgsrc package install all tools to the
+        same directory structure, following the
+        <ulink url="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">filesystem hierarchy standard</ulink>.
+        Hence, you need only add 1 directory to your PATH at most to
+        gain access to all of the software.  The FreeBSD port installs
+        under <filename>/usr/local</filename>, which is already part of
+        the standard PATH, so no adjustments are necessary on FreeBSD.
         </para>
         
         <para>
