@@ -12,6 +12,8 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
+# FIXME: Check sufficient RAM (80 GB)
+
 # If not running under SLURM, use all available cores
 hw_threads=$(../../Common/get-hw-threads.sh)
 
@@ -35,7 +37,7 @@ if [ ! -e $genome.8.ht2 ]; then
     # as a -p equivalent
     cd Results/11-hisat2-index
     set -x
-    hisat2-build -p $SLURM_CPUS_PER_TASK $genome $genome
+    hisat2-build -p $hw_threads $genome $genome
 fi
 if [ ! -e $genome.fai ]; then
     printf "Building $genome.fai...\n"
