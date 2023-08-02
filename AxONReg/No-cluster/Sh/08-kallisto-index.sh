@@ -21,6 +21,7 @@ samtools --version
 pwd
 
 ref_dir=Results/07-reference
+index_dir=Results/08-kallisto-index
 transcriptome=transcriptome-reference.fa
 printf "Using reference $transcriptome...\n"
 
@@ -30,12 +31,12 @@ if [ ! -e $ref_dir/$transcriptome.fai ]; then
     samtools faidx $ref_dir/$transcriptome
 fi
 
-index=Results/08-kallisto-index/${transcriptome%.fa}.index
+index=$index_dir/${transcriptome%.fa}.index
 if [ ! -e $index ]; then
+    threads=$(../../Common/get-hw-threads.sh)
     printf "Building kallisto index...\n"
     set -x
-    kallisto index --index=Results/08-kallisto-index/$index \
-	$ref_dir/$transcriptome
+    kallisto index --threads=$threads --index=$index $ref_dir/$transcriptome
 else
     printf "$index already exists.  Remove it and run again to recreate.\n"
 fi

@@ -22,6 +22,7 @@
 # Run a sample job and monitor closely in "top" or rununder a tool that
 # reports maximum memory use.
 #SBATCH --mem=4g
+#SBATCH --cpus-per-task=16
 #SBATCH --output=Logs/08-kallisto-index/slurm-%A.out
 #SBATCH --error=Logs/08-kallisto-index/slurm-%A.err
 
@@ -49,4 +50,5 @@ fi
 
 printf "Building kallisto index...\n"
 set -x
-kallisto index --index=Results/08-kallisto-index/$index $ref_dir/$transcriptome
+kallisto index --threads=$SLURM_CPUS_PER_TASK \
+    --index=Results/08-kallisto-index/$index $ref_dir/$transcriptome

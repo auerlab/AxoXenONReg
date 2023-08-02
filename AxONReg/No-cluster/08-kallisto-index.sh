@@ -3,8 +3,6 @@
 ##########################################################################
 #   Script description:
 #       Run quality checks on raw and trimmed data for comparison
-#       Based on work of Dr. Andrea Rau:
-#       https://github.com/andreamrau/OpticRegen_2019
 #
 #   Dependencies:
 #       Requires trimmed reads and reference transcriptome.
