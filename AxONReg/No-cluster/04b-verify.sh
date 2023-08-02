@@ -1,8 +1,8 @@
 #!/bin/sh -e
 
 ##########################################################################
-#   Function description:
-#       Pause until user presses return
+#   Example verification script.  Edit to add additional checks or
+#   tune the existing checks to your personal taste.
 ##########################################################################
 
 pause()
