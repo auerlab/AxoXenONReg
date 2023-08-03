@@ -12,5 +12,6 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
+# This script exists only to redirect the output of Sh/14-fasda-fc-hisat2.
 date=$(date +%Y-%m-%d-%H:%M)
 Sh/14-fasda-fc-hisat2.sh 2>&1 | tee Logs/14-fasda-fc-hisat2/$date.out

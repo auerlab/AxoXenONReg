@@ -1,15 +1,13 @@
 #!/bin/sh -e
 
-# From Ava email: https://www.axolotl-omics.org/
-# "file" command revealed name within gzip data to use with --output
-# Firefox "save link as" comes up with .zip, which is wrong.  Should be .gz.
-
-# Memory requirements can only be determined by trial and error.
-# Run a sample job and monitor closely in "top" or rununder a tool that
-# reports maximum memory use.
-
-gtf=AmexT_v47-AmexG_v6.0-DD.gtf
-gff=AmexT_v47-AmexG_v6.0-DD.gff3
+##########################################################################
+#   Description:
+#       Download/build genome and transcriptome references.
+#       
+#   History:
+#   Date        Name        Modification
+#   2023-06     Jason Bacon Begin
+##########################################################################
 
 cd Results/07-reference
 
@@ -44,6 +42,7 @@ ln -sf $dna transcriptome-reference.fa
 #   GTF
 ##########################################################################
 
+gtf=AmexT_v47-AmexG_v6.0-DD.gtf
 if [ ! -e $gtf ]; then
     curl --continue-at - --remote-name \
 	https://www.axolotl-omics.org/dl/$gtf.gz
@@ -58,6 +57,7 @@ ln -sf $gtf reference.gtf
 #   GFF
 ##########################################################################
 
+gff=AmexT_v47-AmexG_v6.0-DD.gff3
 if [ ! -e $gff ]; then
     whole_gff=${gtf%.gtf}.gff3
     printf "Converting $gtf to $whole_gff...\n"

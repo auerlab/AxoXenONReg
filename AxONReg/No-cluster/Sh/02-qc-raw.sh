@@ -1,6 +1,28 @@
 #!/bin/sh -e
 
-# Raw files from sequencing center
+##########################################################################
+#   Script description:
+#       Run quality checks on one raw data file.
+#
+#   History:
+#   Date        Name        Modification
+#   2023-06     Jason Bacon Begin
+##########################################################################
+
+usage()
+{
+    printf "Usage: $0 raw-file.fastq\n"
+    exit 1
+}
+
+
+##########################################################################
+#   Main
+##########################################################################
+
+if [ $# != 0 ]; then
+    usage
+fi
 fastq=$1
 
 # Filename stems for fastqc output

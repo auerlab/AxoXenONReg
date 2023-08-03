@@ -12,9 +12,6 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-# FIXME: Check sufficient RAM (80 GB)
-
-# If not running under SLURM, use all available cores
 hw_threads=$(../../Common/get-hw-threads.sh)
 
 # Document software versions used for publication

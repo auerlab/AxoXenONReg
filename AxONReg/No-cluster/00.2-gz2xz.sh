@@ -39,4 +39,5 @@ hw_threads=$(../Common/get-hw-threads.sh)
 jobs=$hw_threads    # gunzip takes almost nothing
 
 # Tried GNU parallel and ran into bugs.  Xargs just works.
-ls Raw/*/*.fq.gz | xargs -n 1 -P $jobs Sh/00.2-gz2xz.sh
+ls Raw/*/*.fq.gz | ../../Common/redirect.sh \
+    xargs -n 1 -P $jobs Sh/00.2-gz2xz.sh

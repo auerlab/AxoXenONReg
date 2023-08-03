@@ -12,4 +12,6 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-Sh/07-reference.sh 2>&1 | tee Logs/07-reference/07-reference.out
+# This script exists only to redirect the output of Sh/07-reference.sh
+date=$(date +%Y-%m-%d-%H:%M)
+Sh/07-reference.sh 2>&1 | tee Logs/07-reference/$date.out

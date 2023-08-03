@@ -1,13 +1,29 @@
 #!/bin/sh -e
 
-#
-#   Dependencies:
-#       Requires hisat2 alignments.  Run after *-hisat2-align.sbatch.
+##########################################################################
+#   Description:
+#       Compute abundances from hisat2 alignments for one condition.
+#       
+#   History:
+#   Date        Name        Modification
+#   2023-06     Jason Bacon Begin
+##########################################################################
+
+usage()
+{
+    printf "Usage: $0\n"
+    exit 1
+}
+
+##########################################################################
+#   Main
+##########################################################################
 
 if [ $# != 1 ]; then
     printf "Usage: $0 bam-file\n"
     exit 1
 fi
+bam_file=$1
 
 # Document software versions used for publication
 hostname
@@ -26,7 +42,6 @@ reference_dir=Results/07-reference
 #   Compute abundances
 ##########################################################################
 
-bam_file=$1
 abundance_file=$abundance_dir/$(basename ${bam_file%.bam}-abundance.tsv)
 
 fasda abundance \

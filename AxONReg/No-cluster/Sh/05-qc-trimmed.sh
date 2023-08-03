@@ -1,6 +1,28 @@
 #!/bin/sh -e
 
-# Trimmed files
+##########################################################################
+#   Description:
+#       Perform quality checks on one trimmed fastq file.
+#       
+#   History:
+#   Date        Name        Modification
+#   2023-06     Jason Bacon Begin
+##########################################################################
+
+usage()
+{
+    printf "Usage: $0 trimmed-file.fastq\n"
+    exit 1
+}
+
+
+##########################################################################
+#   Main
+##########################################################################
+
+if [ $# != 0 ]; then
+    usage
+fi
 fastq=$1
 
 # Filename stems for fastqc output

@@ -1,8 +1,13 @@
 #!/bin/sh -e
 
-#
-#   Dependencies:
-#       Requires kallisto abundances.  Run after *-kallisto-quant.sbatch.
+##########################################################################
+#   Description:
+#       Compute fold-changes and P-values for kallisto abundances.
+#       
+#   History:
+#   Date        Name        Modification
+#   2023-06     Jason Bacon Begin
+##########################################################################
 
 # Document software versions used for publication
 hostname
