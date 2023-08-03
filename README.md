@@ -32,6 +32,11 @@ Then simple run the scripts in order, e.g.
 ./04-trim.sh
 ./04b-verify.sh
 
+Under No-cluster, these scripts will run as many parallel jobs as possible
+using the Unix xargs utility.
+
+Under Cluster, these scripts will submit a SLURM job.
+
 Note that there are example checkpoint scripts provided in *b-verify.sh.
 These are meant mainly to remind you where you should stop and examine
 the results of the stages so far.  They do not perform exhaustive
