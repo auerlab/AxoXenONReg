@@ -21,4 +21,22 @@ Based on the work of Dr. Andrea Rau:
 The scripts in this pipeline are meant to serve as an example of a
 basic RNA-Seq analysis.
 
+To run the analysis, cd into Species/No-cluster if you are not using an HPC
+cluster, or into Species/Cluster if you are using a SLURM HPC cluster.
+Then simple run the scripts in order, e.g.
+
+./01-organize.sh
+./02-qc-raw.sh
+./03-multiqc-raw.sh
+./03b-verify.sh
+./04-trim.sh
+./04b-verify.sh
+
+Note that there are example checkpoint scripts provided in *b-verify.sh.
+These are meant mainly to remind you where you should stop and examine
+the results of the stages so far.  They do not perform exhaustive
+verification, but only provide a quick example summary of the results.
+Closer examination of output files may be necessary to ensure that you
+are ready to proceed to the next stage.
+
 See Doc/pipeline.pdf for a detailed description of each stage.
