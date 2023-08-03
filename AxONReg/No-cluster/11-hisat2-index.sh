@@ -2,10 +2,11 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw and trimmed data for comparison
+#       Generate hisat2 genome reference index.
 #
 #   Dependencies:
-#       Requires directory structure.  Run after *-organize.sh.
+#       Requires genome reference.  Run after *-reference.sh.
+#       For axolotl, requires nearly 80 GB RAM.
 #
 #   History:
 #   Date        Name        Modification

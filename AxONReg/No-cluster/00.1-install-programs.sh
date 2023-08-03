@@ -1,13 +1,17 @@
 #!/bin/sh -e
 
 ##########################################################################
-#   Run before all other scripts on supported platforms.
-#   Must be run by a systems manager.
+#   Description:
+#       Install all software tools needed by this pipelin via FreeBSD
+#       ports or pkgsrc.
+#
+#   Prerequisites:
+#       Run before all other scripts on supported platforms.
+#       Must be run by a systems manager.
 ##########################################################################
 
 case $(uname) in
 FreeBSD)
-    # Install ports on all compute nodes
     printf "Root "
     su -m root -c 'pkg install -y rna-seq'
     ;;

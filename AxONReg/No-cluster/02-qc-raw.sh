@@ -2,7 +2,7 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw data for comparison
+#       Run quality checks on raw data.
 #
 #   Dependencies:
 #       Requires directory structure.  Run after *-organize.sh.

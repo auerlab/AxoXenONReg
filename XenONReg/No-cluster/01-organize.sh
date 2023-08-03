@@ -24,21 +24,6 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-usage()
-{
-    printf "Usage: $0\n"
-    exit 1
-}
-
-
-##########################################################################
-#   Main
-##########################################################################
-
-if [ $# != 0 ]; then
-    usage
-fi
-
 mkdir -p Results Logs
 scripts=$(ls 0[2-9]-* 1[0-9]-*)
 for script in $scripts; do
@@ -49,7 +34,12 @@ done
 ##############################################################################
 # RNA-Seq:
 #
-#   Explain sequence file naming here
+#   Examples of raw file naming:
+#
+#   A16Na1  = Axolotl sample 16 naive       replicate 1
+#   A2450h3 = Axolotl sample 24 50 hours    replicate 3
+#   X13d27A = Xenopus sample 13 27 days     replicate 1
+#   X14d27B = Xenopus sample 14 27 days     replicate 2
 ##############################################################################
 
 cd Results
@@ -92,7 +82,7 @@ for path in ../../../../Raw/*/*.fq.xz; do
     # Reduce time points to ranks to simplify analysis and allow
     # sharing scripts between axolotl and xenopus.  It can easily
     # be converted back at any time.
-    # 0 26 50 55 120
+    # Time offsets: 0 (naive) 26 50 55 120
     case $day in
     0)
 	time=1

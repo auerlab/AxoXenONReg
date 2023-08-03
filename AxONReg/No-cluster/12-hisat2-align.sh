@@ -2,10 +2,11 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw and trimmed data for comparison
+#       Use hisat2 to align reads to a genome reference.
 #
 #   Dependencies:
-#       Requires directory structure.  Run after *-organize.sh.
+#       Requires trimmed reads and a reference genome.  Run after
+#       *-trim.sh and *-reference.sh.
 #
 #   History:
 #   Date        Name        Modification

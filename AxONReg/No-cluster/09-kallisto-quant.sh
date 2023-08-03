@@ -2,7 +2,7 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw and trimmed data for comparison
+#       Perform kallisto pseudo-alignments.
 #
 #   Dependencies:
 #       Requires trimmed reads and kallisto index.  Run after

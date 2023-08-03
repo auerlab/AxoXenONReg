@@ -2,7 +2,7 @@
 
 ##########################################################################
 #   Script description:
-#       Run quality checks on raw and trimmed data for comparison
+#       Build kallisto transcriptome index.
 #
 #   Dependencies:
 #       Requires trimmed reads and reference transcriptome.
