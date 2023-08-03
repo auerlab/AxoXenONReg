@@ -16,6 +16,9 @@ pause()
 cat Logs/12-hisat2-align/*.err | fgrep 'aligned concordantly exactly'
 pause
 
+cat Logs/12-hisat2-align/*.err | fgrep 'aligned concordantly >'
+pause
+
 cat Logs/12-hisat2-align/*.err | fgrep 'overall alignment'
 pause
 

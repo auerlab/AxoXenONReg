@@ -1,0 +1,63 @@
+
+Kallisto pseudoalignment rates are lower than Hisat2.  This might be due
+to the fact that Kallisto aligns to a transcriptome while hisat2 aligns
+to a genome, and many reads originated from either unknown transcripts,
+introns, or intergenic regions.
+
+Kallisto's p_unique (percent mapped to exactly one target) is also low.
+Perhaps due to redundancy in the genome?
+
+
+Axolotl
+-------
+
+Kallisto:
+
+    "n_targets": 181985,
+    "n_processed": 55397096,
+    "n_pseudoaligned": 47181163,
+    "n_unique": 12306412,
+    "p_pseudoaligned": 85.2,            # Percent of reads pseudoaligned
+    "p_unique": 22.2,                   # Percent aligned to 1 target only
+    "kallisto_version": "0.50.0",
+
+Hisat2:
+
+    46531420 (84.00%) aligned concordantly exactly 1 time
+    3624040 (6.54%) aligned concordantly >1 times
+    95.02% overall alignment rate
+
+STAR:
+
+    I was unable to run the STAR aligner due to its extreme memory
+    requirements.  128 GiB RAM (the most on any of my cluster nodes)
+    was not enough to build the index.
+    
+    I looked into using UWM HPC resources, but they're in bad shape.
+    Some are running antiquated operating systems on which it is difficult
+    to install modern tools, while others with a newer OS are misconfigured
+    so that we do not have access to all available RAM.
+
+
+Xenopus
+-------
+
+Kallisto:
+
+    "n_targets": 72076,
+    "n_processed": 57813496,
+    "n_pseudoaligned": 36006458,
+    "n_unique": 32836635,
+    "p_pseudoaligned": 62.3,            # Percent of reads pseudoaligned
+    "p_unique": 56.8,                   # Percent aligned to 1 target only
+    "kallisto_version": "0.50.0",
+
+Hisat2:
+
+    47136193 (81.53%) aligned concordantly exactly 1 time
+    2481331 (4.29%) aligned concordantly >1 times
+    92.02% overall alignment rate
+
+STAR:
+
+    Have not tried yet.
