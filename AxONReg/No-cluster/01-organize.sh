@@ -24,21 +24,6 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-usage()
-{
-    printf "Usage: $0\n"
-    exit 1
-}
-
-
-##########################################################################
-#   Main
-##########################################################################
-
-if [ $# != 0 ]; then
-    usage
-fi
-
 mkdir -p Results Logs
 scripts=$(ls 0[2-9]*.sh 1[0-9]*.sh)
 for script in $scripts; do
@@ -49,7 +34,10 @@ done
 ##############################################################################
 # RNA-Seq:
 #
-#   Explain sequence file naming here
+#   Examples of raw file naming:
+#
+#   A16Na1  = Axolotl sample 16 naive       replicate 1
+#   A2450h3 = Axolotl sample 24 50 hours    replicate 3
 ##############################################################################
 
 cd Results

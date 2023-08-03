@@ -36,8 +36,6 @@ done
 #
 #   Examples of raw file naming:
 #
-#   A16Na1  = Axolotl sample 16 naive       replicate 1
-#   A2450h3 = Axolotl sample 24 50 hours    replicate 3
 #   X13d27A = Xenopus sample 13 27 days     replicate 1
 #   X14d27B = Xenopus sample 14 27 days     replicate 2
 ##############################################################################
