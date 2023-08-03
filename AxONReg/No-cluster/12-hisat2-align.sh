@@ -20,7 +20,7 @@ hw_gib=$(( $hw_mem / 1024 / 1024 / 1024 ))
 # For xenopus, hisat2 jobs take about 4.3 GB
 # For axolotl, quite a bit more
 if pwd | fgrep XenONReg; then
-    jobs=$(( $hw_gib / 5 ))
+    jobs=$(( $hw_gib / 6 ))
 else
     jobs=$(( $hw_gib / 20 ))
 fi
