@@ -31,7 +31,9 @@ done
 threads_per_job=$(( $hw_threads / $jobs ))
 
 # Use at least 4 thread per job, since the jobs will run almost 4 times
-# as fast, and fewer jobs means less disk contention.
+# as fast, and fewer jobs means less disk contention.  If CPU utilization
+# is less than 90% per core (360% for a 4-thread job), you probably have
+# too much disk contention.
 if [ $threads_per_job -lt 4 ]; then
     threads_per_job=4
     jobs=$(( $hw_threads / $threads_per_job ))

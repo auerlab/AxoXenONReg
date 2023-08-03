@@ -19,7 +19,7 @@ pause
 cat Logs/12-hisat2-align/*.err | fgrep 'overall alignment'
 pause
 
-cmd='ls -l Results/12-hisat2-align'
+cmd='ls -lh Results/12-hisat2-align'
 printf "Running $cmd...\n"
 pause
 

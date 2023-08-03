@@ -23,8 +23,18 @@ if pwd | fgrep XenONReg; then
 else
     jobs=$(( $hw_gib / 20 ))
 fi
-threads=$(( $hw_threads / $jobs ))
+threads_per_job=$(( $hw_threads / $jobs ))
+
+# Use at least 4 thread per job, since the jobs will run almost 4 times
+# as fast, and fewer jobs means less disk contention.  If CPU utilization
+# is less than 90% per core (360% for a 4-thread job), you probably have
+# too much disk contention and need to reduce the number of jobs.
+if [ $threads_per_job -lt 4 ]; then
+    threads_per_job=4
+    jobs=$(( $hw_threads / $threads_per_job ))
+fi
 
 # Tried GNU parallel and ran into bugs.  Xargs just works.
 ls Results/04-trim/*-R1.fastq.zst | \
-    xargs -n 1 -P $jobs Sh/12-hisat2-align.sh $threads
+    xargs -n 1 -P $jobs ../../Common/redirect.sh \
+    Sh/12-hisat2-align.sh $threads_per_job

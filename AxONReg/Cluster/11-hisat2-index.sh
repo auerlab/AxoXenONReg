@@ -25,7 +25,7 @@ if pwd | grep AxoXenOnReg/AxONReg/Cluster; then
     mem=80g
 elif pwd | grep AxoXenOnReg/XenONReg/Cluster; then
     # hisat2 2.2.1
-    mem=6g
+    mem=8g
 else
     cat << EOM
 

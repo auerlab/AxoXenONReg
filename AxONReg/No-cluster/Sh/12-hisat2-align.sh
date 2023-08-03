@@ -39,10 +39,10 @@ error_log=Logs/12-hisat2-align/xargs-$base-$date.err
 # Align with hisat2, which can handle splice junctions in RNA reads
 
 # Document software versions used for publication
-hostname >> $output_log
-uname -a >> $output_log
-hisat2 --version >> $output_log
-pwd >> $output_log
+hostname
+uname -a
+hisat2 --version
+pwd
 
 # Hisat2 index has the same name as the genome reference
 index=genome-reference.fa
@@ -80,11 +80,11 @@ hisat2 --threads $threads \
     --time \
     --met-stderr \
     -x ../11-hisat2-index/$index \
-    -1 $gzip1 -2 $gzip2 2>> $error_log | samtools sort -o $bam 2>> $error_log
+    -1 $gzip1 -2 $gzip2 | samtools sort -o $bam
 
 # No further need for the non-zstd
 # rm -f $gzip1 $gzip2
 
 # Not sure how helpful multithreading is here, but since we allocated
 # the cores for hisat2, might as well use them
-samtools index -c -@ $threads $bam >> $output_log 2>> $error_log
+samtools index -c -@ $threads $bam
