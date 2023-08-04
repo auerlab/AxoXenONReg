@@ -16,7 +16,7 @@ if [ $# != 1 ]; then
     printf "Usage: $0 file-R1.fastq\n"
     exit 1
 fi
-reads_file1=$(echo $1 | sed -e 's|Results/|../|')
+reads_file1=$(echo $1 | sed -e 's|Results/|../../|')
 reads_file2=${reads_file1%-R1.fastq.zst}-R2.fastq.zst
 base=$(basename $reads_file1)
 sample=$(echo $base | cut -d - -f 1)
@@ -31,7 +31,8 @@ pwd
 
 # FIXME: Do this in *-reference.sbatch
 printf "Running STAR aligner...\n"
-cd Results/12-star-align
+mkdir -p Results/12-star-align/$sample
+cd Results/12-star-align/$sample
 set -x
 
 # Perhaps after configuring shared memory settings on nodes
@@ -39,8 +40,7 @@ set -x
 
 STAR \
     --runThreadN 1 \
-    --genomeDir ../11-star-index \
+    --genomeDir ../../11-star-index \
     --readFilesIn $reads_file1 $reads_file2 \
-    --readFilesCommand zstdcat \
-    --outTmpDir tmpdir.$sample
+    --readFilesCommand zstdcat
 ls -l
