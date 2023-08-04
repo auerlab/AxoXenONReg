@@ -25,7 +25,8 @@ if pwd | grep AxoXenOnReg/AxONReg/Cluster; then
     mem=120g
 elif pwd | grep AxoXenOnReg/XenONReg/Cluster; then
     # STAR 2.7.10b
-    # mem=6g
+    # FIXME: Only a guess
+    mem=120g
 else
     cat << EOM
 

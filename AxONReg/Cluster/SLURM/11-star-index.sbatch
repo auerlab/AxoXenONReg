@@ -19,13 +19,13 @@
 ##########################################################################
 
 # Highest memory use observed was 78 G resident, 120 virtual for axolotl
-#SBATCH --output=Logs/11-hisat2-index/slurm-%A.out
-#SBATCH --error=Logs/11-hisat2-index/slurm-%A.err
+#SBATCH --output=Logs/11-star-index/slurm-%A.out
+#SBATCH --error=Logs/11-star-index/slurm-%A.err
 #SBATCH --cpus-per-task=16
 
 if [ -z "$SLURM_MEM_PER_NODE" ]; then
     printf "Usage: $0 --mem=X\n"
-    printf "Use ../11-hisat2-index.sh rather than sbatch.\n"
+    printf "Use ../11-star-index.sh rather than sbatch.\n"
     exit 1
 fi
 
@@ -41,7 +41,7 @@ STAR --version
 samtools --version
 pwd
 
-# Run hisat2-build on a copy in 11-hisat2-index so it will put the .ht2
+# Run STAR genomeGenerate on a copy in 11-hisat2-index so it will put the .ht2
 # files there
 genome=genome-reference.fa
 ln -f Results/07-reference/$genome Results/11-star-index
