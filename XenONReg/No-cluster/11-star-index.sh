@@ -1,0 +1,1 @@
+../../AxONReg/No-cluster/11-star-index.sh

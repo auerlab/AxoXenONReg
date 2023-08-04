@@ -22,5 +22,5 @@ if pwd | fgrep -q AxoXenOnReg/AxONReg && [ $mem_gb -lt 80 ]; then
 fi
 
 # This script exists only to redirect the output of Sh/11-hisat2-index.sh.
-Sh/11-hisat2-index.sh \
-    2>&1 | tee Logs/11-hisat2-index/hisat2-index.out
+date=$(date +%Y-%m-%d-%H:%M)
+Sh/11-hisat2-index.sh 2>&1 | tee Logs/11-hisat2-index/$date.out
