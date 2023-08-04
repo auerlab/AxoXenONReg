@@ -24,7 +24,7 @@ fi
 mem=$(../../Common/get-hw-mem.sh)
 mem_gb=$(( $mem / 1024 / 1024 / 1024 ))
 if pwd | fgrep -q AxoXenOnReg/AxONReg && [ $mem_gb -lt $mem_required ]; then
-    printf "You have only $mem_gb GiB RAM and you need $mem_required for axolotl.\n"
+    printf "You have only $mem_gb GiB RAM and you need $mem_required.\n"
     exit 1
 fi
 
