@@ -21,10 +21,21 @@
         
         <para>
         A major goal of my research is to make DE analysis accessible to
-        a broader population of research biologists.
-        Only basic Unix command-line and shell
-        scripting skills are necessary.  No Perl, Python, or R programming is
-        required to use this pipeline or adapt it to other studies.
+        a broader population of research biologists.  Most open source
+        bioinformatics software is designed to run on Unix-compatible
+        systems, and most only offers and command-line interface
+        (as opposed to a graphical user interface (GUI) or other menu-based
+        interface).  Hence, bioinformaticians must know how to use the
+        Unix command-line at minimum.
+        </para>
+        
+        <para>
+        Some software requires the user to develop and maintain other
+        skills as well, such as R (statistical language) programming.
+        For this pipeline and the tools that comprise it, only basic
+        Unix command-line skills are necessary.  No Perl, Python, or R
+        programming is required to use this pipeline or adapt it to
+        other studies.
         </para>
     </section>
     
@@ -46,7 +57,7 @@
             such as de novo genome assembly, but most bioinformatics can be
             done on modern laptops and workstations.
             </para>
-            
+
             <para>
             This repository contains both SLURM scheduler scripts for running
             on a cluster and scripts for running on a standalone Unix machine
@@ -54,6 +65,60 @@
             <command>xargs</command> scripts are tested primarily on a Mac
             Mini m1.
             </para>
+        </section>
+            
+        <section>
+            <title>Mac</title>
+            
+            <para>
+            Apple's operating system, macOS, has been Unix compatible
+            since the release of macOS X (macOS 10) in 2001.  MacOS 10
+            is derived largely from FreeBSD and some earlier BSD
+            systems, which have ties to the original Unix system
+            created by AT&amp;T.
+            A Mac is the most realistic option for many biologists, for
+            several reasons:
+            </para>
+            
+            <itemizedlist>
+                <listitem>
+                <para>
+                A Mac is the easiest Unix-compatible system for the
+                average person to maintain.
+                </para>
+                </listitem>
+                
+                <listitem>
+                <para>
+                Mac is the Unix system most likely to be well-supported by
+                central I.T. departments.  If your computer will be owned
+                and managed by your organization, you will probably get
+                better support for a Mac than for any other Unix-like
+                system.
+                </para>
+                </listitem>
+                
+                <listitem>
+                <para>
+                Mac is the only Unix system that runs a wide variety
+                of common commercial software, such as MS Office, etc.
+                Hence, you won't need two computers or virtual machines
+                to run both commercial products and open source
+                bioinformatics software.
+                </para>
+                </listitem>
+                
+                <listitem>
+                <para>
+                "Apple Silicon", Apple's ARM processor based systems
+                are extremely fast and power-efficient compared to most PC
+                hardware.  An x86 (Intel or AMD) base PC comparable to a
+                high-end Mac Studio would be very noisy due to
+                the need for powerful cooling fans.  You wouldn't want
+                one in your office while it's running a large analysis.
+                </para>
+                </listitem>
+            </itemizedlist>
             
             <para>
             Apple silicon (Apple's ARM-based system with unified memory
@@ -79,45 +144,6 @@
             end up taking days as the system "thrashes", frantically
             moving data in and out of swap space on the disk.
             </note>
-            
-            <para>
-            A PC running a POSIX OS such as BSD or Linux will be cheaper
-            and more upgradable, and can house more internal disk storage.
-            My personal choice is FreeBSD with at least 2 disks configured
-            as a ZFS RAID.  The FreeBSD installer makes it trivial to
-            configure ZFS RAIDs and boot from them directly.  The
-            desktop-installer
-            (<ulink url="https://acadix.biz/desktop-installer.php">https://acadix.biz/desktop-installer.php</ulink>)
-            package makes it easy to set up a graphical
-            desktop environment of your choice.
-            Also, on FreeBSD, all the software needed for this pipeline can be
-            installed by running <command>pkg install rna-seq</command>.
-            See "Software Installation" below for more information.
-            </para>
-        </section>
-        
-        <section>
-            <title>Virtual Machines including Cloud Services</title>
-            
-            <para>
-            Virtual machines may be more convenient for some users,
-            depending on available I.T. support, funding model, etc.
-            </para>
-            
-            <para>
-            Note that virtualized network interfaces and storage,
-            including those used by Amazon EC2, Google Cloud Platform,
-            Microsoft Azure, and other cloud-based computing platforms,
-            will not perform nearly as well as "bare metal".  Only the
-            CPU and memory should be expected to match the performance
-            of real hardware, because these are the only components
-            that typically don't use any software emulation on top of
-            the actual hardware.  However, this performance hit
-            may be an acceptable price to pay to be free from the need
-            to maintain your own hardware.  Look for a platform that
-            is fast enough to complete your analysis, not necessarily
-            the fastest possible.
-            </para>
         </section>
         
         <section>
@@ -145,9 +171,80 @@ ClientAliveCountMax 0
             will not be terminated if you are disconnected for any reason.
             </para>
         </section>
+        
+        <section>
+            <title>Open Source Unix</title>
+            
+            <para>
+            There are multiple BSD and Linux operating systems suitable
+            for bioinformatics analysis.  If you are tech-savvy enough
+            to manage your own Unix system, you can get probably get
+            by with a used PC for as little as $500.  You'll want
+            something with at least 8 cores and 128 GiB RAM, as mentioned
+            in the Mac section above.
+            </para>
+            
+            <para>
+            A PC running a POSIX OS such as BSD or Linux will be cheaper
+            and more upgradable, and can house more internal disk storage.
+            My personal choice is FreeBSD with at least 2 disks configured
+            as a ZFS RAID.  The FreeBSD installer makes it trivial to
+            configure ZFS RAIDs and boot from them directly.  The
+            desktop-installer
+            (<ulink url="https://acadix.biz/desktop-installer.php">https://acadix.biz/desktop-installer.php</ulink>)
+            package makes it easy to set up a graphical
+            desktop environment of your choice.
+            Also, on FreeBSD, all the software needed for this pipeline can be
+            installed by running <command>pkg install rna-seq</command>.
+            See <xref linkend="software-installation"/> for more information.
+            </para>
+            
+            <para>
+            GhostBSD is a FreeBSD derivative with a fully graphical
+            installer and management tools, similar to Debian and
+            Ubuntu Linux.  GhostBSD uses FreeBSD ports and packages,
+            but from its own repository which lags behind FreeBSD
+            by a month or more.  If you don't need the very latest
+            packages (most people do not), then GhostBSD is a good choice
+            for those who are less tech-savvy.
+            </para>
+            
+            <para>
+            Any Linux distribution can be used along with pkgsrc
+            (see <xref linkend="software-installation"/>) to install
+            the tools needed for this pipeline.  Most of them may also
+            be available in the native Linux package manager, though
+            they will need to be installed individually, as the rna-seq
+            meta-package only exists in FreeBSD ports and pkgsrc.
+            </para>
+        </section>
+        
+        <section>
+            <title>Virtual Machines including Cloud Services</title>
+            
+            <para>
+            Virtual machines may be more convenient for some users,
+            depending on available I.T. support, funding model, etc.
+            </para>
+            
+            <para>
+            Note that virtualized network interfaces and storage,
+            including those used by Amazon EC2, Google Cloud Platform,
+            Microsoft Azure, and other cloud-based computing platforms,
+            will not perform nearly as well as "bare metal".  Only the
+            CPU and memory should be expected to match the performance
+            of real hardware, because these are the only components
+            that typically don't use any software emulation on top of
+            the actual hardware.  However, this performance hit
+            may be an acceptable price to pay to be free from the need
+            to maintain your own hardware.  Look for a platform that
+            is fast enough to complete your analysis, not necessarily
+            the fastest possible.
+            </para>
+        </section>
     </section>
     
-    <section>
+    <section xml:id="software-installation">
         <title>Software Installation</title>
         
         <para>
