@@ -13,7 +13,7 @@ pause()
     read junk
 }
 
-cat Logs/12-hisat2-align/*.err | fgrep 'aligned concordantly exactly'
+cat Logs/12-hisat2-align/*.err | fgrep 'aligned concordantly exactly' 
 pause
 
 cat Logs/12-hisat2-align/*.err | fgrep 'aligned concordantly >'
@@ -22,7 +22,7 @@ pause
 cat Logs/12-hisat2-align/*.err | fgrep 'overall alignment'
 pause
 
-cmd='ls -lh Results/12-hisat2-align'
+cmd='ls -lh Results/12-hisat2-align/*.bam'
 printf "Running $cmd...\n"
 pause
 

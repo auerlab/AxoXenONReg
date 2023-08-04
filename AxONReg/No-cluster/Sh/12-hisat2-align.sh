@@ -7,19 +7,13 @@
 #   Dependencies:
 #       Requires hisat2 index.  Run after *-hisat2-index.sbatch.
 #
-#       All necessary tools are assumed to be in PATH.  If this is not
-#       the case, add whatever code is needed here to gain access.
-#       (Adding such code to your .bashrc or other startup script is
-#       generally a bad idea since it's too complicated to support
-#       every program with one environment.)
-#       
 #   History:
 #   Date        Name        Modification
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
 if [ $# != 2 ]; then
-    printf "Usage: $0 input-file-R1.fastq.zst threads\n"
+    printf "Usage: $0 threads input-file-R1.fastq.zst\n"
     exit 1
 fi
 

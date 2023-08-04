@@ -12,6 +12,7 @@ curl -O --continue-at - $site/$gff.gz
 if [ ! -e $gff ]; then
     gunzip --keep $gff.gz
 fi
+ln -sf $gff reference.gff3
 
 # GTF
 gtf=XENLA_${version}_Xenbase.gtf
@@ -19,6 +20,7 @@ curl -O --continue-at - $site/$gtf.gz
 if [ ! -e $gtf ]; then
     gunzip --keep $gtf.gz
 fi
+ln -sf $gtf reference.gtf
 
 # Genome
 genome=XENLA_10.1_genome.fa

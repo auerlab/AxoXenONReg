@@ -1,1 +1,1 @@
-../../AxONReg/Cluster/03b-verify.sh
+../../AxONReg/No-cluster/03b-verify.sh
