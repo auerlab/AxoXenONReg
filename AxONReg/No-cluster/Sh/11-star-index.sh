@@ -2,7 +2,7 @@
 
 ##########################################################################
 #   Description:
-#       Build hisat2 index for reference genome.
+#       Build star index for reference genome.
 #
 #   Dependencies:
 #       Requires a reference genome.  Run after *-reference.sbatch.
@@ -20,8 +20,7 @@ STAR --version
 samtools --version
 pwd
 
-# Run STAR genomeGenerate on a copy in 11-hisat2-index so it will put the .ht2
-# files there
+# Run STAR genomeGenerate on a copy in 11-star-index
 genome=genome-reference.fa
 ln -f Results/07-reference/$genome Results/11-star-index
 printf "Using reference $genome...\n"
