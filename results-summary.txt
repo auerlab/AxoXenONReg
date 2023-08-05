@@ -1,11 +1,10 @@
 
 Kallisto pseudoalignment rates are lower than Hisat2.  This might be due
 to the fact that Kallisto aligns to a transcriptome while hisat2 aligns
-to a genome, and many reads originated from either unknown transcripts,
-introns, or intergenic regions.
+to a genome, and the trascriptome for these species is incomplete.
 
 Kallisto's p_unique (percent mapped to exactly one target) is also low.
-Perhaps due to redundancy in the genome?
+Perhaps due to redundancy in the transcriptome?
 
 
 Axolotl
@@ -58,6 +57,3 @@ Hisat2:
     2481331 (4.29%) aligned concordantly >1 times
     92.02% overall alignment rate
 
-STAR:
-
-    Have not tried yet.
