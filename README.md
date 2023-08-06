@@ -1,6 +1,6 @@
-# Axolotl
+# AxoXenONReg
 
-RNA-Seq analysis of Axolotl
+RNA-Seq analysis of Axolotl and Xenopus
 
 ## PIs
 
@@ -19,7 +19,11 @@ Based on the work of Dr. Andrea Rau:
 ## Using this pipeline
 
 The scripts in this pipeline are meant to serve as an example of a
-basic RNA-Seq analysis.
+basic RNA-Seq analysis, requiring only basic Unix skills to complete.
+The goal is to allow budding bioinformaticians to achieve success in
+an RNA-Seq analysis as early as possible in their training.  This will
+hopefully develop confidence and allow them to see the big picture before
+moving on to refine their computer skills and bioinformatics analysis skills.
 
 To run the analysis, cd into Species/No-cluster if you are not using an HPC
 cluster, or into Species/Cluster if you are using a SLURM HPC cluster.
