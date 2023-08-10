@@ -76,15 +76,15 @@
             is derived largely from FreeBSD and some earlier BSD
             systems, which have ties to the original Unix system
             created by AT&amp;T.
-            A Mac is the most realistic option for many biologists, for
-            several reasons:
+            A Mac is the most realistic option for many biologists to
+            gain access to a Unix environment, for several reasons:
             </para>
             
             <itemizedlist>
                 <listitem>
                 <para>
-                A Mac is the easiest Unix-compatible system for the
-                average person to maintain.
+                A Mac is by far the easiest Unix-compatible system for the
+                average (non I.T.) person to maintain.
                 </para>
                 </listitem>
                 
@@ -100,10 +100,11 @@
                 
                 <listitem>
                 <para>
-                Mac is the only Unix system that runs a wide variety
-                of common commercial software, such as MS Office, etc.
-                Hence, you won't need two computers or virtual machines
-                to run both commercial products and open source
+                Mac is the only Unix system supported by a wide variety of
+                common commercial software products, such as MS Office, etc.
+                Hence, using a Mac means you won't need two computers
+                or virtual machines
+                to run both commercial software and open source
                 bioinformatics software.
                 </para>
                 </listitem>
@@ -136,7 +137,7 @@
             </para>
             
             <note>
-            You will want to disable the screensaver under System Settings,
+            You will want to disable the screensaver under System Settings ->
             Lock Screen.  Some macOS screensavers use enormous amounts of
             memory and CPU, competing with scientific analysis software.
             If your system runs out of memory due to competition from
@@ -179,14 +180,16 @@ ClientAliveCountMax 0
             There are multiple BSD and Linux operating systems suitable
             for bioinformatics analysis.  If you are tech-savvy enough
             to manage your own Unix system, you can get probably get
-            by with a used PC for as little as $500.  You'll want
+            by for most analyses
+            with a used PC for as little as $500.  You'll want
             something with at least 8 cores and 128 GiB RAM, as mentioned
             in the Mac section above.
             </para>
             
             <para>
             A PC running a POSIX OS such as BSD or Linux will be cheaper
-            and more upgradable, and can house more internal disk storage.
+            and more upgradable than a Mac,
+            and can house more internal disk storage.
             My personal choice is FreeBSD with at least 2 disks configured
             as a ZFS RAID.  The FreeBSD installer makes it trivial to
             configure ZFS RAIDs and boot from them directly.  The
@@ -216,6 +219,12 @@ ClientAliveCountMax 0
             be available in the native Linux package manager, though
             they will need to be installed individually, as the rna-seq
             meta-package only exists in FreeBSD ports and pkgsrc.
+            Debian Linux, and its derivatives such as Ubuntu, are
+            popular and easy to install and manage.  Redhat Enterprise
+            Linux (RHEL) and its derivatives are used on most HPC
+            clusters.  They are more stable and support some commercial
+            software, but use older Linux components which may not
+            work with the latest open source software.
             </para>
         </section>
         
@@ -225,6 +234,12 @@ ClientAliveCountMax 0
             <para>
             Virtual machines may be more convenient for some users,
             depending on available I.T. support, funding model, etc.
+            Pay-as-you-go services like cloud computing
+            can be problematic in academic research,
+            where funding is fixed and must be known ahead of time.
+            Using cloud services also requires some special skills.
+            Discuss this with your I.T. staff to find out whether this is
+            a good option for you.
             </para>
             
             <para>
@@ -249,7 +264,9 @@ ClientAliveCountMax 0
         
         <para>
         All commands needed for this analysis are assumed to be in your
-        PATH.  If programs are installed in non-standard directories, you
+        PATH, meaning you can just run the commands without doing
+        any special preparation like loading virtual environments, containers,
+        etc.  If programs are installed in non-standard directories, you
         will need to update your PATH (e.g. by loading an environment module
         if they are used at your site).
         </para>
