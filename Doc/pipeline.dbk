@@ -65,6 +65,16 @@
             <command>xargs</command> scripts are tested primarily on a Mac
             Mini m1.
             </para>
+            
+            <para>
+            Very large genomes, like the axolotl and xenopus being
+            analyzed here, will cause some programs to demand
+            enormous amounts of RAM, while very small genomes
+            (bacteria, yeast) can be easily analyzed on a laptop.
+            For this axolotl and xenopus pipeline, 80 GiB of RAM will
+            suffice for all programs except the STAR aligner, which
+            requires more than 128 GiB.
+            </para>
         </section>
             
         <section>
