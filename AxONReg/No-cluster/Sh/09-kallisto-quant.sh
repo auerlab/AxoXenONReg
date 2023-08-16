@@ -12,7 +12,7 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
-if [ $# != 2 ]; then
+if [ $# -ne 2 ]; then
     printf "Usage: $0 threads forward-sample-name.fastq.zst\n"
     exit 1
 fi

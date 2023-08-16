@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-if [ $# != 1 ]; then
+if [ $# -ne 1 ]; then
     printf "Usage: ./00.2-gz2xz.sh file.gz\n"
     exit 1
 fi
