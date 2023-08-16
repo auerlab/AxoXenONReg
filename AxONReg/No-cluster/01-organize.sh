@@ -24,6 +24,25 @@
 #   2023-06     Jason Bacon Begin
 ##########################################################################
 
+usage()
+{
+    printf "Usage: $0 full|test\n"
+    exit 1
+}
+
+
+##########################################################################
+#   Main
+##########################################################################
+
+if [ $# != 1 ]; then
+    usage
+fi
+mode=$1
+if [ $mode != full ] && [ $mode != test ]; then
+    usage
+fi
+
 mkdir -p Results Logs
 scripts=$(ls 0[2-9]*.sh 1[0-9]*.sh)
 for script in $scripts; do
@@ -92,5 +111,10 @@ for path in ../../../../Raw/*/*.fq.xz; do
     esac
     link=sample$sample-cond$cond-rep$rep-R$strand.fastq.xz
     printf "$path = $link\n"
-    ln -sf $path $link
+    if [ $mode = full ]; then
+	ln -sf $path $link
+    else
+	# Just take the first 1,000,000 reads for testing
+	xzcat $path | head -n 4000000 | xz -1 > $link
+    fi
 done
