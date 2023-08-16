@@ -83,19 +83,19 @@ for path in ../../../../Raw/*/*.fq.xz; do
     # Time offsets: 0 (naive) 26 50 55 120
     case $day in
     0)
-	time=1
+	cond=1
 	;;
     7)
-	time=2
+	cond=2
 	;;
     12)
-	time=3
+	cond=3
 	;;
     18)
-	time=4
+	cond=4
 	;;
     27)
-	time=5
+	cond=5
 	;;
     *)
 	printf "Invalid time point.\n"
@@ -103,7 +103,7 @@ for path in ../../../../Raw/*/*.fq.xz; do
     esac
     sample=$(printf "%02d" $sample)
     rep=$(echo $rep | tr "ABC" "123")
-    link=sample$sample-time$time-rep$rep-R$strand.fastq.xz
+    link=sample$sample-cond$cond-rep$rep-R$strand.fastq.xz
     ln -sf $path $link
     printf "$path = $link\n"
 done

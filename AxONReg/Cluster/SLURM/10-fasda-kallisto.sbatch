@@ -16,22 +16,22 @@ pwd
 kallisto_dir=Results/09-kallisto-quant
 fasda_dir=Results/10-fasda-kallisto
 
-# Ex. sample16-time1-rep1
-for time in $(seq 1 5); do
-    printf "\n===\nNormalizing time$time...\n"
-    ls $kallisto_dir/sample*-time$time-rep*/abundance.tsv
+# Ex. sample16-cond1-rep1
+for cond in $(seq 1 5); do
+    printf "\n===\nNormalizing cond$cond...\n"
+    ls $kallisto_dir/sample*-cond$cond-rep*/abundance.tsv
     time fasda normalize \
-	--output $fasda_dir/time$time-all-norm.tsv \
-	$kallisto_dir/sample*-time$time-rep*/abundance.tsv
+	--output $fasda_dir/cond$cond-all-norm.tsv \
+	$kallisto_dir/sample*-cond$cond-rep*/abundance.tsv
 done
 
-for early in $(seq 1 4); do
-    late_start=$(($early + 1))
-    for late in $(seq $late_start 5); do
-	printf "\n===\nComputing fold-changes time$early vs time$late...\n"
+for first in $(seq 1 4); do
+    second_start=$(($first + 1))
+    for second in $(seq $second_start 5); do
+	printf "\n===\nComputing fold-changes cond$first vs cond$second...\n"
 	time fasda fold-change \
-	    --output $fasda_dir/time$early-time$late-FC.txt \
-	    $fasda_dir/time1-all-norm.tsv \
-	    $fasda_dir/time2-all-norm.tsv
+	    --output $fasda_dir/cond$first-cond$second-FC.txt \
+	    $fasda_dir/cond$first-all-norm.tsv \
+	    $fasda_dir/cond$second-all-norm.tsv
     done
 done

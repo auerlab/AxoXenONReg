@@ -2,7 +2,7 @@
 
 #############################################################################
 #   Description:
-#       Merge BAM files for the same cell line and time point
+#       Merge BAM files for the same cell line and all conditions
 #
 #   Dependencies:
 #       Requires hisat2 alignments.  Run after *-hisat2-align.sbatch.
@@ -14,7 +14,7 @@
 #       every program with one environment.)
 #############################################################################
 
-# Set job array to number of samples / number of time points.
+# Set job array to number of samples / number of conditions.
 # 3 time points, chondro and neuro for each
 #SBATCH --array=000,026,050,055,120
 # Memory requirements can only be determined by trial and error.
@@ -37,13 +37,13 @@ pwd
 
 input_dir=Results/12-hisat2-align
 output_dir=Results/15-merge-hisat2-bams
-time=$(printf "%03d" $SLURM_ARRAY_TASK_ID)
+cond=$(printf "%03d" $SLURM_ARRAY_TASK_ID)
 
-input1=$(echo $input_dir/sample*-time$time-rep1.bam)
-input2=$(echo $input_dir/sample*-time$time-rep2.bam)
-input3=$(echo $input_dir/sample*-time$time-rep3.bam)
+input1=$(echo $input_dir/sample*-cond$cond-rep1.bam)
+input2=$(echo $input_dir/sample*-cond$cond-rep2.bam)
+input3=$(echo $input_dir/sample*-cond$cond-rep3.bam)
 
-output=$output_dir/time$time.bam
+output=$output_dir/cond$cond.bam
 
 set -x
 samtools merge -o $output $input1 $input2 $input3

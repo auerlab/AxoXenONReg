@@ -15,8 +15,8 @@ pause()
 }
 
 # Abundances
-kallisto=Results/09-kallisto-quant/sample01-time1-rep1/abundance.tsv
-hisat2=Results/13-fasda-abundance-hisat2/sample01-time1-rep1-abundance.tsv
+kallisto=Results/09-kallisto-quant/sample01-cond1-rep1/abundance.tsv
+hisat2=Results/13-fasda-abundance-hisat2/sample01-cond1-rep1-abundance.tsv
 # more $hisat2
 
 wc -l $kallisto $hisat2
@@ -42,8 +42,8 @@ for transcript in $(awk '$1 != "target_id" { print $1 }' $hisat2); do
 done | more
 
 # Normalized
-kallisto=Results/10-fasda-kallisto/time1-all-norm.tsv
-hisat2=Results/14-fasda-fc-hisat2/time1-all-norm.tsv
+kallisto=Results/10-fasda-kallisto/cond1-all-norm.tsv
+hisat2=Results/14-fasda-fc-hisat2/cond1-all-norm.tsv
 for transcript in $(awk '$1 != "target_id" { print $1 }' $hisat2); do
     # printf "transcript = $transcript\n"
     if fgrep -q $transcript $kallisto; then
@@ -63,8 +63,8 @@ for transcript in $(awk '$1 != "target_id" { print $1 }' $hisat2); do
 done | more
 
 # Fold-changes
-kallisto=Results/10-fasda-kallisto/time1-time2-FC.txt
-hisat2=Results/14-fasda-fc-hisat2/time1-time2-FC.txt
+kallisto=Results/10-fasda-kallisto/cond1-cond2-FC.txt
+hisat2=Results/14-fasda-fc-hisat2/cond1-cond2-FC.txt
 for transcript in $(awk '{ print $1 }' $hisat2 | head -1000); do
     if fgrep -q $transcript $kallisto; then
 	echo $transcript

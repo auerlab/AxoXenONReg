@@ -72,25 +72,25 @@ for path in ../../../../Raw/*/*.fq.xz; do
     # 0 26 50 55 120
     case $time in
     0)
-	time=1
+	cond=1
 	;;
     26)
-	time=2
+	cond=2
 	;;
     50)
-	time=3
+	cond=3
 	;;
     55)
-	time=4
+	cond=4
 	;;
     120)
-	time=5
+	cond=5
 	;;
     *)
 	printf "Invalid time point.\n"
 	exit 1
     esac
-    link=sample$sample-time$time-rep$rep-R$strand.fastq.xz
+    link=sample$sample-cond$cond-rep$rep-R$strand.fastq.xz
     printf "$path = $link\n"
     ln -sf $path $link
 done

@@ -58,7 +58,7 @@ pwd
 
 # 6-merge-bams.sbatch relies on sample N being in Results/09-kallisto-quant/N
 # The sample number comes after -sample in the filename, e.g.
-# chondro-sample4-rep2-time1-R1.fastq.xz is sample 4
+# chondro-sample4-rep2-cond1-R1.fastq.xz is sample 4
 
 # kallisto 0.46.1 can't handle xz and will simply seg fault rather than
 # issue an error message.  If your trimmed fastq files are in xz format,
