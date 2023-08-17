@@ -481,7 +481,7 @@ sample15-cond5-rep3-R2.fastq.xz@ -> ../../../Raw/X15d27C/X15d27C_2.fq.xz
             <title>Read Quality</title>
             <mediaobject>
                 <imageobject>
-                <imagedata fileref="fastqc_per_base_sequence_quality_plot.png" width="80%"/>
+                <imagedata fileref="raw-sequence-quality.png" width="80%"/>
                 </imageobject>
             </mediaobject>
         </figure>
@@ -496,7 +496,7 @@ sample15-cond5-rep3-R2.fastq.xz@ -> ../../../Raw/X15d27C/X15d27C_2.fq.xz
             <title>Adapter Content</title>
             <mediaobject>
                 <imageobject>
-                <imagedata fileref="fastqc_adapter_content_plot.png" width="80%"/>
+                <imagedata fileref="raw-adapter-content.png" width="80%"/>
                 </imageobject>
             </mediaobject>
         </figure>
@@ -623,7 +623,7 @@ Run time: 1337.33 real      1621.45 user       137.50 sys
             <title>Adapter Contamination after Trimming</title>
             <mediaobject>
                 <imageobject>
-                <imagedata fileref="fastqc_adapter_content_plot-post-trim.png" width="80%"/>
+                <imagedata fileref="trimmed-adapter-content.png" width="80%"/>
                 </imageobject>
             </mediaobject>
         </figure>
