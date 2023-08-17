@@ -374,7 +374,7 @@ ClientAliveCountMax 0
         </para>
         
         <para>
-        For this study, I also reduced the time points to ranks 1
+        For this study, I also reduced the time points to conditions 1
         through 5.  The
         axolotl and xenopus data have the same number of samples and
         time points, to standardizing the filenames allows the exact same
@@ -385,37 +385,79 @@ ClientAliveCountMax 0
         <screen>
 Symbolic link                       Raw filename from sequencing center
 -----------------------------------------------------------------------
-sample01-time1-rep1-R1.fastq.xz@ -> ../../../Raw/X1NaA/X1NaA_1.fq.xz
-sample01-time1-rep1-R2.fastq.xz@ -> ../../../Raw/X1NaA/X1NaA_2.fq.xz
-sample02-time1-rep2-R1.fastq.xz@ -> ../../../Raw/X2NaB/X2NaB_1.fq.xz
-sample02-time1-rep2-R2.fastq.xz@ -> ../../../Raw/X2NaB/X2NaB_2.fq.xz
-sample03-time1-rep3-R1.fastq.xz@ -> ../../../Raw/X3NaC/X3NaC_1.fq.xz
-sample03-time1-rep3-R2.fastq.xz@ -> ../../../Raw/X3NaC/X3NaC_2.fq.xz
-sample04-time2-rep1-R1.fastq.xz@ -> ../../../Raw/X4d7A/X4d7A_1.fq.xz
-sample04-time2-rep1-R2.fastq.xz@ -> ../../../Raw/X4d7A/X4d7A_2.fq.xz
-sample05-time2-rep2-R1.fastq.xz@ -> ../../../Raw/X5d7B/X5d7B_1.fq.xz
-sample05-time2-rep2-R2.fastq.xz@ -> ../../../Raw/X5d7B/X5d7B_2.fq.xz
-sample06-time2-rep3-R1.fastq.xz@ -> ../../../Raw/X6d7C/X6d7C_1.fq.xz
-sample06-time2-rep3-R2.fastq.xz@ -> ../../../Raw/X6d7C/X6d7C_2.fq.xz
-sample07-time3-rep1-R1.fastq.xz@ -> ../../../Raw/X7d12A/X7d12A_1.fq.xz
-sample07-time3-rep1-R2.fastq.xz@ -> ../../../Raw/X7d12A/X7d12A_2.fq.xz
-sample08-time3-rep2-R1.fastq.xz@ -> ../../../Raw/X8d12B/X8d12B_1.fq.xz
-sample08-time3-rep2-R2.fastq.xz@ -> ../../../Raw/X8d12B/X8d12B_2.fq.xz
-sample09-time3-rep3-R1.fastq.xz@ -> ../../../Raw/X9d12C/X9d12C_1.fq.xz
-sample09-time3-rep3-R2.fastq.xz@ -> ../../../Raw/X9d12C/X9d12C_2.fq.xz
-sample10-time4-rep1-R1.fastq.xz@ -> ../../../Raw/X10d18A/X10d18A_1.fq.xz
-sample10-time4-rep1-R2.fastq.xz@ -> ../../../Raw/X10d18A/X10d18A_2.fq.xz
-sample11-time4-rep2-R1.fastq.xz@ -> ../../../Raw/X11d18B/X11d18B_1.fq.xz
-sample11-time4-rep2-R2.fastq.xz@ -> ../../../Raw/X11d18B/X11d18B_2.fq.xz
-sample12-time4-rep3-R1.fastq.xz@ -> ../../../Raw/X12d18C/X12d18C_1.fq.xz
-sample12-time4-rep3-R2.fastq.xz@ -> ../../../Raw/X12d18C/X12d18C_2.fq.xz
-sample13-time5-rep1-R1.fastq.xz@ -> ../../../Raw/X13d27A/X13d27A_1.fq.xz
-sample13-time5-rep1-R2.fastq.xz@ -> ../../../Raw/X13d27A/X13d27A_2.fq.xz
-sample14-time5-rep2-R1.fastq.xz@ -> ../../../Raw/X14d27B/X14d27B_1.fq.xz
-sample14-time5-rep2-R2.fastq.xz@ -> ../../../Raw/X14d27B/X14d27B_2.fq.xz
-sample15-time5-rep3-R1.fastq.xz@ -> ../../../Raw/X15d27C/X15d27C_1.fq.xz
-sample15-time5-rep3-R2.fastq.xz@ -> ../../../Raw/X15d27C/X15d27C_2.fq.xz
+sample01-cond1-rep1-R1.fastq.xz@ -> ../../../Raw/X1NaA/X1NaA_1.fq.xz
+sample01-cond1-rep1-R2.fastq.xz@ -> ../../../Raw/X1NaA/X1NaA_2.fq.xz
+sample02-cond1-rep2-R1.fastq.xz@ -> ../../../Raw/X2NaB/X2NaB_1.fq.xz
+sample02-cond1-rep2-R2.fastq.xz@ -> ../../../Raw/X2NaB/X2NaB_2.fq.xz
+sample03-cond1-rep3-R1.fastq.xz@ -> ../../../Raw/X3NaC/X3NaC_1.fq.xz
+sample03-cond1-rep3-R2.fastq.xz@ -> ../../../Raw/X3NaC/X3NaC_2.fq.xz
+sample04-cond2-rep1-R1.fastq.xz@ -> ../../../Raw/X4d7A/X4d7A_1.fq.xz
+sample04-cond2-rep1-R2.fastq.xz@ -> ../../../Raw/X4d7A/X4d7A_2.fq.xz
+sample05-cond2-rep2-R1.fastq.xz@ -> ../../../Raw/X5d7B/X5d7B_1.fq.xz
+sample05-cond2-rep2-R2.fastq.xz@ -> ../../../Raw/X5d7B/X5d7B_2.fq.xz
+sample06-cond2-rep3-R1.fastq.xz@ -> ../../../Raw/X6d7C/X6d7C_1.fq.xz
+sample06-cond2-rep3-R2.fastq.xz@ -> ../../../Raw/X6d7C/X6d7C_2.fq.xz
+sample07-cond3-rep1-R1.fastq.xz@ -> ../../../Raw/X7d12A/X7d12A_1.fq.xz
+sample07-cond3-rep1-R2.fastq.xz@ -> ../../../Raw/X7d12A/X7d12A_2.fq.xz
+sample08-cond3-rep2-R1.fastq.xz@ -> ../../../Raw/X8d12B/X8d12B_1.fq.xz
+sample08-cond3-rep2-R2.fastq.xz@ -> ../../../Raw/X8d12B/X8d12B_2.fq.xz
+sample09-cond3-rep3-R1.fastq.xz@ -> ../../../Raw/X9d12C/X9d12C_1.fq.xz
+sample09-cond3-rep3-R2.fastq.xz@ -> ../../../Raw/X9d12C/X9d12C_2.fq.xz
+sample10-cond4-rep1-R1.fastq.xz@ -> ../../../Raw/X10d18A/X10d18A_1.fq.xz
+sample10-cond4-rep1-R2.fastq.xz@ -> ../../../Raw/X10d18A/X10d18A_2.fq.xz
+sample11-cond4-rep2-R1.fastq.xz@ -> ../../../Raw/X11d18B/X11d18B_1.fq.xz
+sample11-cond4-rep2-R2.fastq.xz@ -> ../../../Raw/X11d18B/X11d18B_2.fq.xz
+sample12-cond4-rep3-R1.fastq.xz@ -> ../../../Raw/X12d18C/X12d18C_1.fq.xz
+sample12-cond4-rep3-R2.fastq.xz@ -> ../../../Raw/X12d18C/X12d18C_2.fq.xz
+sample13-cond5-rep1-R1.fastq.xz@ -> ../../../Raw/X13d27A/X13d27A_1.fq.xz
+sample13-cond5-rep1-R2.fastq.xz@ -> ../../../Raw/X13d27A/X13d27A_2.fq.xz
+sample14-cond5-rep2-R1.fastq.xz@ -> ../../../Raw/X14d27B/X14d27B_1.fq.xz
+sample14-cond5-rep2-R2.fastq.xz@ -> ../../../Raw/X14d27B/X14d27B_2.fq.xz
+sample15-cond5-rep3-R1.fastq.xz@ -> ../../../Raw/X15d27C/X15d27C_1.fq.xz
+sample15-cond5-rep3-R2.fastq.xz@ -> ../../../Raw/X15d27C/X15d27C_2.fq.xz
         </screen>
+    </section>
+    
+    <section>
+        <title>Quick Testing</title>
+        
+        <para>
+        Analyzing the entire set of reads could take days on a fast
+        computer.  For this reason, 01-organize.sh has two modes:
+        </para>
+        
+        <itemizedlist>
+            <listitem>
+            <para>
+            full: Create symbolic links to the raw files for a full
+            analysis.
+            </para>
+            </listitem>
+            
+            <listitem>
+            <para>
+            test: Extract the first 1,000,000 reads from each raw file
+            so that the subsequent analysis scripts can be tested in a
+            small fraction of the time.  Raw read files typically contain
+            tens of millions of reads, and we don't need to analyze all
+            of them just to see if the scripts are working.  Ideally,
+            test inputs should take a few minutes to process.  Long enough
+            that we can observe program performance, but short enough
+            to run on a laptop.
+            </para>
+            </listitem>
+        </itemizedlist>
+        
+        <para>
+        The test mode should be used while adapting the scripts to a 
+        new study.  This will allow the stages to run in a few minutes
+        each on a laptop.  The results should be about the same as
+        they are for the full analysis, since reads are organized
+        randomly in the raw files.  Once you're confident that the scripts are
+        correct, just rerun 01-organize.sh and specify "full" this time.
+        Then rerun all stages with the complete read sets to ensure the
+        best possible results.
+        </para>
     </section>
     
     <section>
@@ -542,8 +584,8 @@ GC:                 3761637776 (43.28%)
   Phred base:        33
   Adapter matching:  Smart
   Maximum mismatch:  10%
-  Filename:          Results/01-organize/Raw-renamed/sample02-time1-rep2-R1.fastq.xz
-  Filename:          Results/01-organize/Raw-renamed/sample02-time1-rep2-R2.fastq.xz
+  Filename:          Results/01-organize/Raw-renamed/sample02-cond1-rep2-R1.fastq.xz
+  Filename:          Results/01-organize/Raw-renamed/sample02-cond1-rep2-R2.fastq.xz
   Mode:              Paired
   Adapters:          AGATCGGAAGAG AGATCGGAAGAG
 
