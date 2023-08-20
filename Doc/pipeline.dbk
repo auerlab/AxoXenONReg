@@ -46,6 +46,12 @@
             <title>Do I Need a Cluster?</title>
             
             <para>
+            A typical RNA-Seq differential analysis can and should be relatively
+            easy to perform on a high-end PC or Mac, with minimal assistance
+            from I.T. staff.
+            </para>
+            
+            <para>
             Use of a cluster is not necessary for most differential expression
             analyses.  A powerful workstation with several cores and
             enough RAM can complete a a typical analysis in a reasonable
@@ -56,6 +62,18 @@
             There are some activities that are impractical without a cluster,
             such as de novo genome assembly, but most bioinformatics can be
             done on modern laptops and workstations.
+            </para>
+            
+            <para>
+            Many people don't have easy access to HPC resources or cloud
+            services.  Building a typical cluster costs on the order of
+            $1,000,000 and maintaining it costs in the ballpark of
+            $500,000 per year in salaries, power and cooling, etc.
+            Access to remote clusters such as XSEDE may be "free" in
+            terms of dollars, but entails writing proposals
+            with a good estimate of the amount of CPU time required,
+            in addition to the step learning curve and delays incurred
+            from support requests.
             </para>
 
             <para>
