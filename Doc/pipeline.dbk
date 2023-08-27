@@ -233,9 +233,11 @@ ClientAliveCountMax 0
             <para>
             GhostBSD is a FreeBSD derivative with a fully graphical
             installer and management tools, similar to Debian and
-            Ubuntu Linux.  GhostBSD uses FreeBSD ports and packages,
+            Ubuntu Linux.  If you are new to Unix and do not have
+            a Mac, GhostBSD is probably the easiest way to get started
+            with RNA-Seq.  GhostBSD uses FreeBSD ports and packages,
             but from its own repository which lags behind FreeBSD
-            by a month or more.  If you don't need the very latest
+            slightly.  If you don't need the very latest
             packages (most people do not), then GhostBSD is a good choice
             for those who are less tech-savvy.
             </para>
@@ -305,13 +307,30 @@ ClientAliveCountMax 0
         </para>
         
         <para>
+        Installing on GhostBSD can also be accomplished using
+        <command>pkg install</command>, or by running
+        <command>Software Station</command> and searching for
+        <command>rna-seq</command> as shown in
+        <xref linkend="software-station"/>.
+        </para>
+        
+        <figure xml:id="software-station">
+            <title>Installing RNA-Seq tools via Software Station</title>
+            <mediaobject>
+                <imageobject>
+                <imagedata fileref="GhostBSD-rna-seq.png" width="50%"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        
+        <para>
         On any POSIX platform (BSD, Linux, macOS, SunOS, etc.),
         they can be installed using the
         <command>pkgsrc</command> rna-seq package
         (<ulink url="http://pkgsrc.org/">http://pkgsrc.org/</ulink>).
-        Pkgsrc does not require administrator privileges, so it can
-        be used on computers managed by your organization without
-        submitting help requests.
+        Pkgsrc does not require administrator privileges, so you can
+        use it yourself on computers managed by your organization without
+        help from your I.T. department.
         </para>
         
         <para>
