@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires hisat2 BAMs.  Run after *-hisat2-align.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 hw_threads=$(../../Common/get-hw-threads.sh)

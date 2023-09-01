@@ -4,10 +4,6 @@
 #   Description:
 #       Report whether each stage has been submitted/run, so that
 #       the user knows where they left off after being distracted.
-#       
-#   History:
-#   Date        Name        Modification
-#   2023        Jason Bacon Begin
 ##########################################################################
 
 for script in [012][0-9]-*.s*; do

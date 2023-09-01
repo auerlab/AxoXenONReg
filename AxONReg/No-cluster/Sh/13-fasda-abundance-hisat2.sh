@@ -3,10 +3,6 @@
 ##########################################################################
 #   Description:
 #       Compute abundances from hisat2 alignments for one condition.
-#       
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 usage()

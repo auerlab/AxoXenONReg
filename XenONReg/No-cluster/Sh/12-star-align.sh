@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires trimmed reads.  Run after *-trim.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-08     Jason Bacon Begin
 ##########################################################################
 
 if [ $# != 1 ]; then

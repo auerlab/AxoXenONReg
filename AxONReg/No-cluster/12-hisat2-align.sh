@@ -7,10 +7,6 @@
 #   Dependencies:
 #       Requires trimmed reads and a reference genome.  Run after
 #       *-trim.sh and *-reference.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 hw_threads=$(../../Common/get-hw-threads.sh)

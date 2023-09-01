@@ -3,10 +3,6 @@
 ##########################################################################
 #   Script description:
 #       Run quality checks on one raw data file.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 usage()

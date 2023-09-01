@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires kallisto index.  Run after *-kallisto-index.sbatch.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 if [ $# -ne 2 ]; then

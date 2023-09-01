@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires directory structure.  Run after *-organize.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 hw_threads=$(../../Common/get-hw-threads.sh)

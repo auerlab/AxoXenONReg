@@ -3,10 +3,6 @@
 ##########################################################################
 #   Description:
 #       Perform quality checks on one trimmed fastq file.
-#       
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 usage()

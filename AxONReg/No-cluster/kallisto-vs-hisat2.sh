@@ -1,6 +1,5 @@
 #!/bin/sh -e
 
-
 ##########################################################################
 #   Function description:
 #       Pause until user presses return

@@ -7,10 +7,6 @@
 #   Dependencies:
 #       Requires trimmed reads and reference transcriptome.
 #       Run after *-trim.sh and *-reference.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # Document software versions used for publication

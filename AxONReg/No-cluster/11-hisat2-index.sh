@@ -7,10 +7,6 @@
 #   Dependencies:
 #       Requires genome reference.  Run after *-reference.sh.
 #       For axolotl, requires nearly 80 GB RAM.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # Check for sufficient RAM (80 GB)

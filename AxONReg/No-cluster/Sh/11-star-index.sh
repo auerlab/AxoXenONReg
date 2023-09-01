@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires a reference genome.  Run after *-reference.sbatch.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # Document software versions used for publication

@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires hisat2 abundances.  Run after *-fasda-abundance-hisat2.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # This script exists only to redirect the output of Sh/14-fasda-fc-hisat2.

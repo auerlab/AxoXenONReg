@@ -18,10 +18,6 @@
 #   Dependencies:
 #       Creates required directory structure.
 #       Run this before all other scripts.
-#       
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 usage()
@@ -46,7 +42,7 @@ fi
 mkdir -p Results Logs
 scripts=$(ls 0[2-9]*.sh 1[0-9]*.sh)
 for script in $scripts; do
-    stage=${script%.*}
+    stage=${script%.*}                      # Remove .sh
     mkdir -p Results/$stage Logs/$stage
 done
 
@@ -71,19 +67,25 @@ fi
 
 for path in ../../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
-    # FIXME: Generate a non-cryptic name for each file
+    
+    # A18Na3
+    #  ^^
+    # Sample is always characters 2 to 3
     sample=$(echo $file | cut -c 2-3)
-    # Normalize to match xenopus, so we can use the same scripts
     sample=`printf "%02d" $(($sample - 15))`
+
     if echo $file | fgrep -q Na; then
+	# Example: A18Na3 = Axolotl sample 18, naive, replicate 3
 	time=0
 	rep=$(echo $file | cut -c 6)
 	strand=$(echo $file | cut -c 8)
     elif echo $file | fgrep -q h; then
+	# Example: A2250h1 = Axolotl sample 22, 50 hours, replicate 1
 	time=$(echo $file | cut -c 4-5)
 	rep=$(echo $file | cut -c 7)
 	strand=$(echo $file | cut -c 9)
     else
+	# Example: A295d2 = Axolotl sample 29, 5 days, replicate 2
 	time=$(echo $file | cut -c 4)
 	time=$(($time * 24))
 	rep=$(echo $file | cut -c 6)
@@ -93,7 +95,6 @@ for path in ../../../../Raw/*/*.fq.xz; do
     # Reduce time points to ranks to simplify analysis and allow
     # sharing scripts between axolotl and xenopus.  It can easily
     # be converted back at any time.
-    # 0 26 50 55 120
     case $time in
     0)
 	cond=1

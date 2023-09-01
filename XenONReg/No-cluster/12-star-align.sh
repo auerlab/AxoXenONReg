@@ -7,10 +7,6 @@
 #   Dependencies:
 #       Requires trimmed reads and STAR index.  Run after
 #       *-trim.sh and *-star-index.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # Check for sufficient RAM

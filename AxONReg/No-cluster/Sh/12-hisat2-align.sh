@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires hisat2 index.  Run after *-hisat2-index.sbatch.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 if [ $# -ne 2 ]; then

@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires trimmed FastQC results.  Run after *-trim.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 ##########################################################################

@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires directory structure.  Run after *-organize.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # FastQC can utilize 2 cores, so divide total hardware cores by 2

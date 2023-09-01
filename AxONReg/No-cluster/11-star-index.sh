@@ -8,10 +8,6 @@
 #       Requires genome reference.  Run after *-reference.sh.
 #       For axolotl, requires more than 128 GB RAM (actual amount unknown).
 #       For xenopus, requires nearly 60 GB RAM.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # Check for sufficient RAM

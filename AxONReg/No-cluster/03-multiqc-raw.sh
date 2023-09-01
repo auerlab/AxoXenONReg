@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires raw FastQC results.  Run after *-qc-raw.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 ##########################################################################

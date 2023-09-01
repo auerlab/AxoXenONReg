@@ -6,10 +6,6 @@
 #
 #   Dependencies:
 #       Requires kallisto abundances.  Run after *-kallisto-align.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # This script exists only to redirect the output of Sh/10-fasda-abundance.sh.

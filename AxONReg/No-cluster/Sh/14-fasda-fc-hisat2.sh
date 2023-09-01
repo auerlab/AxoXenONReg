@@ -2,10 +2,7 @@
 
 ##########################################################################
 #   Description:
-#       
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
+#       Run fasda on one hisat2 sample
 ##########################################################################
 
 # Document software versions used for publication

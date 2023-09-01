@@ -7,10 +7,6 @@
 #   Dependencies:
 #       Requires trimmed reads and kallisto index.  Run after
 #       *-trim.sh and *-kallisto-index.sh.
-#
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
 ##########################################################################
 
 # Kallisto multithreading scales fairly well, so more jobs with

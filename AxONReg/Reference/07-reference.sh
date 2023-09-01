@@ -3,12 +3,7 @@
 ##########################################################################
 #   Description:
 #       Download/build genome and transcriptome references.
-#       
-#   History:
-#   Date        Name        Modification
-#   2023-06     Jason Bacon Begin
-##########################################################################
-
+@s
 cd Results/07-reference
 
 ##########################################################################
