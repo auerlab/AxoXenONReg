@@ -64,6 +64,11 @@ rm -rf 01-organize/Raw-renamed
 mkdir -p 01-organize/Raw-renamed
 cd 01-organize/Raw-renamed
 pwd
+if [ ! -e ../../../../Raw ]; then
+    printf "Missing Raw directory.\n"
+    exit 1
+fi
+
 for path in ../../../../Raw/*/*.fq.xz; do
     file=$(basename $path)
     # FIXME: Generate a non-cryptic name for each file
