@@ -10,21 +10,20 @@
 #       Requires directory structure.  Run after *-organize.sh.
 ##########################################################################
 
-if pwd | grep AxoXenOnReg/AxONReg/Cluster; then
-    # STAR 2.7.10b
-    mem=120g
-elif pwd | grep AxoXenOnReg/XenONReg/Cluster; then
-    # STAR 2.7.10b
-    # FIXME: Only a guess
-    mem=120g
+if pwd | grep AxoXenOnReg/AxONReg/SLURM; then
+    # hisat2 2.2.1
+    mem=80g
+elif pwd | grep AxoXenOnReg/XenONReg/SLURM; then
+    # hisat2 2.2.1
+    mem=8g
 else
     cat << EOM
 
-This script must be run from AxoXenOnReg/AxONReg/Cluster or from
-AxoXenOnReg/XenONReg/Cluster.
+This script must be run from AxoXenOnReg/AxONReg/SLURM or from
+AxoXenOnReg/XenONReg/SLURM.
 
 EOM
     exit 1
 fi
 
-sbatch --mem=$mem SLURM/11-star-index.sbatch
+sbatch --mem=$mem SLURM/11-hisat2-index.sbatch

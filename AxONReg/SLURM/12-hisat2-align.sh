@@ -10,17 +10,17 @@
 #       Requires directory structure.  Run after *-organize.sh.
 ##########################################################################
 
-if pwd | grep AxoXenOnReg/AxONReg/Cluster; then
+if pwd | grep AxoXenOnReg/AxONReg/SLURM; then
     # hisat2 2.2.1
     mem=55g
-elif pwd | grep AxoXenOnReg/XenONReg/Cluster; then
+elif pwd | grep AxoXenOnReg/XenONReg/SLURM; then
     # hisat2 2.2.1
     mem=6g
 else
     cat << EOM
 
-This script must be run from AxoXenOnReg/AxONReg/Cluster or from
-AxoXenOnReg/XenONReg/Cluster.
+This script must be run from AxoXenOnReg/AxONReg/SLURM or from
+AxoXenOnReg/XenONReg/SLURM.
 
 EOM
     exit 1
